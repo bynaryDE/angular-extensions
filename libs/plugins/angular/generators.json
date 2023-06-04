@@ -1,0 +1,9 @@
+{
+    "generators": {
+        "barrel": {
+            "factory": "./src/generators/barrel/generator",
+            "schema": "./src/generators/barrel/schema.json",
+            "description": "barrel generator"
+        }
+    }
+}

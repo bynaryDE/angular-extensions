@@ -42,7 +42,8 @@
             "options": {
                 "lintFilePatterns": [
                     "libs/plugins/angular/**/*.ts",
-                    "libs/plugins/angular/package.json"
+                    "libs/plugins/angular/package.json",
+                    "libs/plugins/angular/generators.json"
                 ]
             }
         },

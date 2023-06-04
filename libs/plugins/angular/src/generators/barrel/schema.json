@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "Barrel",
+    "title": "",
+    "type": "object",
+    "description": "Creates a barrel-file",
+    "properties": {
+        "path": {
+            "type": "string",
+            "format": "path",
+            "description": "The path at which to create the barrel file, relative to the current workspace.",
+            "visible": false
+        },
+        "file": {
+            "type": "string",
+            "description": "Path of file to export",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            }
+        },
+        "export": {
+            "type": "string",
+            "description": "Custom export path to add to the barrel file"
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the barrel file",
+            "default": "index"
+        }
+    },
+    "required": [
+        "path"
+    ]
+}
