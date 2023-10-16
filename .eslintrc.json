@@ -40,7 +40,6 @@
             "extends": [
                 "plugin:@nx/typescript"
             ],
-            ¡
             "rules": {}
         },
         {
