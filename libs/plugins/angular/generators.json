@@ -4,6 +4,11 @@
             "factory": "./src/generators/barrel/generator",
             "schema": "./src/generators/barrel/schema.json",
             "description": "barrel generator"
+        },
+        "harness": {
+            "factory": "./src/generators/harness/generator",
+            "schema": "./src/generators/harness/schema.json",
+            "description": "harness generator"
         }
     }
 }

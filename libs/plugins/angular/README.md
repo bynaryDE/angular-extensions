@@ -1,6 +1,20 @@
 # plugins-angular
 
-This library was generated with [Nx](https://nx.dev).
+A set of commonly used generators for Angular projects.
+
+# Generators
+
+## Barrel
+
+The `barrel` generator creates a barrel file for a given directory.
+
+```bash
+nx g @bynaryde/plugins-angular:barrel --directory=components
+```
+
+# Usage
+
+# Other Commands
 
 ## Building
 

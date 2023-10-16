@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "Harness",
+    "title": "",
+    "type": "object",
+    "properties": {
+        "path": {
+            "type": "string",
+            "format": "path",
+            "description": "The path at which to create the barrel file, relative to the current workspace.",
+            "visible": false
+        },
+        "name": {
+            "type": "string",
+            "description": "",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "What name would you like to use?"
+        }
+    },
+    "required": [
+        "name"
+    ]
+}

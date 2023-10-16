@@ -13,6 +13,7 @@ const DEFAULT_SCHEMA: Partial<Barrel> = {
 /**
  * This helper-generator adds a given export to a file named public-api.ts next to it.
  * If the public-api file does not exist, it will be created.
+ *
  * @param tree
  * @param schema
  */
