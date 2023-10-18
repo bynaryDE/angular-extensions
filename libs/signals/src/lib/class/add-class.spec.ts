@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { addClass } from '../public-api';
-
-import { useClass } from './class.composable';
+import { addClass } from './add-class';
 
 @Component({
     template: ''
@@ -29,7 +27,7 @@ describe('addClass', () => {
     });
 
     it('should be a function', () => {
-        expect(typeof useClass).toEqual('function');
+        expect(typeof addClass).toEqual('function');
     });
 
     it('should add the class', () => {

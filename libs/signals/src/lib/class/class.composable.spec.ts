@@ -7,7 +7,7 @@ import { useClass } from './class.composable';
 })
 class TestComponent {
     readonly test = useClass('test');
-    readonly highlighted = useClass('highlighted', true);
+    readonly highlighted = useClass('highlighted', { initialValue: true });
 }
 
 describe('useClass', () => {

@@ -1,7 +1,7 @@
 import { effect, inject, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-export const useTitle = (name: string, initialValue?: string) => {
+export const useTitle = (initialValue?: string) => {
     const title = inject(Title);
     const value = signal(initialValue ?? title.getTitle());
 

@@ -1,36 +1,84 @@
-import { effect, ElementRef, inject, Renderer2, signal } from '@angular/core';
+import { effect, ElementRef, inject, Renderer2, Signal, signal, WritableSignal } from '@angular/core';
 
-export interface IUseAttributeOptions {
+/**
+ * A set of options for {@link bindAttribute}
+ */
+export interface IBindAttributeOptions {
+    /**
+     * The namespace of the attribute
+     *
+     * @example
+     * a namespace `my` will result in an attribute `my:attribute-name`
+     */
     namespace?: string;
-    initialValue?: string;
+
+    /**
+     * The default value of the attribute, as a fallback, when no initial value has been defined and no value has been assigned in the DOM
+     */
     defaultValue?: string;
 }
 
-export const normalizeUseAttributeOptions = (options?: IUseAttributeOptions) => {
-    return {
-        namespace: options?.namespace ?? null,
-        initialValue: options?.initialValue ?? null,
-        defaultValue: options?.defaultValue ?? null
-    }
+/**
+ * A set of options for {@link useAttribute}
+ */
+export interface IUseAttributeOptions extends IBindAttributeOptions {
+
+    /**
+     * The initial value of the attribute, overriding the value assigned in the DOM
+     */
+    initialValue?: string | null;
 }
 
 /**
- * Sets an attribute on the host element.
+ * Normalizes the given options.
  *
- * @param attributeName the name of the attribute
- * @param options a set of {@link IUseAttributeOptions options}
+ * @param options - The options to normalize
  */
-export const useAttribute = (attributeName: string, options?: IUseAttributeOptions) => {
+const normalizeUseAttributeOptions = (options?: IUseAttributeOptions) => {
+    return options ?? {};
+}
+
+/**
+ * Normalizes the given options.
+ *
+ * @param options - The options to normalize
+ */
+const normalizeBindAttributeOptions = (options?: IBindAttributeOptions) => {
+    return options ?? {};
+}
+
+/**
+ * Creates a signal that binds its value as an attribute on the host element.
+ *
+ * @param attributeName - The name of the attribute
+ * @param options - A set of {@link IUseAttributeOptions options}
+ */
+export const useAttribute = (attributeName: string, options?: IUseAttributeOptions): WritableSignal<string | null | undefined> => {
     const { namespace, initialValue, defaultValue } = normalizeUseAttributeOptions(options);
 
     const element = inject(ElementRef).nativeElement as HTMLElement;
-    const renderer = inject(Renderer2);
     const initialAssignedValue = element.getAttributeNS(namespace ?? null, attributeName);
 
     const value = signal<string | null | undefined>(
         typeof initialValue !== 'undefined' ? initialValue
             : typeof initialAssignedValue !== 'undefined' ? initialAssignedValue
                 : defaultValue);
+
+    return bindAttribute(attributeName, value, { namespace, defaultValue });
+};
+
+/**
+ * Binds the value of the given signal as an attribute on the host element.
+ *
+ * @param attributeName - The name of the attribute
+ * @param value - The signal whose value should be bound
+ * @param options - A set of {@link IBindAttributeOptions options}
+ */
+export const bindAttribute = <T extends Signal<string | null | undefined>>(attributeName: string, value: T, options?: IBindAttributeOptions) => {
+    const { namespace, defaultValue } = normalizeBindAttributeOptions(options);
+
+    const element = inject(ElementRef).nativeElement as HTMLElement;
+    const renderer = inject(Renderer2);
 
     effect(() => {
         const currentValue = value();
@@ -44,4 +92,4 @@ export const useAttribute = (attributeName: string, options?: IUseAttributeOptio
     });
 
     return value;
-};
+}
