@@ -1,2 +1,12 @@
-<angular-extensions-nx-welcome></angular-extensions-nx-welcome>
 <router-outlet></router-outlet>
+
+<demo-button #button type="submit">Button</demo-button>
+<br/>
+<br/>
+<demo-button (click)="button.disabled.set(!button.disabled())">{{ button.disabled() ? 'Enable' : 'Disable' }}</demo-button>
+<demo-button (click)="button.loading.set(!button.loading())">{{ button.loading() ? 'Stop' : 'Start' }} Loading</demo-button>
+<br/>
+<h3>Appearance:</h3>
+<demo-button (click)="button.appearance.set(undefined)">Default</demo-button>
+<demo-button (click)="button.appearance.set('outline')">Outline</demo-button>
+<demo-button (click)="button.appearance.set('solid')">Solid</demo-button>

@@ -1,0 +1,23 @@
+.c-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
+
+    &.c-button--solid {
+        background-color: black;
+        color: white;
+    }
+
+    &.c-button--outline {
+        border: 1px solid black;
+    }
+
+    &[disabled] {
+        opacity: 0.5;
+    }
+
+    &.c-button--loading {
+        cursor: wait;
+    }
+}

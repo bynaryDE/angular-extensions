@@ -18,6 +18,9 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@bynaryde/angular/signals": [
+                "libs/signals/src/index.ts"
+            ],
             "@bynaryde/plugins/angular": [
                 "libs/plugins/angular/src/index.ts"
             ]
