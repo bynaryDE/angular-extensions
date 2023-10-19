@@ -1,6 +1,6 @@
-<router-outlet></router-outlet>
+<h1>{{ title() }}</h1>
 
-<demo-button #button type="submit">Button</demo-button>
+<demo-button #button type="submit" (active)="onButtonActive($event)">Button</demo-button>
 <br/>
 <br/>
 <demo-button (click)="button.disabled.set(!button.disabled())">{{ button.disabled() ? 'Enable' : 'Disable' }}</demo-button>

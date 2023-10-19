@@ -13,11 +13,20 @@
         border: 1px solid black;
     }
 
-    &[disabled] {
+    &.c-button--disabled {
         opacity: 0.5;
     }
 
     &.c-button--loading {
         cursor: wait;
+    }
+
+    &.c-button--active {
+        text-decoration: underline;
+    }
+
+    &:focus-visible {
+        outline: 2px solid black;
+        outline-offset: 2px;
     }
 }

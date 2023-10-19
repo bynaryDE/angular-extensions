@@ -6,7 +6,6 @@ export const useEvents = <T extends Event>(target: EventTarget, eventName: strin
     const events = signal<T | undefined>(initialValue);
 
     const listener = (event: Event) => {
-        console.log(eventName, target, event);
         events.set(event as T);
     };
 
