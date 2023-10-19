@@ -10,32 +10,42 @@
         "importHelpers": true,
         "target": "es2015",
         "module": "esnext",
-        "lib": ["es2020", "dom"],
+        "lib": [
+            "es2020",
+            "dom"
+        ],
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@bynaryde/angular/signals": ["libs/signals/src/index.ts"],
-            "@bynaryde/angular/signals/attribute": [
+            "@bynaryde/angular-signals": [
+                "libs/signals/src/index.ts"
+            ],
+            "@bynaryde/angular-signals/attribute": [
                 "libs/signals/attribute/src/index.ts"
             ],
-            "@bynaryde/angular/signals/class": [
+            "@bynaryde/angular-signals/class": [
                 "libs/signals/class/src/index.ts"
             ],
-            "@bynaryde/angular/signals/observer": [
+            "@bynaryde/angular-signals/observer": [
                 "libs/signals/observer/src/index.ts"
             ],
-            "@bynaryde/angular/signals/storage": [
+            "@bynaryde/angular-signals/storage": [
                 "libs/signals/storage/src/index.ts"
             ],
-            "@bynaryde/angular/signals/theme": [
-                "libs/signals/theme/src/index.ts"
+            "@bynaryde/angular-signals/color-scheme": [
+                "libs/signals/color-scheme/src/index.ts"
             ],
-            "@bynaryde/angular/signals/title": [
+            "@bynaryde/angular-signals/title": [
                 "libs/signals/title/src/index.ts"
             ],
-            "@bynaryde/plugins/angular": ["libs/plugins/angular/src/index.ts"]
+            "@bynaryde/plugins/angular": [
+                "libs/plugins/angular/src/index.ts"
+            ]
         }
     },
-    "exclude": ["node_modules", "tmp"]
+    "exclude": [
+        "node_modules",
+        "tmp"
+    ]
 }
