@@ -1,4 +1,4 @@
-module.exports = {
+export = {
     extends: '@bynaryde/eslint-config/base',
     overrides: [
         {

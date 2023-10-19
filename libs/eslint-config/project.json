@@ -6,7 +6,7 @@
     "tags": [],
     "projectType": "library",
     "targets": {
-        "build": {
+        "build2": {
             "executor": "@nx/angular:package",
             "outputs": [
                 "{workspaceRoot}/dist/{projectRoot}"
@@ -23,6 +23,22 @@
                 }
             },
             "defaultConfiguration": "production"
+        },
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": [
+                "{options.outputPath}"
+            ],
+            "options": {
+                "outputPath": "dist/libs/eslint-config",
+                "tsConfig": "libs/eslint-config/tsconfig.lib.json",
+                "packageJson": "libs/eslint-config/package.json",
+                "main": "libs/eslint-config/src/index.ts",
+                "assets": [
+                    "libs/eslint-config/*.md"
+                ],
+                "updateBuildableProjectDepsInPackageJson": true
+            }
         },
         "test": {
             "executor": "@nx/jest:jest",

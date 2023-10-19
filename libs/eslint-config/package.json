@@ -1,12 +1,17 @@
 {
     "name": "@bynaryde/eslint-config",
     "version": "0.0.1",
+    "repository": "https://github.com/bynaryDE/base-webapp",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
     "peerDependencies": {
-        "@angular/common": "^16.2.0",
-        "@angular/core": "^16.2.0"
+        "eslint": ">= 3",
+        "eslint-plugin-import": "^2.28.1"
     },
     "dependencies": {
         "tslib": "^2.3.0"
     },
-    "sideEffects": false
+    "sideEffects": false,
+    "type": "module"
 }

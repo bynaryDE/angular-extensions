@@ -1,4 +1,7 @@
-module.exprots = {
+export = {
+    "plugins": [
+        "import"
+    ],
     overrides: [
         {
             files: [ '*.ts', '*.tsx' ],

@@ -6,6 +6,9 @@
     "plugins": [
         "@nx"
     ],
+    "extends": [
+        "@bynaryde/eslint-config"
+    ],
     "overrides": [
         {
             "files": [
