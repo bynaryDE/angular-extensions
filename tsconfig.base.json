@@ -39,6 +39,9 @@
             "@bynaryde/angular-signals/title": [
                 "libs/signals/title/src/index.ts"
             ],
+            "@bynaryde/eslint-config": [
+                "libs/eslint-config/src/index.ts"
+            ],
             "@bynaryde/plugins/angular": [
                 "libs/plugins/angular/src/index.ts"
             ]
