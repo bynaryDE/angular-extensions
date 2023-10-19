@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, Output, ViewEncapsulation } from '@angular/core';
-import { bindAttribute, bindBooleanAttribute, provideBaseClass, useAttribute, useModifier, useModifierGroup } from '@bynaryde/angular/signals';
-import { useActivate } from '../../../../../../libs/signals/src/lib/observer/activate.composable';
+import { bindAttribute, bindBooleanAttribute, useAttribute } from '@bynaryde/angular/signals/attribute';
+import { provideBaseClass, useModifier, useModifierGroup } from '@bynaryde/angular/signals/class';
+import { useActivate } from '../../../../../../libs/signals/observer/src/activate.composable';
 
 @Component({
     selector: 'demo-button',

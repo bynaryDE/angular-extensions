@@ -1,4 +1,4 @@
-import { useMedia } from './observer/media.composable';
+import { useMedia } from '../../observer/src/media.composable';
 
 export type Theme = 'light' | 'dark' | 'system';
 

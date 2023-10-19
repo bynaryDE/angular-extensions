@@ -1,4 +1,4 @@
-import { effect, Signal, signal, WritableSignal } from '@angular/core';
+import { DestroyRef, effect, inject, Signal, signal, WritableSignal } from '@angular/core';
 
 export const storedSignal = (key: string, initialValue: string | null = null, storage: Storage = localStorage) => {
     let value = signal(initialValue);
@@ -9,13 +9,18 @@ export const storedSignal = (key: string, initialValue: string | null = null, st
 }
 
 export const useReadFromStorage = <T extends WritableSignal<string | null>>(key: string, value: T, storage: Storage = localStorage): T => {
-    window.addEventListener('storage', (event: StorageEvent) => {
+    const destroyRef = inject(DestroyRef);
+
+    const listener = (event: StorageEvent) => {
         if (event.storageArea !== storage || event.key !== key) {
             return;
         }
 
         value.set(event.newValue);
-    });
+    };
+
+    window.addEventListener('storage', listener);
+    destroyRef.onDestroy(() => window.removeEventListener('storage', listener));
 
     return value;
 }
