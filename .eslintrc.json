@@ -7,7 +7,7 @@
         "@nx"
     ],
     "extends": [
-        "@bynaryde/eslint-config"
+        "@bynaryde/eslint-config/bynary"
     ],
     "overrides": [
         {

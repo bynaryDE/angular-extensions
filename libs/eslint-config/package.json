@@ -13,5 +13,11 @@
         "tslib": "^2.3.0"
     },
     "sideEffects": false,
-    "type": "module"
+    "type": "module",
+    "exports": {
+        ".": "./src/index.js",
+        "./base": "./src/base.js",
+        "./bynary": "./src/bynary.js",
+        "./recommended": "./src/recommended.js"
+    }
 }

@@ -1,6 +1,6 @@
 export = {
-    "plugins": [
-        "import"
+    plugins: [
+        'import'
     ],
     overrides: [
         {
