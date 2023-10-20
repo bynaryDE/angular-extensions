@@ -1,7 +1,12 @@
-import { addProjectConfiguration, formatFiles, generateFiles, Tree } from '@nx/devkit';
 import * as path from 'path';
+
+import { addProjectConfiguration, formatFiles, generateFiles, Tree } from '@nx/devkit';
+
 import { HarnessGeneratorSchema } from './schema';
 
+/**
+ *
+ */
 export async function harnessGenerator(
     tree: Tree,
     options: HarnessGeneratorSchema

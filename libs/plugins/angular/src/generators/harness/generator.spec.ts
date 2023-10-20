@@ -1,5 +1,5 @@
+import { readProjectConfiguration, Tree } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { Tree, readProjectConfiguration } from '@nx/devkit';
 
 import { harnessGenerator } from './generator';
 import { HarnessGeneratorSchema } from './schema';

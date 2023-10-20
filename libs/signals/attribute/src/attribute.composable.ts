@@ -1,4 +1,12 @@
-import { effect, ElementRef, inject, Renderer2, Signal, signal, WritableSignal } from '@angular/core';
+import {
+effect,
+ElementRef,
+inject,
+Renderer2,
+Signal,
+signal,
+WritableSignal
+} from '@angular/core';
 
 /**
  * A set of options for {@link bindAttribute}
@@ -34,18 +42,14 @@ export interface IUseAttributeOptions extends IBindAttributeOptions {
  *
  * @param options - The options to normalize
  */
-const normalizeUseAttributeOptions = (options?: IUseAttributeOptions) => {
-    return options ?? {};
-}
+const normalizeUseAttributeOptions = (options?: IUseAttributeOptions) => options ?? {}
 
 /**
  * Normalizes the given options.
  *
  * @param options - The options to normalize
  */
-const normalizeBindAttributeOptions = (options?: IBindAttributeOptions) => {
-    return options ?? {};
-}
+const normalizeBindAttributeOptions = (options?: IBindAttributeOptions) => options ?? {}
 
 /**
  * Creates a signal that binds its value as an attribute on the host element.

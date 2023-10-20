@@ -10,13 +10,11 @@ export interface IUseModifierGroupOptions {
     prefix?: string;
 }
 
-const normalizeOptions = (options?: IUseModifierGroupOptions) => {
-    return {
-        baseClass: options?.baseClass ?? inject(BASE_CLASS),
-        applyBaseClass: options?.applyBaseClass ?? true,
-        prefix: options?.prefix
-    }
-}
+const normalizeOptions = (options?: IUseModifierGroupOptions) => ({
+    baseClass: options?.baseClass ?? inject(BASE_CLASS),
+    applyBaseClass: options?.applyBaseClass ?? true,
+    prefix: options?.prefix
+})
 
 export const useModifierGroup = (initialValue?: string, options?: IUseModifierGroupOptions) => {
     const modifier = signal<string | null | undefined>(initialValue);

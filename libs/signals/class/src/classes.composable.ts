@@ -1,4 +1,12 @@
-import { effect, ElementRef, inject, Renderer2, Signal, signal, WritableSignal } from '@angular/core';
+import {
+effect,
+ElementRef,
+inject,
+Renderer2,
+Signal,
+signal,
+WritableSignal
+} from '@angular/core';
 
 const CLASS_SEPARATOR_REGEX = /\s+/;
 

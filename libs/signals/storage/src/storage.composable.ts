@@ -1,4 +1,11 @@
-import { DestroyRef, effect, inject, Signal, signal, WritableSignal } from '@angular/core';
+import {
+DestroyRef,
+effect,
+inject,
+Signal,
+signal,
+WritableSignal
+} from '@angular/core';
 
 export const storedSignal = (key: string, initialValue: string | null = null, storage: Storage = localStorage) => {
     let value = signal(initialValue);

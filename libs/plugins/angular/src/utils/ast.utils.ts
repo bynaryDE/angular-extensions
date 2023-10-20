@@ -1,6 +1,8 @@
+import { dirname, parse, relative } from 'path';
+
 import { joinPathFragments, stripIndents, Tree } from '@nx/devkit';
 import { ensureTypescript } from '@nx/workspace/src/utilities/typescript';
-import { dirname, parse, relative } from 'path';
+
 import type { StringLiteral } from 'typescript';
 
 /**
@@ -40,6 +42,7 @@ export function barrelFileContainsExport(
     }
 
     ensureTypescript();
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { tsquery } = require('@phenomnomnominal/tsquery');
     const moduleImportPath = getRelativeImportToFile(barrelFilePath, modulePath);
     const entryPointContent = tree.read(barrelFilePath, 'utf-8');

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export = {
     extends: [
         './style'
@@ -10,15 +11,15 @@ export = {
                 'plugin:@angular-eslint/template/process-inline-templates'
             ],
             rules: {
-                "@angular-eslint/component-class-suffix": [
-                    "error",
+                '@angular-eslint/component-class-suffix': [
+                    'error',
                     {
-                        "suffixes": [
-                            "Component",
-                            "Dialog",
-                            "Drawer",
-                            "Layout",
-                            "Page"
+                        'suffixes': [
+                            'Component',
+                            'Dialog',
+                            'Drawer',
+                            'Layout',
+                            'Page'
                         ]
                     }
                 ],
@@ -28,135 +29,135 @@ export = {
                         allowStatic: true
                     }
                 ],
-                "@typescript-eslint/ban-ts-comment": [
-                    "error",
+                '@typescript-eslint/ban-ts-comment': [
+                    'error',
                     {
-                        "ts-check": false,
-                        "ts-expect-error": "allow-with-description",
-                        "ts-ignore": "allow-with-description",
-                        "ts-nocheck": true
+                        'ts-check': false,
+                        'ts-expect-error': 'allow-with-description',
+                        'ts-ignore': 'allow-with-description',
+                        'ts-nocheck': true
                     }
                 ],
-                "@typescript-eslint/explicit-member-accessibility": [
-                    "error",
+                '@typescript-eslint/explicit-member-accessibility': [
+                    'error',
                     {
-                        "accessibility": "explicit",
-                        "overrides": {
-                            "constructors": "no-public"
+                        'accessibility': 'explicit',
+                        'overrides': {
+                            'constructors': 'no-public'
                         }
                     }
                 ],
-                "@typescript-eslint/member-delimiter-style": "error",
-                "@typescript-eslint/member-ordering": [
-                    "error",
+                '@typescript-eslint/member-delimiter-style': 'error',
+                '@typescript-eslint/member-ordering': [
+                    'error',
                     {
-                        "default": [
-                            "signature",
-                            "static-field",
+                        'default': [
+                            'signature',
+                            'static-field',
                             [
-                                "static-method",
-                                "static-get",
-                                "static-set"
+                                'static-method',
+                                'static-get',
+                                'static-set'
                             ],
-                            "public-field",
+                            'public-field',
                             [
-                                "protected-field",
-                                "private-field"
+                                'protected-field',
+                                'private-field'
                             ],
-                            "constructor",
+                            'constructor',
                             [
-                                "public-method",
-                                "public-get",
-                                "public-set"
+                                'public-method',
+                                'public-get',
+                                'public-set'
                             ],
                             [
-                                "protected-method",
-                                "protected-get",
-                                "protected-set",
-                                "private-method",
-                                "private-get",
-                                "private-set"
+                                'protected-method',
+                                'protected-get',
+                                'protected-set',
+                                'private-method',
+                                'private-get',
+                                'private-set'
                             ]
                         ]
                     }
                 ],
-                "@typescript-eslint/naming-convention": [
-                    "error",
+                '@typescript-eslint/naming-convention': [
+                    'error',
                     {
-                        "format": [
-                            "camelCase",
-                            "PascalCase",
-                            "UPPER_CASE",
-                            "snake_case"
+                        'format': [
+                            'camelCase',
+                            'PascalCase',
+                            'UPPER_CASE',
+                            'snake_case'
                         ],
-                        "leadingUnderscore": "allowSingleOrDouble",
-                        "selector": "default",
-                        "trailingUnderscore": "allow"
+                        'leadingUnderscore': 'allowSingleOrDouble',
+                        'selector': 'default',
+                        'trailingUnderscore': 'allow'
                     },
                     {
-                        "format": [
-                            "camelCase"
+                        'format': [
+                            'camelCase'
                         ],
-                        "leadingUnderscore": "allow",
-                        "selector": [
-                            "function"
+                        'leadingUnderscore': 'allow',
+                        'selector': [
+                            'function'
                         ]
                     },
                     {
-                        "format": [
-                            "PascalCase"
+                        'format': [
+                            'PascalCase'
                         ],
-                        "selector": [
-                            "class",
-                            "enum"
+                        'selector': [
+                            'class',
+                            'enum'
                         ]
                     },
                     {
-                        "format": [
-                            "camelCase"
+                        'format': [
+                            'camelCase'
                         ],
-                        "leadingUnderscore": "require",
-                        "modifiers": [
-                            "private"
+                        'leadingUnderscore': 'require',
+                        'modifiers': [
+                            'private'
                         ],
-                        "selector": "memberLike"
+                        'selector': 'memberLike'
                     },
                     {
-                        "format": [
-                            "PascalCase"
+                        'format': [
+                            'PascalCase'
                         ],
-                        "selector": "typeLike"
+                        'selector': 'typeLike'
                     },
                     {
-                        "format": [
-                            "PascalCase"
+                        'format': [
+                            'PascalCase'
                         ],
-                        "prefix": [
-                            "I"
+                        'prefix': [
+                            'I'
                         ],
-                        "selector": "interface"
+                        'selector': 'interface'
                     }
                 ],
-                "@typescript-eslint/no-explicit-any": "off",
-                "@typescript-eslint/no-inferrable-types": [
-                    "error",
+                '@typescript-eslint/no-explicit-any': 'off',
+                '@typescript-eslint/no-inferrable-types': [
+                    'error',
                     {
-                        "ignoreParameters": true,
-                        "ignoreProperties": true
+                        'ignoreParameters': true,
+                        'ignoreProperties': true
                     }
                 ],
-                "@typescript-eslint/no-namespace": "error",
-                "@typescript-eslint/no-non-null-assertion": "error",
-                "@typescript-eslint/no-shadow": "off",
-                "@typescript-eslint/prefer-for-of": "error",
-                "@typescript-eslint/quotes": [
-                    "error",
-                    "single",
+                '@typescript-eslint/no-namespace': 'error',
+                '@typescript-eslint/no-non-null-assertion': 'error',
+                '@typescript-eslint/no-shadow': 'off',
+                '@typescript-eslint/prefer-for-of': 'error',
+                '@typescript-eslint/quotes': [
+                    'error',
+                    'single',
                     {
-                        "avoidEscape": true
+                        'avoidEscape': true
                     }
                 ],
-                "no-unsafe-finally": "error",
+                'no-unsafe-finally': 'error'
             }
         }
     ]

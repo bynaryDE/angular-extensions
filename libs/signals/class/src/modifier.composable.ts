@@ -1,4 +1,5 @@
 import { inject, Signal, signal, WritableSignal } from '@angular/core';
+
 import { addClass } from './add-class';
 import { bindClass } from './class.composable';
 import { BASE_CLASS } from './provide-base-class';
@@ -37,12 +38,10 @@ export interface IUseModifierOptions extends IBindModifierOptions {
  *
  * @param options - The options to normalize
  */
-const normalizeBindModifierOptions = (options?: IBindModifierOptions) => {
-    return {
-        baseClass: options?.baseClass ?? inject(BASE_CLASS),
-        applyBaseClass: options?.applyBaseClass ?? true
-    }
-}
+const normalizeBindModifierOptions = (options?: IBindModifierOptions) => ({
+    baseClass: options?.baseClass ?? inject(BASE_CLASS),
+    applyBaseClass: options?.applyBaseClass ?? true
+})
 
 /**
  * Creates a signal that binds its value as a modifier class on the host element.

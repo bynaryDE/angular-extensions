@@ -1,4 +1,11 @@
-import { Component, ElementRef, isSignal, Renderer2, signal, ViewChild } from '@angular/core';
+import {
+Component,
+ElementRef,
+isSignal,
+Renderer2,
+signal,
+ViewChild
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 

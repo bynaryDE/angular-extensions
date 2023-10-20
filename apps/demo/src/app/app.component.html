@@ -1,11 +1,11 @@
 <h1>{{ title() }}</h1>
 
 <demo-button #button type="submit" (active)="onButtonActive($event)">Button</demo-button>
-<br/>
-<br/>
+<br />
+<br />
 <demo-button (click)="button.disabled.set(!button.disabled())">{{ button.disabled() ? 'Enable' : 'Disable' }}</demo-button>
 <demo-button (click)="button.loading.set(!button.loading())">{{ button.loading() ? 'Stop' : 'Start' }} Loading</demo-button>
-<br/>
+<br />
 <h3>Appearance:</h3>
 <demo-button (click)="button.appearance.set(undefined)">Default</demo-button>
 <demo-button (click)="button.appearance.set('outline')">Outline</demo-button>

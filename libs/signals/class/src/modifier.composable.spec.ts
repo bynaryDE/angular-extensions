@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { useModifier } from './modifier.composable';
 import { provideBaseClass } from './provide-base-class';
 
@@ -10,7 +12,7 @@ import { provideBaseClass } from './provide-base-class';
     ]
 })
 class TestComponent {
-    readonly disabled = useModifier('disabled', { applyInitially: false});
+    readonly disabled = useModifier('disabled', { applyInitially: false });
     readonly loading = useModifier('loading');
 }
 

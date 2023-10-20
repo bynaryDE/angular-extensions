@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export = {
     extends: [
         './recommended'
@@ -6,24 +7,24 @@ export = {
         {
             files: [ '*.ts' ],
             rules: {
-                "import/order": [
-                    "error",
+                'import/order': [
+                    'error',
                     {
-                        "groups": [
-                            "builtin",
-                            "external",
-                            "internal",
-                            "parent",
-                            "sibling",
-                            "object",
-                            "type"
+                        'groups': [
+                            'builtin',
+                            'external',
+                            'internal',
+                            'parent',
+                            'sibling',
+                            'object',
+                            'type'
                         ],
-                        "newlines-between": "always",
-                        "pathGroups": [
+                        'newlines-between': 'always',
+                        'pathGroups': [
                             {
-                                "group": "internal",
-                                "pattern": "@bynaryde/**",
-                                "position": "after"
+                                'group': 'internal',
+                                'pattern': '@bynaryde/**',
+                                'position': 'after'
                             }
                         ]
                     }

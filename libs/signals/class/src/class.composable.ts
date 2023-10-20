@@ -1,4 +1,12 @@
-import { effect, ElementRef, inject, Renderer2, Signal, signal, WritableSignal } from '@angular/core';
+import {
+effect,
+ElementRef,
+inject,
+Renderer2,
+Signal,
+signal,
+WritableSignal
+} from '@angular/core';
 
 
 /**
@@ -13,11 +21,9 @@ export interface IUseClassOptions {
  *
  * @param options - The options to normalize
  */
-const normalizeUseClassOptions = (options?: IUseClassOptions) => {
-    return {
-        initialValue: options?.initialValue ?? false
-    };
-}
+const normalizeUseClassOptions = (options?: IUseClassOptions) => ({
+    initialValue: options?.initialValue ?? false
+})
 
 export const useClass = (clazz: string, options?: IUseClassOptions): WritableSignal<boolean> => {
     const { initialValue } = normalizeUseClassOptions(options);

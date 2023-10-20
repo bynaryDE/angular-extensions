@@ -14,7 +14,11 @@ import { ButtonComponent } from './components/button/button.component';
 export class AppComponent {
     title = useTitle('demo');
 
+    /**
+     *
+     */
     onButtonActive($event: Event) {
+        // eslint-disable-next-line no-console
         console.log('Active', $event)
     }
 }

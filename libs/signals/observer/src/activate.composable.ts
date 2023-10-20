@@ -1,5 +1,6 @@
 import { computed, ElementRef, inject } from '@angular/core';
 import { filter, fromEvent, merge } from 'rxjs';
+
 import { useHostEvents } from './events.composable';
 
 interface IUseActivateOptions {

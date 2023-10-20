@@ -1,4 +1,5 @@
 import { effect, Signal, signal, WritableSignal } from '@angular/core';
+
 import { useAttribute } from './attribute.composable';
 
 /**
@@ -36,18 +37,14 @@ export interface IUseBooleanAttributeOptions extends IBindBooleanAttributeOption
  *
  * @param options - The options to normalize
  */
-const normalizeUseBooleanAttributeOptions = (options?: IUseBooleanAttributeOptions) => {
-    return options ?? {};
-}
+const normalizeUseBooleanAttributeOptions = (options?: IUseBooleanAttributeOptions) => options ?? {}
 
 /**
  * Normalizes the given options.
  *
  * @param options - The options to normalize
  */
-const normalizeBindBooleanAttributeOptions = (options?: IBindBooleanAttributeOptions) => {
-    return options ?? {};
-}
+const normalizeBindBooleanAttributeOptions = (options?: IBindBooleanAttributeOptions) => options ?? {}
 
 /**
  * Converts the given value to an attribute value.
@@ -58,7 +55,7 @@ const normalizeBindBooleanAttributeOptions = (options?: IBindBooleanAttributeOpt
 const toAttributeValue = (value: boolean | undefined) => {
     if (value === true) {
         return '';
-    }  else if (value === false) {
+    } else if (value === false) {
         return null;
     }
 

@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { useModifierGroup } from './modifier-group.composable';
 import { provideBaseClass } from './provide-base-class';
 

@@ -18,6 +18,4 @@ export const useEvents = <T extends Event>(target: EventTarget, eventName: strin
     return events;
 }
 
-export const useHostEvents = (eventName: string) => {
-    return useEvents(inject(ElementRef).nativeElement, eventName);
-}
+export const useHostEvents = (eventName: string) => useEvents(inject(ElementRef).nativeElement, eventName)
