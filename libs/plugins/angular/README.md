@@ -9,7 +9,7 @@ A set of commonly used generators for Angular projects.
 The `barrel` generator creates a barrel file for a given directory.
 
 ```bash
-nx g @bynaryde/plugins-angular:barrel --directory=components
+nx g @bynary/plugins-angular:barrel --directory=components
 ```
 
 # Usage

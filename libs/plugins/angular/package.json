@@ -1,5 +1,5 @@
 {
-    "name": "@bynaryde/plugins/angular",
+    "name": "@bynary/nx-angular",
     "version": "0.0.1",
     "type": "commonjs",
     "generators": "./generators.json"

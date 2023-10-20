@@ -6,9 +6,9 @@ computed,
 Output,
 ViewEncapsulation
 } from '@angular/core';
-import { bindAttribute, bindBooleanAttribute, useAttribute } from '@bynaryde/angular-signals/attribute';
-import { provideBaseClass, useModifier, useModifierGroup } from '@bynaryde/angular-signals/class';
-import { useActivate } from '@bynaryde/angular-signals/observer';
+import { bindAttribute, bindBooleanAttribute, useAttribute } from '@bynary/angular-signals/attribute';
+import { provideBaseClass, useModifier, useModifierGroup } from '@bynary/angular-signals/class';
+import { useActivate } from '@bynary/angular-signals/observer';
 
 @Component({
     selector: 'demo-button',

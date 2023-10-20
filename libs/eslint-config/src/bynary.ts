@@ -23,7 +23,7 @@ export = {
                         'pathGroups': [
                             {
                                 'group': 'internal',
-                                'pattern': '@bynaryde/**',
+                                'pattern': '@bynary/**',
                                 'position': 'after'
                             }
                         ]

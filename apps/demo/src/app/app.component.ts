@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { useTitle } from '@bynaryde/angular-signals';
+import { useTitle } from '@bynary/angular-signals';
 
 import { ButtonComponent } from './components/button/button.component';
 

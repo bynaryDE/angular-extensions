@@ -18,31 +18,31 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@bynaryde/angular-signals": [
+            "@bynary/bang/signals": [
                 "libs/signals/src/index.ts"
             ],
-            "@bynaryde/angular-signals/attribute": [
+            "@bynary/bang/signals/attribute": [
                 "libs/signals/attribute/src/index.ts"
             ],
-            "@bynaryde/angular-signals/class": [
+            "@bynary/bang/signals/class": [
                 "libs/signals/class/src/index.ts"
             ],
-            "@bynaryde/angular-signals/observer": [
+            "@bynary/bang/signals/observer": [
                 "libs/signals/observer/src/index.ts"
             ],
-            "@bynaryde/angular-signals/storage": [
+            "@bynary/bang/signals/storage": [
                 "libs/signals/storage/src/index.ts"
             ],
-            "@bynaryde/angular-signals/color-scheme": [
+            "@bynary/bang/signals/color-scheme": [
                 "libs/signals/color-scheme/src/index.ts"
             ],
-            "@bynaryde/angular-signals/title": [
+            "@bynary/bang/signals/title": [
                 "libs/signals/title/src/index.ts"
             ],
-            "@bynaryde/eslint-config": [
+            "@bynary/eslint-config": [
                 "libs/eslint-config/src/index.ts"
             ],
-            "@bynaryde/plugins/angular": [
+            "@bynary/plugins-angular": [
                 "libs/plugins/angular/src/index.ts"
             ]
         }

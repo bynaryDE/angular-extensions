@@ -1,3 +1,3 @@
-# @bynaryde/angular-signals/observer
+# @bynary/angular-signals/observer
 
-Secondary entry point of `@bynaryde/angular-signals`. It can be used by importing from `@bynaryde/angular-signals/observer`.
+Secondary entry point of `@bynary/angular-signals`. It can be used by importing from `@bynary/angular-signals/observer`.

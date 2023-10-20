@@ -1,3 +1,3 @@
-# @bynaryde/angular-signals/theme
+# @bynary/angular-signals/theme
 
-Secondary entry point of `@bynaryde/angular-signals`. It can be used by importing from `@bynaryde/angular-signals/theme`.
+Secondary entry point of `@bynary/angular-signals`. It can be used by importing from `@bynary/angular-signals/theme`.

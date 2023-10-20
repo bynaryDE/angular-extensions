@@ -1,7 +1,10 @@
 {
-    "name": "@bynaryde/eslint-config",
+    "name": "@bynary/eslint-config",
     "version": "0.0.1",
-    "repository": "https://github.com/bynaryDE/base-webapp",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bynaryDE/bang/libs/eslint-config"
+    },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
     },
