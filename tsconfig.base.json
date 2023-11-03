@@ -38,9 +38,6 @@
             ],
             "@bynary/bang/signals/title": [
                 "libs/signals/title/src/index.ts"
-            ],
-            "@bynary/plugins-angular": [
-                "libs/plugins/angular/src/index.ts"
             ]
         }
     },
