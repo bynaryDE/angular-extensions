@@ -64,9 +64,7 @@ export const useAttribute = (
     );
 
     const value = signal<string | null | undefined>(
-        typeof initialValue !== 'undefined' ? initialValue
-            : typeof initialAssignedValue !== 'undefined' ? initialAssignedValue
-                : defaultValue
+        (typeof initialValue !== 'undefined' ? initialValue : initialAssignedValue) ?? defaultValue
     );
 
     return bindAttribute(attributeName, value, { namespace, defaultValue });
