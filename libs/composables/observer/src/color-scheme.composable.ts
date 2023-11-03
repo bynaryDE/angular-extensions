@@ -1,6 +1,6 @@
 import { computed } from '@angular/core';
 
-import { useMedia } from '../../observer/src/media.composable';
+import { useMedia } from './media.composable';
 
 export type PreferredColorScheme = 'light' | 'dark';
 

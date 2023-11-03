@@ -24,9 +24,6 @@
             "@bynary/angular-composables/class": [
                 "libs/composables/class/src/index.ts"
             ],
-            "@bynary/angular-composables/color-scheme": [
-                "libs/composables/color-scheme/src/index.ts"
-            ],
             "@bynary/angular-composables/observer": [
                 "libs/composables/observer/src/index.ts"
             ],
