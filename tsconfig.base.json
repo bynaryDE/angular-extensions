@@ -10,22 +10,18 @@
         "importHelpers": true,
         "target": "es2015",
         "module": "esnext",
-        "lib": [
-            "es2020",
-            "dom"
-        ],
+        "lib": ["es2020", "dom"],
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@bynary/bang/signals": [
-                "libs/signals/src/index.ts"
-            ],
+            "@bynary/bang/signals": ["libs/signals/src/index.ts"],
             "@bynary/bang/signals/attribute": [
                 "libs/signals/attribute/src/index.ts"
             ],
-            "@bynary/bang/signals/class": [
-                "libs/signals/class/src/index.ts"
+            "@bynary/bang/signals/class": ["libs/signals/class/src/index.ts"],
+            "@bynary/bang/signals/color-scheme": [
+                "libs/signals/color-scheme/src/index.ts"
             ],
             "@bynary/bang/signals/observer": [
                 "libs/signals/observer/src/index.ts"
@@ -33,22 +29,9 @@
             "@bynary/bang/signals/storage": [
                 "libs/signals/storage/src/index.ts"
             ],
-            "@bynary/bang/signals/color-scheme": [
-                "libs/signals/color-scheme/src/index.ts"
-            ],
-            "@bynary/bang/signals/title": [
-                "libs/signals/title/src/index.ts"
-            ],
-            "@bynary/eslint-config": [
-                "libs/eslint-config/src/index.ts"
-            ],
-            "@bynary/plugins-angular": [
-                "libs/plugins/angular/src/index.ts"
-            ]
+            "@bynary/bang/signals/title": ["libs/signals/title/src/index.ts"],
+            "@bynary/plugins-angular": ["libs/plugins/angular/src/index.ts"]
         }
     },
-    "exclude": [
-        "node_modules",
-        "tmp"
-    ]
+    "exclude": ["node_modules", "tmp"]
 }
