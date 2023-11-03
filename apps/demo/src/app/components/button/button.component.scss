@@ -1,6 +1,6 @@
 .c-button {
-    --tint: black;
-    --contrast: white;
+    --tint: var(--surface-inverted-1);
+    --contrast: var(--text-inverted-1);
 
     align-items: center;
     border-radius: var(--radius-2);
@@ -22,7 +22,7 @@
     }
 
     &[type='submit'] {
-        --tint: var(--indigo-7);
+        --tint: var(--brand);
     }
 
     &:hover {
@@ -63,7 +63,7 @@
     }
 
     &.c-button--outline {
-        border: var(--border-size-1) solid var(--surface-3);
+        border: var(--border-size-1) solid var(--surface-4);
     }
 
     &.c-button--loading {
