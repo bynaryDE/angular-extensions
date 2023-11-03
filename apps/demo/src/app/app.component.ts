@@ -12,7 +12,7 @@ import { ButtonComponent } from './components/button/button.component';
     styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent {
-    title = useTitle('demo');
+    title = useTitle('@bynary/angular-composables');
 
     /**
      *

@@ -1,0 +1,57 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    background-color: var(--gray-0);
+
+    h1 {
+        margin: 2rem;
+        max-inline-size: unset;
+    }
+
+    main {
+        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        margin-block: auto;
+        padding: 4rem;
+
+        aside {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 0.5rem 1rem 1rem;
+
+            form {
+                align-items: stretch;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            fieldset {
+                display: grid;
+                gap: 1rem;
+                min-width: 10rem;
+            }
+        }
+
+        .output {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            min-height: 15rem;
+            width: 25rem;
+            max-width: 100%;
+        }
+
+        .card {
+            background-color: white;
+            border: var(--border-size-1) solid var(--surface-3);
+            border-radius: var(--radius-conditional-3);
+        }
+    }
+}

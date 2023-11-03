@@ -1,20 +1,71 @@
+@import 'open-props/buttons.min.css';
+
 .c-button {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
+    --tint: black;
+    --contrast: white;
+
+    align-items: center;
+    border-radius: var(--radius-2);
+    color: var(--tint);
     cursor: pointer;
+    display: inline-flex;
+    gap: 0.5rem;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    position: relative;
+
+    @media (prefers-reduced-motion: no-preference) {
+        transition: background-color 0.3s var(--ease-1), color 0.3s var(--ease-1), opacity 0.3s var(--ease-1);
+    }
+
+    &[disabled] {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &[type='submit'] {
+        --tint: var(--indigo-7);
+    }
+
+    &:hover {
+        &::after {
+            opacity: 0.1;
+        }
+    }
+
+    &:active {
+        &::after {
+            opacity: 0.2;
+        }
+    }
 
     &.c-button--solid {
-        background-color: black;
-        color: white;
+        background-color: var(--tint);
+        color: var(--contrast);
+
+        &:hover {
+            &::after {
+                opacity: 0.2;
+            }
+        }
+
+        &:active {
+            &::after {
+                opacity: 0.4;
+            }
+        }
+
+        &::after {
+            background-color: var(--contrast);
+        }
+
+        .c-button__loading-indicator {
+            background-color: var(--contrast);
+        }
     }
 
     &.c-button--outline {
-        border: 1px solid black;
-    }
-
-    &.c-button--disabled {
-        opacity: 0.5;
+        border: var(--border-size-1) solid var(--surface-3);
     }
 
     &.c-button--loading {
@@ -26,7 +77,25 @@
     }
 
     &:focus-visible {
-        outline: 2px solid black;
+        outline: 2px solid var(--tint);
         outline-offset: 2px;
+    }
+
+    &::after {
+        background-color: var(--tint);
+        border-radius: inherit;
+        content: '';
+        inset: 0;
+        opacity: 0;
+        position: absolute;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .c-button__loading-indicator {
+        animation: var(--animation-blink);
+        background-color: var(--tint);
+        border-radius: 50%;
+        height: 0.5rem;
+        width: 0.5rem;
     }
 }

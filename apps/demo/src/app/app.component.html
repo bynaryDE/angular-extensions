@@ -1,12 +1,53 @@
-<h1>{{ title() }}</h1>
+<header>
+    <h1>{{ title() }}</h1>
+</header>
 
-<demo-button #button type="submit" (active)="onButtonActive($event)">Button</demo-button>
-<br />
-<br />
-<demo-button (click)="button.disabled.set(!button.disabled())">{{ button.disabled() ? 'Enable' : 'Disable' }}</demo-button>
-<demo-button (click)="button.loading.set(!button.loading())">{{ button.loading() ? 'Stop' : 'Start' }} Loading</demo-button>
-<br />
-<h3>Appearance:</h3>
-<demo-button (click)="button.appearance.set(undefined)">Default</demo-button>
-<demo-button (click)="button.appearance.set('outline')">Outline</demo-button>
-<demo-button (click)="button.appearance.set('solid')">Solid</demo-button>
+<main>
+    <aside class="card">
+        <form>
+            <fieldset class="control-group">
+                <legend>State</legend>
+                <label>
+                    <input #disabled type="checkbox" (change)="button.disabled.set(disabled.checked)" />
+                    Disabled
+                </label>
+                <label>
+                    <input #loading type="checkbox" (change)="button.loading.set(loading.checked)" />
+                    Loading
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Type</legend>
+                <label>
+                    <input type="radio" name="type" [checked]="button.type() === 'button'" (change)="button.type.set('button')" />
+                    Button
+                </label>
+                <label>
+                    <input type="radio" name="type" [checked]="button.type() === 'submit'" (change)="button.type.set('submit')" />
+                    Submit
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Appearance</legend>
+                <label>
+                    <input type="radio" name="appearance" [checked]="!button.appearance()" (change)="button.appearance.set(undefined)" />
+                    Default
+                </label>
+                <label>
+                    <input type="radio" name="appearance" [checked]="button.appearance() === 'outline'" (change)="button.appearance.set('outline')" />
+                    Outline
+                </label>
+                <label>
+                    <input type="radio" name="appearance" [checked]="button.appearance() === 'solid'" (change)="button.appearance.set('solid')" />
+                    Solid
+                </label>
+            </fieldset>
+        </form>
+    </aside>
+
+    <div class="card output">
+        <demo-button #button type="submit" (active)="onButtonActive($event)">Button</demo-button>
+    </div>
+</main>

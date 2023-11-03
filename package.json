@@ -22,6 +22,7 @@
         "@nx/devkit": "17.0.2",
         "@swc/helpers": "0.5.3",
         "lodash": "^4.17.21",
+        "open-props": "^1.6.10",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
         "zone.js": "~0.13.0"
@@ -79,4 +80,3 @@
         "typescript": "5.1.6"
     }
 }
-
