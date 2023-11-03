@@ -18,26 +18,26 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@bynary/bang/signals": [
-                "libs/signals/src/index.ts"
+            "@bynary/composables": [
+                "libs/composables/src/index.ts"
             ],
-            "@bynary/bang/signals/attribute": [
-                "libs/signals/attribute/src/index.ts"
+            "@bynary/composables/attribute": [
+                "libs/composables/attribute/src/index.ts"
             ],
-            "@bynary/bang/signals/class": [
-                "libs/signals/class/src/index.ts"
+            "@bynary/composables/class": [
+                "libs/composables/class/src/index.ts"
             ],
-            "@bynary/bang/signals/color-scheme": [
-                "libs/signals/color-scheme/src/index.ts"
+            "@bynary/composables/color-scheme": [
+                "libs/composables/color-scheme/src/index.ts"
             ],
-            "@bynary/bang/signals/observer": [
-                "libs/signals/observer/src/index.ts"
+            "@bynary/composables/observer": [
+                "libs/composables/observer/src/index.ts"
             ],
-            "@bynary/bang/signals/storage": [
-                "libs/signals/storage/src/index.ts"
+            "@bynary/composables/storage": [
+                "libs/composables/storage/src/index.ts"
             ],
-            "@bynary/bang/signals/title": [
-                "libs/signals/title/src/index.ts"
+            "@bynary/composables/title": [
+                "libs/composables/title/src/index.ts"
             ]
         }
     },
