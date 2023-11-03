@@ -11,6 +11,8 @@ describe('attribute.composable.ts', () => {
             let initialAssignedValue: string | null | undefined;
 
             beforeEach(() => {
+                initialAssignedValue = undefined;
+
                 TestBed.configureTestingModule({
                     providers: [
                         {
@@ -19,7 +21,7 @@ describe('attribute.composable.ts', () => {
                                 nativeElement: {
                                     getAttributeNS: jest
                                         .fn()
-                                        .mockReturnValue(initialAssignedValue)
+                                        .mockImplementation(() => initialAssignedValue)
                                 }
                             }
                         },
@@ -80,7 +82,7 @@ describe('attribute.composable.ts', () => {
                             });
 
                             // Assert
-                            expect(result()).toEqual('foo');
+                            expect(result()).toEqual(value);
                         });
                     }
                 );
