@@ -1,4 +1,0 @@
-export = {
-    extends: './base',
-    overrides: []
-};
