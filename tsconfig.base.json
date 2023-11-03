@@ -18,25 +18,22 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@bynary/composables": [
-                "libs/composables/src/index.ts"
-            ],
-            "@bynary/composables/attribute": [
+            "@bynary/angular-composables/attribute": [
                 "libs/composables/attribute/src/index.ts"
             ],
-            "@bynary/composables/class": [
+            "@bynary/angular-composables/class": [
                 "libs/composables/class/src/index.ts"
             ],
-            "@bynary/composables/color-scheme": [
+            "@bynary/angular-composables/color-scheme": [
                 "libs/composables/color-scheme/src/index.ts"
             ],
-            "@bynary/composables/observer": [
+            "@bynary/angular-composables/observer": [
                 "libs/composables/observer/src/index.ts"
             ],
-            "@bynary/composables/storage": [
+            "@bynary/angular-composables/storage": [
                 "libs/composables/storage/src/index.ts"
             ],
-            "@bynary/composables/title": [
+            "@bynary/angular-composables/title": [
                 "libs/composables/title/src/index.ts"
             ]
         }
