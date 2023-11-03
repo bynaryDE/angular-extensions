@@ -1,1 +1,1 @@
-export * from './activate.composable';
+export * from './public-api';
