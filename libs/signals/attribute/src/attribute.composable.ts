@@ -1,12 +1,4 @@
-import {
-effect,
-ElementRef,
-inject,
-Renderer2,
-Signal,
-signal,
-WritableSignal
-} from '@angular/core';
+import { effect, ElementRef, inject, Renderer2, Signal, signal, WritableSignal } from '@angular/core';
 
 /**
  * A set of options for {@link bindAttribute}

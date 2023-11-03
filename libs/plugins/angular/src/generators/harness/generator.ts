@@ -1,6 +1,5 @@
-import * as path from 'path';
-
 import { addProjectConfiguration, formatFiles, generateFiles, Tree } from '@nx/devkit';
+import * as path from 'path';
 
 import { HarnessGeneratorSchema } from './schema';
 

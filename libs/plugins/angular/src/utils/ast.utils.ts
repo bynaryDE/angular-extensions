@@ -1,7 +1,6 @@
-import { dirname, parse, relative } from 'path';
-
 import { joinPathFragments, stripIndents, Tree } from '@nx/devkit';
 import { ensureTypescript } from '@nx/workspace/src/utilities/typescript';
+import { dirname, parse, relative } from 'path';
 
 import type { StringLiteral } from 'typescript';
 

@@ -1,7 +1,6 @@
-import * as path from 'path';
-
 import { formatFiles, generateFiles, joinPathFragments, Tree } from '@nx/devkit';
 import { defaults } from 'lodash';
+import * as path from 'path';
 
 import { addExportToBarrelFile, barrelFileContainsExport, getRelativeImportToFile } from '../../utils';
 
