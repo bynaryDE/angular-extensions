@@ -17,7 +17,9 @@ To learn more about modifier classes, see [BEM](https://getbem.com/naming/#modif
 | [`initialValue`](#initialvalue) | The initial modifier.              |
 | [`options`](#options)           | Options to customize the behavior. |
 
-#### initialValue
+---
+
+#### `initialValue`
 
 - **Type:** `string`
 - **Optional:** `true`
@@ -63,20 +65,24 @@ Appearance:
 ```
 </details>
 
-#### options
+---
+
+#### `options`
 
 - **Type:** `object`
 - **Optional:** `true`
 
 A set of options to customize the behavior.
 
-| Name                                               | Type      | Optional? | Description                                                              |
-|----------------------------------------------------|-----------|-----------|--------------------------------------------------------------------------|
-| [`baseClass`](#optionsbaseclass)           | `string`  | yes       | The base class. May also be provided via `provideBaseClass`              |
-| [`applyBaseClass`](#optionsapplybaseclass) | `boolean` | yes       | Whether the base class should be applied to the host. Defaults to `true` |
-| [`prefix`](#optionsprefix)                       | `string`  | yes       | A prefix for the modifier                                                |
+| Name                                       | Description                                                              |
+|--------------------------------------------|--------------------------------------------------------------------------|
+| [`baseClass`](#optionsbaseclass)           | The base class. May also be provided via `provideBaseClass`              |
+| [`applyBaseClass`](#optionsapplybaseclass) | Whether the base class should be applied to the host. Defaults to `true` |
+| [`prefix`](#optionsprefix)                 | A prefix for the modifier                                                |
 
-##### options.baseClass
+---
+
+##### `options.baseClass`
 
 - **Type:** `string`
 - **Optional:** `true`
@@ -118,7 +124,9 @@ will render as
 ```
 </details>
 
-##### options.applyBaseClass
+---
+
+##### `options.applyBaseClass`
 
 - **Type:** `boolean`
 - **Optional:** yes
@@ -186,7 +194,7 @@ The base class `my-component` has *not* been added to the host element.
 
 </details>
 
-##### options.prefix
+##### `options.prefix`
 
 - **Type:** `string`
 - **Optional:** yes
@@ -233,6 +241,7 @@ will render as
 
 </details>
 
+---
 
 ## `bindModifierGroup`
 
@@ -248,7 +257,9 @@ Will return the signal that has been passed in.
 | [`modifier`](#initialvalue)  | The signal providing the modifier.                                                                  |
 | [`options`](#options)        | Options to customize the behavior. Uses the same options as [`useModifierGroup`](#usemodifiergroup) |
 
-#### modifier
+---
+
+#### `modifier`
 
 - **Type:** `Signal<string>`
 - **Optional:** `false`
