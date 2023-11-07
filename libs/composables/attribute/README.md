@@ -4,7 +4,7 @@ Secondary entry point of `@bynary/angular-composables`. It can be used by import
 
 ## Composables:
 
-| Name                                                           | Purpose                                              |
-|----------------------------------------------------------------|------------------------------------------------------|
-| [`useAttribute`](docs/attribute.composable.md)                | Get and set the value of an attribute of an element. |
-| [`useBooleanAttribute`](docs/boolean-attribute.composable.md) | Get and set the value of a boolean attribute.        |
+| Name                                                        | Purpose                                              |
+|-------------------------------------------------------------|------------------------------------------------------|
+| [`Attribute`](docs/attribute.composable.md)                 | Get and set the value of an attribute of an element. |
+| [`Boolean Attribute`](docs/boolean-attribute.composable.md) | Get and set the value of a boolean attribute.        |

@@ -8,10 +8,14 @@ import { BASE_CLASS } from './provide-base-class';
  * A set of options for {@link bindModifier}
  */
 export interface IBindModifierOptions {
+
     /**
-     * The base class to use for the modifier.
+     * The base class. There is usually one base class per component.
      *
-     * This can also be supplied via {@link provideBaseClass}
+     * While you're always able to explicitly set a base class vie the options, it's recommended to use the {@link provideBaseClass} function to provide the base class to the component.
+     * Especially, when using {@link useModifier} or {@link useModifierGroup} multiple times in one directive or component.
+     *
+     * WARNING: If you don't provide a base class either via `options.baseClass` or via `provideBaseClass`, an error will be thrown!
      */
     baseClass?: string;
 
@@ -42,7 +46,7 @@ const normalizeBindModifierOptions = (options?: IBindModifierOptions) => ({
 });
 
 /**
- * Creates a signal that binds its value as a modifier class on the host element.
+ * Creates a signal that allows to toggle the given modifier class on the host element.
  *
  * @param modifier - The name of the modifier
  * @param options - A set of {@link IUseModifierOptions options}
@@ -57,7 +61,7 @@ export const useModifier = (
 };
 
 /**
- * Binds the given signal as a modifier class on the host element.
+ * Uses the given signal to add or remove the given modifier class on the host element.
  *
  * @param modifier - The name of the modifier
  * @param apply - The signal whose value should be bound
@@ -69,6 +73,10 @@ export const bindModifier = <T extends Signal<boolean>>(
     options?: IBindModifierOptions
 ) => {
     const { baseClass, applyBaseClass } = normalizeBindModifierOptions(options);
+
+    if (!baseClass) {
+        throw new Error('No base class was provided');
+    }
 
     if (applyBaseClass) {
         addClass(baseClass);
