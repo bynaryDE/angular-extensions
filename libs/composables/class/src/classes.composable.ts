@@ -1,25 +1,14 @@
 import { effect, ElementRef, inject, Renderer2, Signal, signal, WritableSignal } from '@angular/core';
+import { splitClasses } from './utils/class.utils';
 
-const CLASS_SEPARATOR_REGEX = /\s+/;
-
-/**
- * Splits the given classes into an array of classes.
- *
- * @param classes - The classes to split
- */
-const splitClasses = (classes: string | string[] | null | undefined) =>
-    typeof classes === 'string'
-        ? classes.split(CLASS_SEPARATOR_REGEX)
-        : classes;
+export type ClassList = string | string[];
 
 /**
  * Creates a signal that binds its value as a set of classes on the host element.
  *
  * @param initialValue - The initial value of the signal
  */
-export const useClasses = (
-    initialValue: string | string[] = []
-): WritableSignal<string | string[]> => {
+export const useClasses = (initialValue: ClassList = []): WritableSignal<string | string[]> => {
     const value = signal(initialValue);
 
     return bindClasses(value);
@@ -30,7 +19,7 @@ export const useClasses = (
  *
  * @param value - The signal whose value should be bound
  */
-export const bindClasses = <T extends Signal<string | string[] | null>>(
+export const bindClasses = <T extends Signal<ClassList | null>>(
     value: T
 ) => {
     const element = inject(ElementRef).nativeElement;
