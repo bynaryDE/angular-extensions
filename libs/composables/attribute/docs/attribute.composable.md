@@ -185,11 +185,11 @@ Will return the signal that has been passed in.
 
 ### Parameters
 
-| Name                   | Type     | Optional? | Description                                                                                                               |
-|------------------------|----------|-----------|---------------------------------------------------------------------------------------------------------------------------|
-| `attributeName`        | `string` | no        | The name of the attribute to bind to.                                                                                     |
-| `signal`               | `Signal` | no        | The signal to bind to the attribute.                                                                                      |
-| `options`              | `object` | yes       | Options to customize the behavior.                                                                                        |
-| `options.namespace`    | `string` | yes       | The namespace of the attribute.                                                                                           |
-| `options.defaultValue` | `string` | yes       | The default value of the attribute. Will be applied when no attribute value has been set in the template or on the signal |
+| Name                   | Type     | Optional? | Description                                                                                                                                                   |
+|------------------------|----------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `attributeName`        | `string` | no        | The name of the attribute to bind to.                                                                                                                         |
+| `value`                | `Signal` | no        | The signal to bind to the attribute. When the signal's value is truthy, the value will be bound as the attribute's value. Else the attribute will be removed. | 
+| `options`              | `object` | yes       | Options to customize the behavior.                                                                                                                            |
+| `options.namespace`    | `string` | yes       | The namespace of the attribute.                                                                                                                               |
+| `options.defaultValue` | `string` | yes       | The default value of the attribute. Will be applied when no attribute value has been set in the template or on the signal                                     |
 
