@@ -1,4 +1,6 @@
-import { splitClasses } from './class.utils';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { addClass, splitClasses } from './class.utils';
 
 describe('class utils', () => {
 
@@ -29,4 +31,37 @@ describe('class utils', () => {
             });
         });
     });
+
+    describe('addClass', () => {
+
+        @Component({
+            template: ''
+        })
+        class TestComponent {
+            constructor() {
+                addClass('test');
+            }
+        }
+
+        let fixture: ComponentFixture<TestComponent>;
+
+        beforeEach(async () => {
+            await TestBed.configureTestingModule({
+                declarations: [ TestComponent ]
+            }).compileComponents();
+
+            fixture = TestBed.createComponent(TestComponent);
+
+            fixture.detectChanges();
+        });
+
+        it('should be a function', () => {
+            expect(typeof addClass).toEqual('function');
+        });
+
+        it('should add the class', () => {
+            expect(fixture.debugElement.classes['test']).toBeTruthy();
+        });
+    });
+
 });

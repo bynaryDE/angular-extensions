@@ -1,6 +1,6 @@
 import { inject, Signal, signal, WritableSignal } from '@angular/core';
 
-import { addClass } from './add-class';
+import { addClass } from './utils/class.utils';
 import { bindClass } from './class.composable';
 import { BASE_CLASS } from './provide-base-class';
 
