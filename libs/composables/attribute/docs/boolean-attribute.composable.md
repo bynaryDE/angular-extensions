@@ -1,7 +1,7 @@
 # Boolean Attribute Composable
 
 - [`useBooleanAttribute`](#usebooleanattribute)
-- [`binBooleandAttribute`](#bindbooleanattribute)
+- [`bindBooleandAttribute`](#bindbooleanattribute)
 
 ## `useBooleanAttribute`
 
