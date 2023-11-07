@@ -13,7 +13,7 @@ export interface IUseClassOptions {
  * @param options - The options to normalize
  */
 const normalizeUseClassOptions = (options?: IUseClassOptions) => ({
-    initialValue: options?.initialValue ?? false
+    initialValue: options?.initialValue ?? true
 });
 
 export const useClass = (
