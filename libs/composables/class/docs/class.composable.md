@@ -1,171 +1,137 @@
-# `useAttribute`
+# Class Composable
 
-This composable is used to get and set the value of an attribute of an element.
-It will return a writable signal that can be used to change the value of the attribute.
+- [`useClass`](#useclass)
+- [`bindClass`](#bindclass)
 
-## Parameters
+## `useClass`
 
-| Name                   | Type     | Optional? | Description                                                                                                               |
-|------------------------|----------|-----------|---------------------------------------------------------------------------------------------------------------------------|
-| `attributeName`        | `string` | no        | The name of the attribute to bind to.                                                                                     |
-| `options`              | `object` | yes       | Options to customize the behavior.                                                                                        |
-| `options.namespace`    | `string` | yes       | The namespace of the attribute.                                                                                           |
-| `options.defaultValue` | `string` | yes       | The default value of the attribute. Will be applied when no attribute value has been set in the template or on the signal |
-| `options.initialValue` | `string` | yes       | The initial value of the attribute. Will force the initial value and override any value set in the template               |
+This composable is used to add or remove a specific class on the host element.
+It will return a writable signal that can be used to change whether the class should be added or removed.
+
+### Parameters
+
+| Name                   | Type      | Optional? | Description                                 |
+|------------------------|-----------|-----------|---------------------------------------------|
+| `clazz`                | `string`  | no        | The name of the class.                      |
+| `options`              | `object`  | yes       | Options to customize the behavior.          |
+| `options.initialValue` | `boolean` | yes       | Whether the class should initially be added |
 
 
-## Usage
+### Usage
 
-### Default behavior
+#### Default behavior
 
-By default, this composable will read the value of the attribute from the usage in the template
+By default, this composable will add the class to the host element
 
 ```ts
-import { useAttribute } from '@bynary/angular-composables/attribute';
+import { useClass } from '@bynary/angular-composables/class';
 
 @Component({
     selector: 'my-component'
 })
 class MyComponent {
 
-    label = useAttribute('label');
-}
-```
-
-```html
-<my-component #myComponent label="foo"></my-component>
-
-{{ myComponent.label }}
-```
-
-will render as
-
-```html
-<my-component label="foo"></my-component>
-
-foo
-```
-
-### Default value
-
-To set a default value, you can use the `options.defaultValue` parameter:
-
-```ts
-import { useAttribute } from '@bynary/angular-composables/attribute';
-
-@Component({
-    selector: 'my-component'
-})
-class MyComponent {
-
-    label = useAttribute('label', { defaultValue: 'foo' });
+    isLoading = useClass('loading');
 }
 ```
 
 ```html
 <my-component #myComponent></my-component>
 
-{{ myComponent.label }}
-```
-
-and will render as
-
-```html
-<my-component label="foo"></my-component>
-
-foo
-```
-
-### Force initial value
-
-You may override any template-defined value by setting `options.initialValue`:
-
-```ts
-import { useAttribute } from '@bynary/angular-composables/attribute';
-
-@Component({
-    selector: 'my-component'
-})
-class MyComponent {
-
-    label = useAttribute('label', { initialValue: 'bar' });
-}
-```
-
-```html
-<my-component #myComponent label="foo"></my-component>
-
-{{ myComponent.label }}
+{{ myComponent.isLoading }}
 ```
 
 will render as
 
 ```html
-<my-component label="bar"></my-component>
+<my-component class="loading"></my-component>
 
-bar
+true
 ```
 
-### Custom namespace
+#### Override initial value
 
-You may also use a custom namespace for the attribute:
+If you don't want to add the class initially, set `options.initialValue` to `false`:
 
 ```ts
-import { useAttribute } from '@bynary/angular-composables/attribute';
+import { useClass } from '@bynary/angular-composables/class';
 
 @Component({
     selector: 'my-component'
 })
 class MyComponent {
 
-    label = useAttribute('label', { namespace: 'my', initialValue: 'baz' });
+    isLoading = useClass('label', { initialValue: false });
 }
 ```
 
 ```html
 <my-component #myComponent></my-component>
 
-{{ myComponent.label }}
+{{ myComponent.isLoading }}
 ```
 
 will render as
 
 ```html
-<my-component my:label="baz"></my-component>
+<my-component></my-component>
 
-baz
+false
 ```
 
-### Programmatically set the value
+#### Programmatically set the value
 
-You can also change the value of the attribute programmatically by using the returned signal:
+By changing the value of the signal, you can add / remove the class programmatically
 
 ```ts
-import { useAttribute } from '@bynary/angular-composables/attribute';
+import { useClass } from '@bynary/angular-composables/class';
 
 @Component({
     selector: 'my-component'
 })
 class MyComponent {
 
-    label = useAttribute('label');
-    
-    constructor() {
-        this.label.set('programmatically set value');
+    isLoading = useClass('loading', { initialValue: false });
+
+    startLoading() {
+        this.isLoading.set(true);
+    }
+
+    stopLoading() {
+        this.isLoading.set(false);
     }
 }
 ```
 
-```html
-<my-component #myComponent></my-component>
 
-{{ myComponent.label }}
-```
+## `bindClass`
 
-will render as
+Toggles a class on the host element based on the value of a signal. Similar to `useClass`, but accepts a boolean signal as an input instead of creating a new one.
+Will return the signal that has been passed in.
 
-```html
-<my-component label="programmatically set value"></my-component>
+### Parameters
 
-programmatically set value
+| Name    | Type     | Optional? | Description                                                                                                                                                |
+|---------|----------|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `clazz` | `string` | no        | The name of the class.                                                                                                                                     |
+| `value` | `Signal` | no        | The signal to determine whether the class should be added or removed. When the signal's value is true, the class will be applied. Else it will be removed. |
+
+### Usage
+
+`bindClass` can be used inside a directive or component:
+
+```ts
+import { bindClass } from '@bynary/angular-composables/class';
+
+@Component({
+    selector: 'my-component'
+})
+class MyComponent {
+
+    isLoading: Signal<boolean> = signal(false);
+
+    constructor() {
+        bindClass('loading', this.isLoading);
+    }
+}
 ```
