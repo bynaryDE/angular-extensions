@@ -22,7 +22,7 @@ To learn more about modifier classes, see [BEM](https://getbem.com/naming/#modif
 #### `initialValue`
 
 - **Type:** `string`
-- **Optional:** `true`
+- **Optional:** yes
 
 The initial modifier.
 
@@ -70,7 +70,7 @@ Appearance:
 #### `options`
 
 - **Type:** `object`
-- **Optional:** `true`
+- **Optional:** yes
 
 A set of options to customize the behavior.
 
@@ -85,7 +85,7 @@ A set of options to customize the behavior.
 ##### `options.baseClass`
 
 - **Type:** `string`
-- **Optional:** `true`
+- **Optional:** yes
 - **Default:** the value provided via the `BASE_CLASS` token
 
 
@@ -262,7 +262,7 @@ Will return the signal that has been passed in.
 #### `modifier`
 
 - **Type:** `Signal<string>`
-- **Optional:** `false`
+- **Optional:** no
 - **Default:** -
 
 The signal providing the modifier.
