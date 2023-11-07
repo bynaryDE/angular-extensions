@@ -72,36 +72,45 @@ describe('attribute.composable.ts', () => {
             });
 
             describe('the signals initial value should be', () => {
-                it.each([ 'foo', null ])(
-                    'the initialValue, if defined',
-                    (value) => {
+                it('the initialValue, if defined', () => {
+                    TestBed.runInInjectionContext(() => {
+                        // Act
+                        const result = useAttribute('name', {
+                            initialValue: 'foo'
+                        });
+
+                        // Assert
+                        expect(result()).toEqual('foo');
+                    });
+                });
+
+                it('the defaultValue, if initialValue is `null`', () => {
                         TestBed.runInInjectionContext(() => {
                             // Act
                             const result = useAttribute('name', {
-                                initialValue: value
+                                initialValue: null,
+                                defaultValue: 'bar'
                             });
 
                             // Assert
-                            expect(result()).toEqual(value);
+                            expect(result()).toEqual('bar');
                         });
                     }
                 );
 
-                it.each([ 'bar', null ])(
-                    'the initial assigned value in the DOM if no initialValue has been defined',
-                    (value) => {
-                        TestBed.runInInjectionContext(() => {
-                            // Arrange
-                            initialAssignedValue = value;
 
-                            // Act
-                            const result = useAttribute('name');
+                it('the initial assigned value in the DOM if no initialValue has been defined', () => {
+                    TestBed.runInInjectionContext(() => {
+                        // Arrange
+                        initialAssignedValue = 'bar';
 
-                            // Assert
-                            expect(result()).toEqual(value);
-                        });
-                    }
-                );
+                        // Act
+                        const result = useAttribute('name');
+
+                        // Assert
+                        expect(result()).toEqual('bar');
+                    });
+                });
 
                 it('the default value, if neither the initialValue, nor a DOM based value are defined', () => {
                     TestBed.runInInjectionContext(() => {
