@@ -24,7 +24,7 @@ It will return a writable signal that can be used to change whether the class sh
 By default, this composable will add the class to the host element
 
 ```ts
-import { useClass } from '@bynary/angular-composables/class';
+import { useClass } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -54,7 +54,7 @@ true
 If you don't want to add the class initially, set `options.initialValue` to `false`:
 
 ```ts
-import { useClass } from '@bynary/angular-composables/class';
+import { useClass } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -84,7 +84,7 @@ false
 By changing the value of the signal, you can add / remove the class programmatically
 
 ```ts
-import { useClass } from '@bynary/angular-composables/class';
+import { useClass } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -121,7 +121,7 @@ Will return the signal that has been passed in.
 `bindClass` can be used inside a directive or component:
 
 ```ts
-import { bindClass } from '@bynary/angular-composables/class';
+import { bindClass } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'

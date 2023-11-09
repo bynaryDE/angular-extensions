@@ -1,6 +1,6 @@
-# @bynary/angular-composables/attribute
+# @bynary/composables/attribute
 
-Secondary entry point of `@bynary/angular-composables`. It can be used by importing from `@bynary/angular-composables/attribute`.
+Secondary entry point of `@bynary/composables`. It can be used by importing from `@bynary/composables/attribute`.
 
 ## Composables:
 

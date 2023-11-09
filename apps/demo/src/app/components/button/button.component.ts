@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, Output, ViewEncapsulation } from '@angular/core';
-import { bindAttribute, useAttribute, useBooleanAttribute } from '@bynary/angular-composables/attribute';
-import { provideBaseClass, useModifier, useModifierGroup } from '@bynary/angular-composables/class';
-import { useActivate } from '@bynary/angular-composables/observer';
+import { bindAttribute, useAttribute, useBooleanAttribute } from '@bynary/composables/attribute';
+import { provideBaseClass, useModifier, useModifierGroup } from '@bynary/composables/class';
+import { useActivate } from '@bynary/composables/observer';
 
 @Component({
     selector: 'demo-button',

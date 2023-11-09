@@ -18,19 +18,19 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@bynary/angular-composables/attribute": [
+            "@bynary/composables/attribute": [
                 "libs/composables/attribute/src/index.ts"
             ],
-            "@bynary/angular-composables/class": [
+            "@bynary/composables/class": [
                 "libs/composables/class/src/index.ts"
             ],
-            "@bynary/angular-composables/observer": [
+            "@bynary/composables/observer": [
                 "libs/composables/observer/src/index.ts"
             ],
-            "@bynary/angular-composables/storage": [
+            "@bynary/composables/storage": [
                 "libs/composables/storage/src/index.ts"
             ],
-            "@bynary/angular-composables/title": [
+            "@bynary/composables/title": [
                 "libs/composables/title/src/index.ts"
             ]
         }

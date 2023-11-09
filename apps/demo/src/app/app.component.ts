@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { useTitle } from '@bynary/angular-composables/title';
+import { useTitle } from '@bynary/composables/title';
 
 import { ButtonComponent } from './components/button/button.component';
 
@@ -12,7 +12,7 @@ import { ButtonComponent } from './components/button/button.component';
     styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent {
-    title = useTitle('@bynary/angular-composables');
+    title = useTitle('@bynary/composables');
 
     /**
      *

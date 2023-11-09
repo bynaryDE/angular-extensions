@@ -33,7 +33,7 @@ If set, the value will be added as a modifier class initially.
 
 ```ts
 // TypeScript
-import { useModifierGroup } from '@bynary/angular-composables/class';
+import { useModifierGroup } from '@bynary/composables/class';
 
 @Component({
 selector: 'my-component',
@@ -102,7 +102,7 @@ Especially, when using [`useModifier`](./modifier.composable.md) or `useModifier
 
 ```ts
 // TypeScript
-import { useModifierGroup } from '@bynary/angular-composables/class';
+import { useModifierGroup } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -139,7 +139,7 @@ Whether to apply the base class to the host element.
 
 ```ts
 // TypeScript
-import { useModifierGroup } from '@bynary/angular-composables/class';
+import { useModifierGroup } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -169,7 +169,7 @@ The base class `my-component` has been added to the host element.
 
 ```ts
 // TypeScript
-import { useModifierGroup } from '@bynary/angular-composables/class';
+import { useModifierGroup } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -218,7 +218,7 @@ useModifierGroup('primary', { baseClass: 'button', prefix: 'color' })
 
 ```ts
 // TypeScript
-import { useModifierGroup } from '@bynary/angular-composables/class';
+import { useModifierGroup } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -271,7 +271,7 @@ The signal providing the modifier.
 <summary>Example</summary>
 
 ```ts
-import { bindModifier } from '@bynary/angular-composables/class';
+import { bindModifier } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'

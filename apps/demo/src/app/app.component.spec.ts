@@ -18,10 +18,10 @@ describe('AppComponent', () => {
     it('should render title', () => {
         const compiled = fixture.nativeElement as HTMLElement;
 
-        expect(compiled.querySelector('h1')?.textContent).toContain('@bynary/angular-composables');
+        expect(compiled.querySelector('h1')?.textContent).toContain('@bynary/composables');
     });
 
     it(`should have as title 'demo'`, () => {
-        expect(fixture.componentInstance.title()).toEqual('@bynary/angular-composables');
+        expect(fixture.componentInstance.title()).toEqual('@bynary/composables');
     });
 });

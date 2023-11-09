@@ -29,7 +29,7 @@ Uses [`bindAttribute`](#bindattribute) internally.
 By default, this composable will read the value of the attribute from the usage in the template
 
 ```ts
-import { useAttribute } from '@bynary/angular-composables/attribute';
+import { useAttribute } from '@bynary/composables/attribute';
 
 @Component({
     selector: 'my-component'
@@ -59,7 +59,7 @@ foo
 To set a default value, you can use the `options.defaultValue` parameter:
 
 ```ts
-import { useAttribute } from '@bynary/angular-composables/attribute';
+import { useAttribute } from '@bynary/composables/attribute';
 
 @Component({
     selector: 'my-component'
@@ -89,7 +89,7 @@ foo
 You may override any template-defined value by setting `options.initialValue`:
 
 ```ts
-import { useAttribute } from '@bynary/angular-composables/attribute';
+import { useAttribute } from '@bynary/composables/attribute';
 
 @Component({
     selector: 'my-component'
@@ -119,7 +119,7 @@ bar
 You may also use a custom namespace for the attribute:
 
 ```ts
-import { useAttribute } from '@bynary/angular-composables/attribute';
+import { useAttribute } from '@bynary/composables/attribute';
 
 @Component({
     selector: 'my-component'
@@ -149,7 +149,7 @@ baz
 You can also change the value of the attribute programmatically by using the returned signal:
 
 ```ts
-import { useAttribute } from '@bynary/angular-composables/attribute';
+import { useAttribute } from '@bynary/composables/attribute';
 
 @Component({
     selector: 'my-component'

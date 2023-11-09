@@ -25,7 +25,7 @@ It will return a writable signal that can be used to change the value of the att
 By default, this composable will read the value of the attribute from the usage in the template
 
 ```ts
-import { useBooleanAttribute } from '@bynary/angular-composables/attribute';
+import { useBooleanAttribute } from '@bynary/composables/attribute';
 
 @Component({
     selector: 'my-component'
@@ -55,7 +55,7 @@ true
 To set a default value, you can use the `options.defaultValue` parameter:
 
 ```ts
-import { useBooleanAttribute } from '@bynary/angular-composables/attribute';
+import { useBooleanAttribute } from '@bynary/composables/attribute';
 
 @Component({
     selector: 'my-component'
@@ -85,7 +85,7 @@ true
 You may override any template-defined value by setting `options.initialValue`:
 
 ```ts
-import { useBooleanAttribute } from '@bynary/angular-composables/attribute';
+import { useBooleanAttribute } from '@bynary/composables/attribute';
 
 @Component({
     selector: 'my-component'
@@ -115,7 +115,7 @@ false
 You may also use a custom namespace for the attribute:
 
 ```ts
-import { useBooleanAttribute } from '@bynary/angular-composables/attribute';
+import { useBooleanAttribute } from '@bynary/composables/attribute';
 
 @Component({
     selector: 'my-component'
@@ -145,7 +145,7 @@ true
 You can also change the value of the attribute programmatically by using the returned signal:
 
 ```ts
-import { useBooleanAttribute } from '@bynary/angular-composables/attribute';
+import { useBooleanAttribute } from '@bynary/composables/attribute';
 
 @Component({
     selector: 'my-component'

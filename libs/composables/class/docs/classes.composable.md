@@ -22,7 +22,7 @@ It will return a writable signal that can be used to change whether the class sh
 By default, this composable will add the classes to the host element
 
 ```ts
-import { useClasses } from '@bynary/angular-composables/class';
+import { useClasses } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -49,7 +49,7 @@ You may also pass a string as the initial value. The string will be split by spa
 Multiple spaces will be ignored.
 
 ```ts
-import { useClasses } from '@bynary/angular-composables/class';
+import { useClasses } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -77,7 +77,7 @@ Each previously set class will be removed and the new classes will be added.
 Classes set form somewhere else (e.g. the template) will be untouched, except for ones that are contained in new or previous list.
 
 ```ts
-import { useClasses } from '@bynary/angular-composables/class';
+import { useClasses } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component',
@@ -112,7 +112,7 @@ Will return the signal that has been passed in.
 `bindClasses` can be used inside a directive or component:
 
 ```ts
-import { bindClasses } from '@bynary/angular-composables/class';
+import { bindClasses } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'

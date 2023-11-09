@@ -32,7 +32,7 @@ Especially, when using `useModifier` or [`useModifierGroup`](./modifier-group.co
 
 ```ts
 // TypeScript
-import { useModifier } from '@bynary/angular-composables/class';
+import { useModifier } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -47,7 +47,7 @@ class MyComponent {
 
 ```ts
 // TypeScript
-import { useModifier } from '@bynary/angular-composables/class';
+import { useModifier } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component',
@@ -69,7 +69,7 @@ By default, this composable will add the base and modifier class to the host ele
 
 ```ts
 // TypeScript
-import { useModifier } from '@bynary/angular-composables/class';
+import { useModifier } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component',
@@ -103,7 +103,7 @@ true
 If you don't want to add the class initially, set `options.initialValue` to `false`:
 
 ```ts
-import { useModifier } from '@bynary/angular-composables/class';
+import { useModifier } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component',
@@ -136,7 +136,7 @@ false
 By changing the value of the signal, you can add / remove the class programmatically
 
 ```ts
-import { useModifier } from '@bynary/angular-composables/class';
+import { useModifier } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
@@ -176,7 +176,7 @@ Will return the signal that has been passed in.
 `bindModifier` can be used inside a directive or component:
 
 ```ts
-import { bindModifier } from '@bynary/angular-composables/class';
+import { bindModifier } from '@bynary/composables/class';
 
 @Component({
     selector: 'my-component'
