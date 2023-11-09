@@ -1,9 +1,9 @@
 {
-    "name": "@bynary/bang",
+    "name": "@bynary/angular-extensions",
     "version": "0.0.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/bynaryDE/bang"
+        "url": "https://github.com/bynaryDE/angular-extensions"
     },
     "license": "MIT",
     "scripts": {},
