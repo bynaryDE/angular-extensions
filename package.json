@@ -1,11 +1,32 @@
 {
     "name": "@bynary/angular-extensions",
+    "description": "Extensions to help you build Angular applications faster",
     "version": "0.0.0",
+    "license": "MIT",
+    "author": "bynary GmbH (https://www.bynary.io)",
+    "contributors": [
+        {
+            "name": "Johannes Homeier",
+            "email": "j.homeier@bynary.io"
+        }
+    ],
+    "bugs": {
+        "url": "https://github.com/bynaryDE/angular-extensions/issues"
+    },
+    "homepage": "https://github.com/bynaryDE/angular-extensions",
     "repository": {
         "type": "git",
         "url": "https://github.com/bynaryDE/angular-extensions"
     },
-    "license": "MIT",
+    "keywords": [
+        "bynary",
+        "angular",
+        "frontend",
+        "typescript",
+        "signals",
+        "composables",
+        "nx"
+    ],
     "scripts": {},
     "private": true,
     "dependencies": {
