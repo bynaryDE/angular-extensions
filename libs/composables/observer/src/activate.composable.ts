@@ -1,7 +1,7 @@
 import { computed, ElementRef, inject } from '@angular/core';
 import { filter, fromEvent, merge } from 'rxjs';
 
-import { useHostEvents } from './events.composable';
+import { useEvent } from './event.composable';
 
 interface IUseActivateOptions {
     click?: boolean;
@@ -20,8 +20,8 @@ export const useActivate = (options: IUseActivateOptions) => {
 };
 
 export const useActivateSignal = (options: IUseActivateOptions) => {
-    const click = useHostEvents('click');
-    const keydown = useHostEvents('keydown');
+    const click = useEvent('click');
+    const keydown = useEvent('keydown');
 
     return computed(() => {
         if (options.click && click()) {

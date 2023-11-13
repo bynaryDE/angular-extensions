@@ -1,4 +1,6 @@
 import 'jest-preset-angular/setup-jest';
+import MatchMediaMock from 'jest-matchmedia-mock';
+
 import './storage/src/utils/storage.polyfill';
 
 // @ts-expect-error https://thymikee.github.io/jest-preset-angular/docs/getting-started/test-environment
@@ -8,3 +10,10 @@ globalThis.ngJest = {
         errorOnUnknownProperties: true
     }
 };
+
+const matchMedia = new MatchMediaMock();
+
+afterEach(() => {
+    matchMedia.clear();
+});
+

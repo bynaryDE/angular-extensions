@@ -1,11 +1,40 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { inject } from '@angular/core';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { DOCUMENT } from '@angular/common';
+import { DestroyRef, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { bindAttribute } from '@bynary/composables/attribute';
 
-export const useDirectionality = () => {
+/**
+ * A set of options for the {@link useDirectionality} composable
+ */
+export interface IUseDirectionalityOptions {
+    target?: Element;
+}
+
+const normalizeOptions = (options?: IUseDirectionalityOptions) => {
+    return {
+        target: options?.target ?? inject(DOCUMENT).firstElementChild
+    };
+}
+
+/**
+ * Creates a signal that emits the current directionality
+ *
+ * @param options - A set of {@link IUseDirectionalityOptions options}
+ */
+export const useDirectionality = (options?: IUseDirectionalityOptions) => {
+    const normalizedOptions = normalizeOptions(options);
     const directionality = inject(Directionality);
+    const destroyRef = inject(DestroyRef);
+    const value = signal(directionality.value);
 
-    return toSignal(directionality.change.pipe(takeUntilDestroyed()), {
-        initialValue: directionality.value
-    });
+    directionality.change
+        .pipe(takeUntilDestroyed(destroyRef))
+        .subscribe((v) => value.set(v));
+
+    if (normalizedOptions.target) {
+        bindAttribute('dir', value, { host: normalizedOptions.target });
+    }
+
+    return value;
 };
