@@ -18,6 +18,11 @@ export interface IBindBooleanAttributeOptions {
      * The default value of the attribute, as a fallback, when no initial value has been defined and no value has been assigned in the DOM
      */
     defaultValue?: boolean;
+
+    /**
+     * The host element on which the attribute should be bound
+     */
+    host?: Element;
 }
 
 /**
@@ -75,14 +80,14 @@ export const useBooleanAttribute = (
     attributeName: string,
     options?: IUseBooleanAttributeOptions
 ): WritableSignal<boolean | undefined> => {
-    const { namespace, initialValue, defaultValue } =
-        normalizeUseBooleanAttributeOptions(options);
+    const { namespace, initialValue, defaultValue, host } = normalizeUseBooleanAttributeOptions(options);
 
     const value = signal<boolean | undefined>(initialValue);
 
     return bindBooleanAttribute(attributeName, value, {
         namespace,
-        defaultValue
+        defaultValue,
+        host
     });
 };
 
@@ -98,10 +103,10 @@ export const bindBooleanAttribute = <T extends Signal<boolean | undefined>>(
     value: T,
     options?: IBindBooleanAttributeOptions
 ) => {
-    const { namespace, defaultValue } =
+    const { namespace, defaultValue, host } =
         normalizeBindBooleanAttributeOptions(options);
 
-    const attribute = useAttribute(attributeName, { namespace });
+    const attribute = useAttribute(attributeName, { namespace, host });
     const defaultAttributeValue = toAttributeValue(defaultValue);
 
     effect(

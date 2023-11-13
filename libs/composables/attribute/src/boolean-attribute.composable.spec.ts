@@ -13,6 +13,7 @@ class TestComponent {
         namespace: 'my',
         initialValue: false
     });
+    readonly isDark = useBooleanAttribute('dark', { initialValue: true, host: document.body });
 }
 
 describe('useBooleanAttribute', () => {
@@ -55,11 +56,7 @@ describe('useBooleanAttribute', () => {
 
         fixture.detectChanges();
 
-        expect(
-            fixture.debugElement.attributes[
-                '        component.loading.set(false);\n'
-                ]
-        ).toBeUndefined();
+        expect(fixture.debugElement.attributes['loading']).toBeUndefined();
     });
 
     it('should set the attribute, when setting the signal\'s value to `true`', () => {
@@ -68,5 +65,9 @@ describe('useBooleanAttribute', () => {
         fixture.detectChanges();
 
         expect(fixture.debugElement.attributes['disabled']).toEqual('');
+    });
+
+    it('should bind the attribute to a custom host if defined', () => {
+        expect(document.body.getAttribute('dark')).toEqual('');
     });
 });

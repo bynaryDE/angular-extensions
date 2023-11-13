@@ -1,6 +1,7 @@
 import { Component, ElementRef, isSignal, Renderer2, signal, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { host } from '@nx/angular/generators';
 
 import * as attributeModule from './attribute.composable';
 import { bindAttribute, useAttribute } from './attribute.composable';
@@ -268,11 +269,13 @@ describe('attribute.composable.ts', () => {
                 readonly name = signal<string | null | undefined>('test');
                 readonly role = signal<string | null | undefined>(undefined);
                 readonly myTitle = signal<string | null | undefined>('Hello');
+                readonly colorScheme = signal<string | null | undefined>('dark');
 
                 constructor() {
                     bindAttribute('name', this.name);
                     bindAttribute('role', this.role);
                     bindAttribute('title', this.myTitle, { namespace: 'my' });
+                    bindAttribute('color-scheme', this.colorScheme, { host: document.body });
                 }
             }
 
@@ -325,6 +328,10 @@ describe('attribute.composable.ts', () => {
                 expect(fixture.debugElement.attributes['role']).toEqual(
                     'button'
                 );
+            });
+
+            it('should bind the attribute on the custom host', () => {
+                expect(document.body.getAttribute('color-scheme')).toEqual('dark');
             });
         });
     });

@@ -13,14 +13,14 @@ Uses [`bindAttribute`](#bindattribute) internally.
 
 ### Parameters
 
-| Name                   | Type     | Optional? | Description                                                                                                               |
-|------------------------|----------|-----------|---------------------------------------------------------------------------------------------------------------------------|
-| `attributeName`        | `string` | no        | The name of the attribute to bind to.                                                                                     |
-| `options`              | `object` | yes       | Options to customize the behavior.                                                                                        |
-| `options.namespace`    | `string` | yes       | The namespace of the attribute.                                                                                           |
-| `options.defaultValue` | `string` | yes       | The default value of the attribute. Will be applied when no attribute value has been set in the template or on the signal |
-| `options.initialValue` | `string` | yes       | The initial value of the attribute. Will force the initial value and override any value set in the template               |
-
+| Name                   | Type      | Optional? | Description                                                                                                               |
+|------------------------|-----------|-----------|---------------------------------------------------------------------------------------------------------------------------|
+| `attributeName`        | `string`  | no        | The name of the attribute to bind to.                                                                                     |
+| `options`              | `object`  | yes       | Options to customize the behavior.                                                                                        |
+| `options.namespace`    | `string`  | yes       | The namespace of the attribute.                                                                                           |
+| `options.defaultValue` | `string`  | yes       | The default value of the attribute. Will be applied when no attribute value has been set in the template or on the signal |
+| `options.initialValue` | `string`  | yes       | The initial value of the attribute. Will force the initial value and override any value set in the template               |
+| `options.host`         | `Element` | yes       | The host element on which the attribute should be bound. Defaults to the component's host element.                        |
 
 ### Usage
 
@@ -144,6 +144,22 @@ will render as
 baz
 ```
 
+#### Custom host
+
+You may also use a custom host to bind attribute on:
+
+```ts
+import { useAttribute } from '@bynary/composables/attribute';
+
+@Component({
+    selector: 'my-component'
+})
+class MyComponent {
+
+    label = useAttribute('label', { host: document.body });
+}
+```
+
 #### Programmatically set the value
 
 You can also change the value of the attribute programmatically by using the returned signal:
@@ -185,11 +201,12 @@ Will return the signal that has been passed in.
 
 ### Parameters
 
-| Name                   | Type     | Optional? | Description                                                                                                                                                   |
-|------------------------|----------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `attributeName`        | `string` | no        | The name of the attribute to bind to.                                                                                                                         |
-| `value`                | `Signal` | no        | The signal to bind to the attribute. When the signal's value is truthy, the value will be bound as the attribute's value. Else the attribute will be removed. | 
-| `options`              | `object` | yes       | Options to customize the behavior.                                                                                                                            |
-| `options.namespace`    | `string` | yes       | The namespace of the attribute.                                                                                                                               |
-| `options.defaultValue` | `string` | yes       | The default value of the attribute. Will be applied when no attribute value has been set in the template or on the signal                                     |
+| Name                   | Type      | Optional? | Description                                                                                                                                                   |
+|------------------------|-----------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `attributeName`        | `string`  | no        | The name of the attribute to bind to.                                                                                                                         |
+| `value`                | `Signal`  | no        | The signal to bind to the attribute. When the signal's value is truthy, the value will be bound as the attribute's value. Else the attribute will be removed. | 
+| `options`              | `object`  | yes       | Options to customize the behavior.                                                                                                                            |
+| `options.namespace`    | `string`  | yes       | The namespace of the attribute.                                                                                                                               |
+| `options.defaultValue` | `string`  | yes       | The default value of the attribute. Will be applied when no attribute value has been set in the template or on the signal                                     |
+| `options.host`         | `Element` | yes       | The host element on which the attribute should be bound. Defaults to the component's host element.                                                            |
 

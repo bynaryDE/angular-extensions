@@ -16,6 +16,11 @@ export interface IBindAttributeOptions {
      * The default value of the attribute, as a fallback, when no initial value has been defined and no value has been assigned in the DOM
      */
     defaultValue?: string;
+
+    /**
+     * The host element on which the attribute should be bound
+     */
+    host?: Element;
 }
 
 /**
@@ -33,16 +38,20 @@ export interface IUseAttributeOptions extends IBindAttributeOptions {
  *
  * @param options - The options to normalize
  */
-const normalizeUseAttributeOptions = (options?: IUseAttributeOptions) =>
-    options ?? {};
+const normalizeUseAttributeOptions = (options?: IUseAttributeOptions) => ({
+    ...(options ?? {}),
+    host: options?.host ?? inject(ElementRef).nativeElement as HTMLElement
+});
 
 /**
  * Normalizes the given options.
  *
  * @param options - The options to normalize
  */
-const normalizeBindAttributeOptions = (options?: IBindAttributeOptions) =>
-    options ?? {};
+const normalizeBindAttributeOptions = (options?: IBindAttributeOptions) => ({
+    ...(options ?? {}),
+    host: options?.host ?? inject(ElementRef).nativeElement as HTMLElement
+});
 
 /**
  * Creates a signal that binds its value as an attribute on the host element.
@@ -54,11 +63,10 @@ export const useAttribute = (
     attributeName: string,
     options?: IUseAttributeOptions
 ): WritableSignal<string | null | undefined> => {
-    const { namespace, initialValue, defaultValue } =
+    const { namespace, initialValue, defaultValue, host } =
         normalizeUseAttributeOptions(options);
 
-    const element = inject(ElementRef).nativeElement as HTMLElement;
-    const initialAssignedValue = element.getAttributeNS(
+    const initialAssignedValue = host.getAttributeNS(
         namespace ?? null,
         attributeName
     );
@@ -67,7 +75,7 @@ export const useAttribute = (
         (typeof initialValue !== 'undefined' ? initialValue : initialAssignedValue) ?? defaultValue
     );
 
-    return bindAttribute(attributeName, value, { namespace, defaultValue });
+    return bindAttribute(attributeName, value, { namespace, defaultValue, host });
 };
 
 /**
@@ -82,9 +90,8 @@ export const bindAttribute = <T extends Signal<string | null | undefined>>(
     value: T,
     options?: IBindAttributeOptions
 ) => {
-    const { namespace, defaultValue } = normalizeBindAttributeOptions(options);
+    const { namespace, defaultValue, host } = normalizeBindAttributeOptions(options);
 
-    const element = inject(ElementRef).nativeElement as HTMLElement;
     const renderer = inject(Renderer2);
 
     effect(() => {
@@ -93,9 +100,9 @@ export const bindAttribute = <T extends Signal<string | null | undefined>>(
             typeof currentValue !== 'undefined' ? currentValue : defaultValue;
 
         if (newValue != null) {
-            renderer.setAttribute(element, attributeName, newValue, namespace);
+            renderer.setAttribute(host, attributeName, newValue, namespace);
         } else {
-            renderer.removeAttribute(element, attributeName, namespace);
+            renderer.removeAttribute(host, attributeName, namespace);
         }
     });
 

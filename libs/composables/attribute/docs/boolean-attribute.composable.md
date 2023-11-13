@@ -17,6 +17,7 @@ It will return a writable signal that can be used to change the value of the att
 | `options.namespace`    | `string`  | yes       | The namespace of the attribute.                                                                                        |
 | `options.defaultValue` | `boolean` | yes       | The default value of the attribute. Will be used when no attribute value has been set in the template or on the signal |
 | `options.initialValue` | `boolean` | yes       | The initial value of the attribute. Will force the initial value and override any value set in the template            |
+| `options.host`         | `Element` | yes       | The host element on which the attribute should be bound. Defaults to the component's host element.                     |
 
 ### Usage
 
@@ -140,6 +141,22 @@ will render as
 true
 ```
 
+#### Custom host
+
+You may also use a custom host to bind attribute on:
+
+```ts
+import { useAttribute } from '@bynary/composables/attribute';
+
+@Component({
+    selector: 'my-component'
+})
+class MyComponent {
+
+    label = useAttribute('label', { host: document.body });
+}
+```
+
 #### Programmatically set the value
 
 You can also change the value of the attribute programmatically by using the returned signal:
@@ -188,4 +205,5 @@ Will return the signal that has been passed in.
 | `options`              | `object`  | yes       | Options to customize the behavior.                                                                                     |
 | `options.namespace`    | `string`  | yes       | The namespace of the attribute.                                                                                        |
 | `options.defaultValue` | `boolean` | yes       | The default value of the attribute. Will be used when no attribute value has been set in the template or on the signal |
+| `options.host`         | `Element` | yes       | The host element on which the attribute should be bound. Defaults to the component's host element.                     |
 
