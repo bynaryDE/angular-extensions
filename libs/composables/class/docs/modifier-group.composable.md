@@ -126,13 +126,13 @@ will render as
 
 ---
 
-##### `options.applyBaseClass`
+<details>
+<summary><code>options.applyBaseClass</code> Whether to apply the base class to the host element.</summary>
 
 - **Type:** `boolean`
 - **Optional:** yes
 - **Default:** `true`
-
-Whether to apply the base class to the host element.
+</details>
 
 <details>
 <summary>Example 1 (default behavior / applyBaseClass = true)</summary>
@@ -149,6 +149,7 @@ class MyComponent {
     color = useModifierGroup('primary', { baseClass: 'my-component' });
 }
 ```
+
 ```html
 <!-- HTML -->
 <my-component></my-component>
@@ -157,6 +158,7 @@ class MyComponent {
 will render as
 
 ```html
+
 <my-component class="my-component my-component--primary"></my-component>
 ```
 
@@ -179,6 +181,7 @@ class MyComponent {
     color = useModifierGroup('primary', { baseClass: 'my-component', applyBaseClass: false });
 }
 ```
+
 ```html
 <!-- HTML -->
 <my-component></my-component>
@@ -187,12 +190,15 @@ class MyComponent {
 will render as
 
 ```html
+
 <my-component class="my-component--primary"></my-component>
 ```
 
 The base class `my-component` has *not* been added to the host element.
 
 </details>
+
+---
 
 ##### `options.prefix`
 
