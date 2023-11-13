@@ -1,0 +1,25 @@
+:host {
+    --size: 4rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0.25rem;
+    block-size: var(--size);
+    inline-size: var(--size);
+    font-size: calc(var(--size) * 0.5);
+    border-radius: calc(var(--size) * 0.5);
+
+    @media (prefers-reduced-motion: no-preference) {
+        transition: background-color 0.3s var(--ease-1);
+    }
+
+    &:hover {
+        background-color: var(--surface-3);
+    }
+
+    &:active {
+        background-color: var(--surface-4);
+    }
+}

@@ -4,9 +4,23 @@
     height: 100dvh;
     background-color: var(--surface-1);
 
-    h1 {
+    @media (prefers-reduced-motion: no-preference) {
+        transition: background-color 0.3s var(--ease-1);
+    }
+
+    header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
         margin: 2rem;
-        max-inline-size: unset;
+
+        h1 {
+            max-inline-size: unset;
+
+            @media (prefers-reduced-motion: no-preference) {
+                transition: color 0.3s var(--ease-1);
+            }
+        }
     }
 
     main {
@@ -36,6 +50,10 @@
                 display: grid;
                 gap: 1rem;
                 min-width: 10rem;
+
+                @media (prefers-reduced-motion: no-preference) {
+                    transition: color 0.3s var(--ease-1), border-color 0.3s var(--ease-1);
+                }
             }
         }
 
@@ -52,6 +70,10 @@
             background-color: var(--surface-2);
             border: var(--border-size-1) solid var(--surface-3);
             border-radius: var(--radius-conditional-3);
+
+            @media (prefers-reduced-motion: no-preference) {
+                transition: background-color 0.3s var(--ease-1), border-color 0.3s var(--ease-1);
+            }
         }
     }
 }
