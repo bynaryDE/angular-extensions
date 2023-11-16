@@ -13,7 +13,7 @@ class TestComponent {
         namespace: 'my',
         initialValue: false
     });
-    readonly isDark = useBooleanAttribute('dark', { initialValue: true, host: document.body });
+    readonly isDark = useBooleanAttribute('dark', { initialValue: true, target: document.body });
 }
 
 describe('useBooleanAttribute', () => {
@@ -67,7 +67,7 @@ describe('useBooleanAttribute', () => {
         expect(fixture.debugElement.attributes['disabled']).toEqual('');
     });
 
-    it('should bind the attribute to a custom host if defined', () => {
+    it('should bind the attribute to a custom target if defined', () => {
         expect(document.body.getAttribute('dark')).toEqual('');
     });
 });

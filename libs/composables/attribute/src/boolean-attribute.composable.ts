@@ -67,17 +67,17 @@ export interface IBindBooleanAttributeOptions {
     defaultValue?: boolean;
 
     /**
-     * The host element on which the attribute should be bound. Can be any HTMLElement.
+     * The target element on which the attribute should be bound. Can be any HTMLElement.
      *
      * @example
      * ```ts
-     * const isDisabled = useBooleanAttribute('disabled', { host: document.body });
+     * const isDisabled = useBooleanAttribute('disabled', { target: document.body });
      * // or
      * const isDisabled = signal<boolean | undefined>(undefined);
-     * bindBooleanAttribute('disabled', isDisabled, { host: document.body });
+     * bindBooleanAttribute('disabled', isDisabled, { target: document.body });
      * ```
      */
-    host?: Element;
+    target?: Element;
 }
 
 /**
@@ -138,7 +138,7 @@ const toAttributeValue = (value: boolean | undefined) => {
 };
 
 /**
- * Creates a signal that binds its value as a boolean attribute on the host element.
+ * Creates a signal that binds its value as a boolean attribute on the host element or a different target element.
  *
  * @example
  * ```ts
@@ -160,19 +160,19 @@ export const useBooleanAttribute = (
     attributeName: string,
     options?: IUseBooleanAttributeOptions
 ): WritableSignal<boolean | undefined> => {
-    const { namespace, initialValue, defaultValue, host } = normalizeUseBooleanAttributeOptions(options);
+    const { namespace, initialValue, defaultValue, target } = normalizeUseBooleanAttributeOptions(options);
 
     const value = signal<boolean | undefined>(initialValue);
 
     return bindBooleanAttribute(attributeName, value, {
         namespace,
         defaultValue,
-        host
+        target: target
     });
 };
 
 /**
- * Binds the value of the given signal as a boolean attribute on the host element.
+ * Binds the value of the given signal as a boolean attribute on the host element or a different target element.
  *
  * @example
  * ```ts
@@ -200,10 +200,10 @@ export const bindBooleanAttribute = <T extends Signal<boolean | undefined>>(
     value: T,
     options?: IBindBooleanAttributeOptions
 ) => {
-    const { namespace, defaultValue, host } =
+    const { namespace, defaultValue, target } =
         normalizeBindBooleanAttributeOptions(options);
 
-    const attribute = useAttribute(attributeName, { namespace, host });
+    const attribute = useAttribute(attributeName, { namespace, target: target });
     const defaultAttributeValue = toAttributeValue(defaultValue);
 
     effect(

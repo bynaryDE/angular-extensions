@@ -1,7 +1,6 @@
 import { Component, ElementRef, isSignal, Renderer2, signal, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { host } from '@nx/angular/generators';
 
 import * as attributeModule from './attribute.composable';
 import { bindAttribute, useAttribute } from './attribute.composable';
@@ -275,7 +274,7 @@ describe('attribute.composable.ts', () => {
                     bindAttribute('name', this.name);
                     bindAttribute('role', this.role);
                     bindAttribute('title', this.myTitle, { namespace: 'my' });
-                    bindAttribute('color-scheme', this.colorScheme, { host: document.body });
+                    bindAttribute('color-scheme', this.colorScheme, { target: document.body });
                 }
             }
 
@@ -330,7 +329,7 @@ describe('attribute.composable.ts', () => {
                 );
             });
 
-            it('should bind the attribute on the custom host', () => {
+            it('should bind the attribute on the custom target', () => {
                 expect(document.body.getAttribute('color-scheme')).toEqual('dark');
             });
         });

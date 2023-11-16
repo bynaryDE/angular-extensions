@@ -65,7 +65,7 @@ export interface IBindAttributeOptions {
     defaultValue?: string;
 
     /**
-     * The host element on which the attribute should be bound
+     * The target element on which the attribute should be bound
      *
      * @example
      * ```ts
@@ -76,11 +76,11 @@ export interface IBindAttributeOptions {
      * })
      * class MyComponent {
      *
-     *     label = useAttribute('label', { host: document.body });
+     *     label = useAttribute('label', { target: document.body });
      * }
      * ```
      */
-    host?: Element;
+    target?: Element;
 }
 
 /**
@@ -109,7 +109,7 @@ export interface IUseAttributeOptions extends IBindAttributeOptions {
     initialValue?: string | null;
 }
 
-type NormalizedUseAttributeOptions = IUseAttributeOptions & Required<Pick<IUseAttributeOptions, 'host'>>;
+type NormalizedUseAttributeOptions = IUseAttributeOptions & Required<Pick<IUseAttributeOptions, 'target'>>;
 /**
  * Normalizes the given options.
  *
@@ -118,10 +118,10 @@ type NormalizedUseAttributeOptions = IUseAttributeOptions & Required<Pick<IUseAt
  */
 const normalizeUseAttributeOptions = (options?: IUseAttributeOptions): NormalizedUseAttributeOptions => ({
     ...(options ?? {}),
-    host: options?.host ?? inject(ElementRef).nativeElement as HTMLElement
+    target: options?.target ?? inject(ElementRef).nativeElement as HTMLElement
 });
 
-type NormalizedBindAttributeOptions = IBindAttributeOptions & Required<Pick<IBindAttributeOptions, 'host'>>;
+type NormalizedBindAttributeOptions = IBindAttributeOptions & Required<Pick<IBindAttributeOptions, 'target'>>;
 
 /**
  * Normalizes the given options.
@@ -131,11 +131,11 @@ type NormalizedBindAttributeOptions = IBindAttributeOptions & Required<Pick<IBin
  */
 const normalizeBindAttributeOptions = (options?: IBindAttributeOptions): NormalizedBindAttributeOptions => ({
     ...(options ?? {}),
-    host: options?.host ?? inject(ElementRef).nativeElement as HTMLElement
+    target: options?.target ?? inject(ElementRef).nativeElement as HTMLElement
 });
 
 /**
- * Creates a signal that binds its value as an attribute on the host element.
+ * Creates a signal that binds its value as an attribute on the host element or a different target element.
  *
  * @example Default usage
  *
@@ -204,10 +204,10 @@ export function useAttribute (
     attributeName: string,
     options?: IUseAttributeOptions
 ): WritableSignal<string | null | undefined> {
-    const { namespace, initialValue, defaultValue, host } =
+    const { namespace, initialValue, defaultValue, target } =
         normalizeUseAttributeOptions(options);
 
-    const initialAssignedValue = host.getAttributeNS(
+    const initialAssignedValue = target.getAttributeNS(
         namespace ?? null,
         attributeName
     );
@@ -216,11 +216,11 @@ export function useAttribute (
         (typeof initialValue !== 'undefined' ? initialValue : initialAssignedValue) ?? defaultValue
     );
 
-    return bindAttribute(attributeName, value, { namespace, defaultValue, host });
+    return bindAttribute(attributeName, value, { namespace, defaultValue, target });
 };
 
 /**
- * Binds an attribute to the host element. Similar to `useAttribute`, but accepts a signal as an input instead of creating a new one and won't read the value from the template.
+ * Binds an attribute to the host element or a different target element. Similar to `useAttribute`, but accepts a signal as an input instead of creating a new one and won't read the value from the template.
  * Will return the signal that has been passed in.
  *
  * @example
@@ -255,7 +255,7 @@ export const bindAttribute = <T extends Signal<string | null | undefined>>(
     value: T,
     options?: IBindAttributeOptions
 ) => {
-    const { namespace, defaultValue, host } = normalizeBindAttributeOptions(options);
+    const { namespace, defaultValue, target } = normalizeBindAttributeOptions(options);
 
     const renderer = inject(Renderer2);
 
@@ -265,9 +265,9 @@ export const bindAttribute = <T extends Signal<string | null | undefined>>(
             typeof currentValue !== 'undefined' ? currentValue : defaultValue;
 
         if (newValue != null) {
-            renderer.setAttribute(host, attributeName, newValue, namespace);
+            renderer.setAttribute(target, attributeName, newValue, namespace);
         } else {
-            renderer.removeAttribute(host, attributeName, namespace);
+            renderer.removeAttribute(target, attributeName, namespace);
         }
     });
 

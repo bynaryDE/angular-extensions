@@ -6,7 +6,7 @@
 
 ## `useAttribute`
 
-Binds the value of an attribute on the host element.
+Binds the value of an attribute on the host element or a different target element.
 It will return a writable signal that can be used to change the value of the attribute.
 
 Uses [`bindAttribute`](#bindattribute) internally.
@@ -20,7 +20,7 @@ Uses [`bindAttribute`](#bindattribute) internally.
 | `options.namespace`    | `string`  | yes       | The namespace of the attribute.                                                                                           |
 | `options.defaultValue` | `string`  | yes       | The default value of the attribute. Will be applied when no attribute value has been set in the template or on the signal |
 | `options.initialValue` | `string`  | yes       | The initial value of the attribute. Will force the initial value and override any value set in the template               |
-| `options.host`         | `Element` | yes       | The host element on which the attribute should be bound. Defaults to the component's host element.                        |
+| `options.target`       | `Element` | yes       | The target element on which the attribute should be bound. Defaults to the component's host element.                      |
 
 ### Usage
 
@@ -144,9 +144,9 @@ will render as
 baz
 ```
 
-#### Custom host
+#### Custom target
 
-You may also use a custom host to bind attribute on:
+You may also use a custom target to bind attribute on:
 
 ```ts
 import { useAttribute } from '@bynary/composables/attribute';
@@ -156,7 +156,7 @@ import { useAttribute } from '@bynary/composables/attribute';
 })
 class MyComponent {
 
-    label = useAttribute('label', { host: document.body });
+    label = useAttribute('label', { target: document.body });
 }
 ```
 
@@ -196,7 +196,7 @@ programmatically set value
 
 ## `bindAttribute`
 
-Binds an attribute to the host element. Similar to `useAttribute`, but accepts a signal as an input instead of creating a new one and won't read the value from the template.
+Binds an attribute to the host element or a different target element. Similar to `useAttribute`, but accepts a signal as an input instead of creating a new one and won't read the value from the template.
 Will return the signal that has been passed in.
 
 ### Parameters
@@ -208,5 +208,5 @@ Will return the signal that has been passed in.
 | `options`              | `object`  | yes       | Options to customize the behavior.                                                                                                                            |
 | `options.namespace`    | `string`  | yes       | The namespace of the attribute.                                                                                                                               |
 | `options.defaultValue` | `string`  | yes       | The default value of the attribute. Will be applied when no attribute value has been set in the template or on the signal                                     |
-| `options.host`         | `Element` | yes       | The host element on which the attribute should be bound. Defaults to the component's host element.                                                            |
+| `options.target`       | `Element` | yes       | The target element on which the attribute should be bound. Defaults to the component's target element.                                                        |
 

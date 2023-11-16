@@ -33,7 +33,7 @@ export const useDirectionality = (options?: IUseDirectionalityOptions) => {
         .subscribe((v) => value.set(v));
 
     if (normalizedOptions.target) {
-        bindAttribute('dir', value, { host: normalizedOptions.target });
+        bindAttribute('dir', value, { target: normalizedOptions.target });
     }
 
     return value;

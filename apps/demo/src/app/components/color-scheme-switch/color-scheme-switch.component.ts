@@ -20,7 +20,7 @@ export class ColorSchemeSwitchComponent {
         const root = document.firstElementChild;
 
         if (root) {
-            bindAttribute('color-scheme', this.colorScheme.resolved, { host: root });
+            bindAttribute('color-scheme', this.colorScheme.resolved, { target: root });
         }
     }
 
