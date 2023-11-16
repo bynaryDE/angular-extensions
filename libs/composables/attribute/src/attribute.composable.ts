@@ -12,7 +12,9 @@ export interface IBindAttributeOptions {
      *
      * ```ts
      * const label = useAttribute('label', { namespace: 'xyz', initialValue: 'baz' });
-     * // or
+     * ```
+     * or
+     * ```ts
      * const label = signal('baz');
      * bindAttribute('label', mySignal, { namespace: 'xyz' });
      * ```
@@ -31,12 +33,11 @@ export interface IBindAttributeOptions {
      * @example Applying a default value
      * ```ts
      * const label = useAttribute('label', { defaultValue: 'baz' });
-     * // or
+     * ```
+     * or
+     * ```ts
      * const label = signal<string | undefined>(undefined);
      * bindAttribute('label', label, { defaultValue: 'baz' });
-     * ```
-     * ```html
-     * <my-component></my-component>
      * ```
      *
      * will result in
@@ -48,12 +49,11 @@ export interface IBindAttributeOptions {
      * @example Will not override if a value has been explicitly assigned in the DOM
      * ```ts
      * const label = useAttribute('label', { defaultValue: 'baz' });
-     * // or
+     * ```
+     * or
+     * ```ts
      * const label = signal<string | undefined>(undefined);
      * bindAttribute('label', mySignal, { defaultValue: 'baz' });
-     * ```
-     * ```html
-     * <my-component label="foo"></my-component>
      * ```
      *
      * will result in
