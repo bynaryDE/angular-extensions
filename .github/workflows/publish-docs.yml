@@ -1,10 +1,17 @@
-name: Build & Publish Docs to the Wiki
+name: Publish Docs to the Wiki
 
 on:
     push:
         branches: [ "main" ]
 
     workflow_dispatch:
+
+concurrency:
+    group: publish-wiki
+    cancel-in-progress: true
+
+permissions:
+    contents: write
 
 jobs:
     install-deps:
@@ -40,7 +47,6 @@ jobs:
                 run: scripts/build-docs.sh
 
             -   name: Upload Docs to Wiki
-                uses: OrlovM/Wiki-Action@v1
+                uses: Andrew-Chen-Wang/github-wiki-action@v4
                 with:
                     path: 'docs'
-                    token: ${{ secrets.GITHUB_TOKEN }}
