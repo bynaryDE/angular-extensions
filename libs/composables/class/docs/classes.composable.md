@@ -56,7 +56,7 @@ import { useClasses } from '@bynary/composables/class';
 })
 class MyComponent {
 
-    isLoading = useClasses('my-component primary    focusable');
+    classes = useClasses('my-component primary    focusable');
 }
 ```
 

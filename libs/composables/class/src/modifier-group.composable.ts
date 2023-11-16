@@ -16,11 +16,36 @@ export interface IBindModifierGroupOptions {
      * Especially, when using {@link useModifier} or {@link useModifierGroup} multiple times in one directive or component.
      *
      * WARNING: If you don't provide a base class either via `options.baseClass` or via `provideBaseClass`, an error will be thrown!
+     *
+     * @example
+     * ```ts
+     * const color = signal('red');
+     *
+     * bindModifierGroup(color, { baseClass: 'my-button' }); // <my-component class="my-button my-button--red"></my-component>
+     * ```
      */
     baseClass?: string;
 
     /**
-     * Whether to apply the base class to the host element.
+     * Whether to apply the base class to the host element. Defaults to `true`
+     *
+     * @example
+     * If `true` or not defined, the base class will be applied to the host element, no matter the signal's value:
+     *
+     * ```ts
+     * const color = signal('red');
+     *
+     * bindModifierGroup(color, { baseClass: 'my-button' }); // <my-component class="my-button my-button--red"></my-component>
+     * ```
+     *
+     * @example
+     * If `false`, the base class will not be applied to the host element, no matter the signal's value:
+     *
+     * ```ts
+     * const color = signal('red');
+     *
+     * bindModifierGroup(color, { baseClass: 'my-button', applyBaseClass: false }); // <my-component class="my-button--red"></my-component>
+     * ```
      */
     applyBaseClass?: boolean;
 
@@ -28,42 +53,70 @@ export interface IBindModifierGroupOptions {
      * A prefix to prepend to the modifier class.
      *
      * @example
-     * // Without a prefix:
-     * useModifierGroup('primary', { baseClass: 'button' })
-     * // -> The resulting class will be 'button--primary'
+     * Without a prefix:
      *
-     * // With a prefix:
-     * useModifierGroup('primary', { baseClass: 'button', prefix: 'color' })
-     * // -> The resulting class will be 'button--color-primary'
+     * ```ts
+     * useModifierGroup('primary', { baseClass: 'button' }); // <my-component class="button button--primary"></my-component>
+     * ```
+     *
+     * @example
+     * With a prefix:
+     *
+     * ```ts
+     * useModifierGroup('primary', { baseClass: 'button', prefix: 'color' }); // <my-component class="button button--color-primary"></my-component>
+     * ```
      */
     prefix?: string;
 }
 
+/**
+ * Normalizes the given options by applying defaults.
+ *
+ * @param options - The options to normalize
+ * @internal
+ */
 const normalizeOptions = (options?: IBindModifierGroupOptions) => ({
     baseClass: options?.baseClass ?? inject(BASE_CLASS),
     applyBaseClass: options?.applyBaseClass ?? true,
     prefix: options?.prefix
 });
 
-/**
- * Creates a signal that binds its value as a modifier class on the host element.
- *
- * @param initialValue - The initial modifier
- * @param options - A set of {@link IBindModifierGroupOptions options}
- */
-export const useModifierGroup = (
-    initialValue?: string,
-    options?: IBindModifierGroupOptions
-) => {
-    const modifier = signal<string | null | undefined>(initialValue);
-
-    bindModifierGroup(modifier, options);
-
-    return modifier;
-};
 
 /**
  * Binds the value of the given signal to the host element as a modifier class.
+ *
+ * @example
+ * ```ts
+ * import { bindModifierGroup } from '@bynary/composables/class';
+ *
+ * @Component({
+ *     selector: 'my-component',
+ *     providers: [
+ *         provideBaseClass('my-component')
+ *     ]
+ * })
+ * class MyComponent {
+ *
+ *     color = signal('red');
+ *
+ *     constructor() {
+ *         bindModifierGroup(this.color);
+ *     }
+ * }
+ * ```
+ *
+ * will result in
+ *
+ * ```html
+ * <my-component class="my-component my-component--red"></my-component>
+ * ```
+ *
+ * a change of color will change the corresponding modifier class:
+ *
+ * ```ts
+ * color.set('blue'); // <my-component class="my-component my-component--blue"></my-component>
+ * ```
+ *
  *
  * @param modifier - The signal to bind
  * @param options - A set of {@link IBindModifierGroupOptions options}
@@ -90,6 +143,53 @@ export const bindModifierGroup = <T extends Signal<string | null | undefined>>(
     );
 
     bindClasses(className);
+
+    return modifier;
+};
+
+
+/**
+ * Creates a signal that binds its value as a modifier class on the host element.
+ *
+ * @example
+ *
+ * ```ts
+ * import { useModifierGroup } from '@bynary/composables/class';
+ *
+ * @Component({
+ *     selector: 'my-component',
+ *     providers: [
+ *         provideBaseClass('my-component')
+ *     ]
+ * })
+ * class MyComponent {
+ *
+ *     color = useModifierGroup('red');
+ * }
+ * ```
+ *
+ * will result in
+ *
+ * ```html
+ * <my-component class="my-component my-component--red"></my-component>
+ * ```
+ *
+ * a change of color will change the corresponding modifier class:
+ *
+ * ```ts
+ * color.set('blue'); // <my-component class="my-component my-component--blue"></my-component>
+ * ```
+ *
+ * @param initialValue - The initial modifier
+ * @param options - A set of {@link IBindModifierGroupOptions options}
+ */
+export const useModifierGroup = (
+    initialValue?: string,
+    options?: IBindModifierGroupOptions
+) => {
+    const modifier = signal<string | null | undefined>(initialValue);
+
+    bindModifierGroup(modifier, options);
 
     return modifier;
 };

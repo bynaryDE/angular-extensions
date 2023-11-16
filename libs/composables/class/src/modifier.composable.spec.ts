@@ -10,7 +10,7 @@ import { provideBaseClass } from './provide-base-class';
     providers: [ provideBaseClass('c-test') ]
 })
 class TestComponent {
-    readonly disabled = useModifier('disabled', { applyInitially: false });
+    readonly disabled = useModifier('disabled', { initialValue: false });
     readonly loading = useModifier('loading');
 }
 
