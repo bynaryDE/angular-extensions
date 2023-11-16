@@ -1,3 +1,7 @@
+/**
+ * @module @bynary/composables/class
+ */
+
 export * from './class.composable';
 export * from './classes.composable';
 export * from './modifier.composable';
