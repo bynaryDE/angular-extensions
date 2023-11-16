@@ -2,7 +2,7 @@ import { Directionality } from '@angular/cdk/bidi';
 import { DOCUMENT } from '@angular/common';
 import { DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { bindAttribute } from '@bynary/composables/attribute';
+import { bindAttribute } from '../../attribute/src/public-api';
 
 /**
  * A set of options for the {@link useDirectionality} composable
