@@ -1,6 +1,5 @@
 {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
-    "defaultProject": "demo",
     "targetDefaults": {
         "build": {
             "dependsOn": [

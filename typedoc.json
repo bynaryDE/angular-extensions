@@ -1,0 +1,29 @@
+{
+    "$schema": "https://typedoc.org/schema.json",
+    "name": "@bynary/angular-extensions",
+    "tsconfig": "tsconfig.base.json",
+    "entryPointStrategy": "packages",
+    "entryPoints": [
+        "libs/composables"
+    ],
+    "exclude": [
+        "**/*+(.spec|.e2e|test-setup).ts"
+    ],
+    "excludeInternal": true,
+    "out": "docs",
+    "plugin": [
+        "typedoc-plugin-markdown",
+        "typedoc-plugin-mdn-links",
+        "typedoc-github-wiki-theme"
+    ],
+    "categorizeByGroup": true,
+    "sortEntryPoints": true,
+    "jsDocCompatibility": {
+        "exampleTag": false
+    },
+    "validation": {
+        "notExported": true,
+        "invalidLink": true,
+        "notDocumented": false
+    }
+}

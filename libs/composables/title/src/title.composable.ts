@@ -12,6 +12,11 @@ export const useTitle = (initialValue?: string) => {
     return value;
 };
 
+/**
+ * @internal
+ * @param name
+ * @param initialValue
+ */
 export const useTitle2 = (name: string, initialValue?: string) => {
     const title = inject(Title);
 
