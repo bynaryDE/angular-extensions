@@ -1,0 +1,19 @@
+{
+    "$schema": "https://typedoc.org/schema.json",
+    "entryPoints": [
+        "*/src/public-api.ts"
+    ],
+    "exclude": [
+        "**/*+(.spec|.e2e).ts"
+    ],
+    "out": "../../docs/composables",
+    "plugin": [
+        "typedoc-plugin-markdown",
+        "typedoc-plugin-mdn-links",
+        "typedoc-github-wiki-theme"
+    ],
+    "excludeInternal": true,
+    "entryPointStrategy": "resolve",
+    "tsconfig": "tsconfig.lib.json",
+    "name": "@bynary/composables"
+}
