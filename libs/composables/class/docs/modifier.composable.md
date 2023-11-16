@@ -18,7 +18,7 @@ To learn more about modifier classes, see [BEM](https://getbem.com/naming/#modif
 | `options`                | `object`  | yes       | Options to customize the behavior.                                       |
 | `options.baseClass`      | `string`  | yes       | The base class. May also be provided via `provideBaseClass`              |
 | `options.applyBaseClass` | `boolean` | yes       | Whether the base class should be applied to the host. Defaults to `true` |
-| `options.applyInitially` | `boolean` | yes       | Whether the modifier class should initially be added. Defaults to `true` |
+| `options.initialValue`   | `boolean` | yes       | Whether the modifier class should initially be added. Defaults to `true` |
 
 
 ### Usage

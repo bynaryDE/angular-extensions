@@ -104,7 +104,7 @@ export class ButtonComponent {
 
     readonly type = useAttribute('type', { defaultValue: 'button' });
     readonly disabled = useBooleanAttribute('disabled');
-    readonly loading = useModifier('is-loading', { applyInitially: false });
+    readonly loading = useModifier('is-loading', { initialValue: false });
     readonly appearance = useModifierGroup('solid');
     readonly color = useModifierGroup(undefined, { prefix: 'color' });
 
@@ -136,7 +136,7 @@ export class ButtonComponent {
 
     readonly type = useAttribute('type', { defaultValue: 'button' });
     readonly disabled = bindBooleanAttribute('disabled', input(false, { alias: 'disabled' }));
-    readonly loading = bindModifier('is-loading', input(false, { alias: 'loading' }), { applyInitially: false });
+    readonly loading = bindModifier('is-loading', input(false, { alias: 'loading' }), { initialValue: false });
     readonly appearance = bindModifierGroup(input('solid', { alias: 'appearance'}));
     readonly color = bindModifierGroup(undefined, input({ alias: 'color'}), { prefix: 'color' });
 
