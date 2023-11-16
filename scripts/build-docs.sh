@@ -4,4 +4,4 @@
 rm -rf ../docs/*
 
 # generate docs
-typedoc --options typedoc.json
+npx typedoc --options typedoc.json
