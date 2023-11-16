@@ -13,7 +13,8 @@
     "out": "docs",
     "plugin": [
         "typedoc-plugin-markdown",
-        "typedoc-plugin-mdn-links"
+        "typedoc-plugin-mdn-links",
+        "typedoc-github-wiki-theme"
     ],
     "readme": "README.md",
     "validation": {
