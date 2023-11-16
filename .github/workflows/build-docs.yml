@@ -37,7 +37,7 @@ jobs:
                     path: node_modules
                     key: cache-node-modules-${{ hashFiles('package-lock.json') }}
             -   name: Build Docs
-                run: npx nx run @bynary/angular-extension:build-docs
+                run: scripts/build-docs.sh
 
             -   name: Upload Docs to Wiki
                 uses: OrlovM/Wiki-Action@v1
