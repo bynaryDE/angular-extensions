@@ -4,6 +4,9 @@ import { bindAttribute, useAttribute, useBooleanAttribute } from '@bynary/compos
 import { provideBaseClass, useModifier, useModifierGroup } from '@bynary/composables/class';
 import { useActivate } from '@bynary/composables/observer';
 
+/**
+ * A demo button
+ */
 @Component({
     selector: 'demo-button',
     standalone: true,
@@ -21,7 +24,7 @@ export class ButtonComponent {
     readonly type = useAttribute('type', { defaultValue: 'button' });
     readonly disabled = useBooleanAttribute('disabled');
 
-    readonly loading = useModifier('loading', { applyInitially: false });
+    readonly loading = useModifier('loading', { initialValue: false });
 
     readonly appearance = useModifierGroup('solid');
 
