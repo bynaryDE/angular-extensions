@@ -1,6 +1,32 @@
 {
     "name": "@bynary/composables",
+    "description": "A set of composable functions to help you build Angular applications faster. Based on signals",
     "version": "0.1.0",
+    "license": "MIT",
+    "author": "bynary GmbH (https://www.bynary.io)",
+    "contributors": [
+        {
+            "name": "Johannes Homeier",
+            "email": "j.homeier@bynary.io"
+        }
+    ],
+    "bugs": {
+        "url": "https://github.com/bynaryDE/angular-extensions/issues"
+    },
+    "homepage": "https://github.com/bynaryDE/angular-extensions/tree/main/libs/composables",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bynaryDE/angular-extensions"
+    },
+    "keywords": [
+        "bynary",
+        "angular",
+        "frontend",
+        "typescript",
+        "signals",
+        "composables",
+        "nx"
+    ],
     "peerDependencies": {
         "@angular/core": "^16.2.0",
         "@angular/cdk": "^16.2.8",
