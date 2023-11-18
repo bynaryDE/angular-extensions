@@ -15,6 +15,6 @@ jobs:
         steps:
             -   uses: google-github-actions/release-please-action@v3
                 with:
-                    release-type: node
-                    package-name: '@bynary/angular-extensions'
-                    bump-minor-pre-major: true
+                    command: manifest
+                    token: ${{secrets.GITHUB_TOKEN}}
+                    default-branch: main
