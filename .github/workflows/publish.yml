@@ -3,7 +3,7 @@ name: Publish to npmjs.org
 on:
     release:
         types: [published]
-        
+
     workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
             - name: Use Node.js
               uses: actions/setup-node@v3
               with:
-                  node-version: '20'
+                  node-version-file: '.nvmrc'
                   registry-url: 'https://registry.npmjs.org/'
 
             - name: Install dependencies
@@ -29,6 +29,6 @@ jobs:
 
             - name: Publish
               working-directory: ./dist/libs/composables
-              run: npm publish
+              run: npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
