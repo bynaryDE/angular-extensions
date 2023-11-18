@@ -1,6 +1,6 @@
 {
     "name": "@bynary/composables",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "peerDependencies": {
         "@angular/core": "^16.2.0",
         "@angular/cdk": "^16.2.8",
