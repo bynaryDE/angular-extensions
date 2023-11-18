@@ -3,6 +3,8 @@ name: Publish to npmjs.org
 on:
     release:
         types: [published]
+        
+    workflow_dispatch:
 
 jobs:
     publish:
