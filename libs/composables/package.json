@@ -1,7 +1,7 @@
 {
     "name": "@bynary/composables",
     "description": "A set of composable functions to help you build Angular applications faster. Based on signals",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "license": "MIT",
     "author": "bynary GmbH (https://www.bynary.io)",
     "contributors": [

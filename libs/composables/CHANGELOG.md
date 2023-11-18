@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.1.1...composables-v0.1.2) (2023-11-18)
+
+
+### Bug Fixes
+
+* **composables/class:** use generic types for modifier in `useModifierGroup` ([7e682ea](https://github.com/bynaryDE/angular-extensions/commit/7e682eac2951e861f1822ebe7154416f84f39d5b))
+
 ## [0.1.1](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.1.0...composables-v0.1.1) (2023-11-18)
 
 
