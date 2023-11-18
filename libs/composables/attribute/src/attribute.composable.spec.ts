@@ -1,4 +1,4 @@
-import { Component, ElementRef, isSignal, Renderer2, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, isSignal, Renderer2, signal, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -53,7 +53,11 @@ describe('attribute.composable.ts', () => {
                     expect(bindAttributeSpy).toHaveBeenCalledWith(
                         'name',
                         value,
-                        { defaultValue: 'bar', namespace: 'my' }
+                        {
+                            defaultValue: 'bar',
+                            namespace: 'my',
+                            target: inject(ElementRef).nativeElement
+                        }
                     );
 
                     bindAttributeSpy.mockRestore();
