@@ -1,15 +1,10 @@
 {
     "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
-    "release-type": "node",
+    "bump-minor-pre-major": true,
+    "bump-patch-for-minor-pre-major": true,
+    "prerelease": true,
     "plugins": [ "node-workspace" ],
     "packages": {
-        "libs/composables": {
-            "changelog-path": "CHANGELOG.md",
-            "release-type": "node",
-            "bump-minor-pre-major": true,
-            "bump-patch-for-minor-pre-major": true,
-            "draft": true,
-            "prerelease": true
-        }
+        "libs/composables": {}
     }
 }
