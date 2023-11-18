@@ -7,6 +7,13 @@
 
 * **composables:** use version ranges for peer dependencies ([8ec4fdb](https://github.com/bynaryDE/angular-extensions/commit/8ec4fdba0b38bc1502599ad01a479920cedcbb46))
 
+## [0.1.1](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.1.0...composables-v0.1.1) (2023-11-18)
+
+
+### Bug Fixes
+
+* **composables:** use version ranges for peer dependencies ([8ec4fdb](https://github.com/bynaryDE/angular-extensions/commit/8ec4fdba0b38bc1502599ad01a479920cedcbb46))
+
 ## 0.1.0 (2023-11-18)
 
 
