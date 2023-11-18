@@ -1,4 +1,7 @@
 /**
+ * @packageDocumentation
+ * Composables to observe events and changes
+ *
  * @module @bynary/composables/observer
  */
 

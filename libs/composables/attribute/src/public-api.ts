@@ -1,6 +1,6 @@
 /**
  * @packageDocumentation
- * This module contains composables to bind attributes on elements.
+ * Composables to bind attributes on elements.
  *
  * @example
  * ```ts
