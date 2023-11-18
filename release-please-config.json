@@ -9,8 +9,7 @@
             "bump-minor-pre-major": true,
             "bump-patch-for-minor-pre-major": true,
             "draft": true,
-            "prerelease": true,
-            "release-as": "0.1.0"
+            "prerelease": true
         }
     }
 }
