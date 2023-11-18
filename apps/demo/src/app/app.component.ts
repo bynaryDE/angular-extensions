@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { useTitle } from '@bynary/composables/title';
+import { bindTitle } from '@bynary/composables/title';
 
 import { ButtonComponent } from './components/button/button.component';
 import { ColorSchemeSwitchComponent } from './components/color-scheme-switch/color-scheme-switch.component';
@@ -14,13 +14,10 @@ import { ColorSchemeSwitchComponent } from './components/color-scheme-switch/col
 })
 export class AppComponent {
 
-    title = useTitle('@bynary/composables');
+    counter = signal(0);
+    title = bindTitle(computed(() => this.counter() ? `@bynary/composables - Clicks: ${this.counter()}` : '@bynary/composables'));
 
-    /**
-     *
-     */
-    onButtonActive($event: Event) {
-        // eslint-disable-next-line no-console
-        console.log('Active', $event)
+    onClick() {
+        this.counter.update((value) => value + 1);
     }
 }
