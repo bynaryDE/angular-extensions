@@ -3,7 +3,19 @@ import { EventName, EventType } from './types/dom-events';
 
 
 /**
- * Creates a signal that emits events from the given target
+ * Creates a signal that listens for events on the given target and holds the last corresponding event.
+ * By default, the target is the {@link ElementRef#nativeElement native element} of the current component.
+ *
+ * @example
+ * ```ts
+ * const mouseMove = useEvent('mousemove');
+ * ```
+ *
+ * @example
+ * You can also pass a custom target to listen on:
+ * ```ts
+ * const mouseEnter = useEvent('mouseenter', myChildElement);
+ * ```
  *
  * @param eventName - The name of the event
  * @param target - The target to listen events on
