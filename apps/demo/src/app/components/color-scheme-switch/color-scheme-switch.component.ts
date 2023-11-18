@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
 import { bindAttribute } from '@bynary/composables/attribute';
 import { useColorScheme } from '@bynary/composables/observer';
-import { useStorageComposable } from '@bynary/composables/storage';
+import { useStorage } from '@bynary/composables/storage';
 
 @Component({
     selector: 'demo-color-scheme-switch',
@@ -14,7 +14,7 @@ import { useStorageComposable } from '@bynary/composables/storage';
 })
 export class ColorSchemeSwitchComponent {
 
-    colorScheme = useColorScheme({ store: useStorageComposable('color-scheme') });
+    colorScheme = useColorScheme({ store: useStorage('color-scheme') });
 
     constructor() {
         const root = document.firstElementChild;

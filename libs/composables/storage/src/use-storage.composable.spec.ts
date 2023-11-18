@@ -1,17 +1,17 @@
 import { Component, isSignal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { useStorageComposable } from './use-storage.composable';
+import { useStorage } from './use-storage.composable';
 import * as bindStorageModule from './bind-storage.composable';
 
 describe('useStorage', () => {
 
     it('should be a function', () => {
-        expect(typeof useStorageComposable).toEqual('function');
+        expect(typeof useStorage).toEqual('function');
     });
 
     it('should return the value signal', () => {
         TestBed.runInInjectionContext(() => {
-            const actual = useStorageComposable('test');
+            const actual = useStorage('test');
 
             expect(isSignal(actual)).toBeTruthy();
         });
@@ -23,7 +23,7 @@ describe('useStorage', () => {
             const key = 'test';
             const options = { storage: sessionStorage };
 
-            const actual = useStorageComposable(key, options);
+            const actual = useStorage(key, options);
 
             expect(bindStorageSpy).toHaveBeenCalledTimes(1);
             expect(bindStorageSpy).toHaveBeenCalledWith(key, actual, options);
@@ -36,7 +36,7 @@ describe('useStorage', () => {
             template: ''
         })
         class TestComponent {
-            value = useStorageComposable('test', { storage: sessionStorage });
+            value = useStorage('test', { storage: sessionStorage });
         }
 
         let fixture: ComponentFixture<TestComponent>;

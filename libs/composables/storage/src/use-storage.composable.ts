@@ -21,7 +21,7 @@ const normalizeUseStorageOptions = <T extends string>(key: string, options?: IUs
  * @param key - The key to use for the storage
  * @param options- A set of options for the storage
  */
-export const useStorageComposable = <T extends string>(
+export const useStorage = <T extends string>(
     key: string,
     options?: IUseStorageOptions<T>
 ) => {
