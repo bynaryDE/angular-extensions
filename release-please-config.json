@@ -4,7 +4,6 @@
     "bump-patch-for-minor-pre-major": true,
     "prerelease": true,
     "prerelease-type": "beta",
-    "plugins": [ "node-workspace" ],
     "packages": {
         "libs/composables": {}
     }
