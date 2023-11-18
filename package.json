@@ -1,7 +1,7 @@
 {
     "name": "@bynary/angular-extensions",
     "description": "Extensions to help you build Angular applications faster",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "license": "MIT",
     "author": "bynary GmbH (https://www.bynary.io)",
     "contributors": [
