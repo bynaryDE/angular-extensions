@@ -2,6 +2,9 @@
 
 A collection of composable functions for Angular based on signals.
 
+> [!WARNING]
+> This package is still in early development and not ready for production use. The API is not stable and might change at any time. 
+
 ## Installation
 
 To install this library, run
