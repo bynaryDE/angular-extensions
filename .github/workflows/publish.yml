@@ -26,7 +26,7 @@ jobs:
               run: npx nx build composables
 
             - name: Publish
-              working-directory: ./dist/composables
+              working-directory: ./dist/libs/composables
               run: npm publish
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
