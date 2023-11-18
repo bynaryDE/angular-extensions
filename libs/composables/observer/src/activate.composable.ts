@@ -8,7 +8,13 @@ interface IUseActivateOptions {
     keydown?: string[];
 }
 
-export const useActivate = (options: IUseActivateOptions) => {
+/**
+ * @internal
+ * Tracks the activation of an element. An element is considered activated if it is clicked or if a keydown event is fireed while the element is focused.
+ *
+ * @param options
+ */
+export const θuseActivate = (options: IUseActivateOptions) => {
     const target = inject(ElementRef).nativeElement;
 
     const click$ = fromEvent<PointerEvent>(target, 'click');
@@ -19,7 +25,15 @@ export const useActivate = (options: IUseActivateOptions) => {
     return merge(click$, keydown$);
 };
 
-export const useActivateSignal = (options: IUseActivateOptions) => {
+/**
+ * @internal
+ * Tracks the activation of an element. An element is considered activated if it is clicked or if a keydown event is fired while the element is focused.
+ *
+ * Alternative implementation of {@link θuseActivate} using {@link useEvent}.
+ *
+ * @param options
+ */
+export const θuseActivateSignal = (options: IUseActivateOptions) => {
     const click = useEvent('click');
     const keydown = useEvent('keydown');
 

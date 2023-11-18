@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, Output, ViewEncapsulation } from '@angular/core';
 import { bindAttribute, useAttribute, useBooleanAttribute } from '@bynary/composables/attribute';
 import { provideBaseClass, useModifier, useModifierGroup } from '@bynary/composables/class';
-import { useActivate } from '@bynary/composables/observer';
+import { θuseActivate } from '@bynary/composables/observer';
 
 /**
  * A demo button
@@ -29,7 +29,7 @@ export class ButtonComponent {
     readonly appearance = useModifierGroup('solid');
 
     @Output()
-    readonly active = useActivate({ click: true, keydown: [ 'Enter' ] });
+    readonly active = θuseActivate({ click: true, keydown: [ 'Enter' ] });
 
     constructor() {
         bindAttribute('tabindex', computed(() => this.disabled() ? '-1' : '0'));
