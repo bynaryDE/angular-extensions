@@ -23,8 +23,8 @@ export class ButtonComponent {
     readonly type = useAttribute('type', { defaultValue: 'button' });
     readonly isDisabled = useBooleanAttribute('disabled');
     readonly isLoading = useModifier('is-loading', { initialValue: false });
-    readonly appearance = useModifierGroup('solid');
-    readonly color = useModifierGroup(undefined, { prefix: 'color' });
+    readonly appearance = useModifierGroup<'solid' | 'outline'>('solid');
+    readonly color = useModifierGroup<'red' | 'green'>(undefined, { prefix: 'color' });
 
     constructor() {
         bindAttribute('tabindex', computed(() => this.isDisabled() ? '-1' : '0'));
