@@ -64,6 +64,22 @@
             min-height: 15rem;
             width: 25rem;
             max-width: 100%;
+            position: relative;
+
+            header {
+                display: flex;
+                flex-direction: column;
+                inset: 1rem 0.5rem auto 1rem;
+                position: absolute;
+
+                h2 {
+                    font-size: var(--font-size-fluid-1);
+                }
+
+                p {
+                    color: var(--text-2);
+                }
+            }
         }
 
         .card {

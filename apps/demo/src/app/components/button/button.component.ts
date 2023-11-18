@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, Output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, ViewEncapsulation } from '@angular/core';
 import { bindAttribute, useAttribute, useBooleanAttribute } from '@bynary/composables/attribute';
 import { provideBaseClass, useModifier, useModifierGroup } from '@bynary/composables/class';
-import { θuseActivate } from '@bynary/composables/observer';
 
 /**
  * A demo button
@@ -22,17 +21,13 @@ import { θuseActivate } from '@bynary/composables/observer';
 export class ButtonComponent {
 
     readonly type = useAttribute('type', { defaultValue: 'button' });
-    readonly disabled = useBooleanAttribute('disabled');
-
-    readonly loading = useModifier('loading', { initialValue: false });
-
+    readonly isDisabled = useBooleanAttribute('disabled');
+    readonly isLoading = useModifier('is-loading', { initialValue: false });
     readonly appearance = useModifierGroup('solid');
-
-    @Output()
-    readonly active = θuseActivate({ click: true, keydown: [ 'Enter' ] });
+    readonly color = useModifierGroup(undefined, { prefix: 'color' });
 
     constructor() {
-        bindAttribute('tabindex', computed(() => this.disabled() ? '-1' : '0'));
+        bindAttribute('tabindex', computed(() => this.isDisabled() ? '-1' : '0'));
     }
 
 }

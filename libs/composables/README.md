@@ -20,75 +20,103 @@ Let's build a simple button with support for different styles, colors and basic 
 Without composables, things get complicated pretty quickly, especially when handling multiple classes, or binding attributes without overriding the user defined values.
 
 ```ts
-import { Attribute, ElementRef, HostBinding, Renderer2, SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Attribute, Component, ElementRef, HostBinding, inject, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
-    selector: 'my-button',
+    selector: 'old-button',
     standalone: true,
     imports: [ CommonModule ],
-    template: '<ng-content></ng-content>',
+    templateUrl: '<ng-content></ng-content>',
     host: {
-        class: 'my-button'
+        class: 'c-button'
     }
 })
-export class ButtonComponent {
-
+export class OldButtonComponent implements OnInit {
     @HostBinding('attr.type')
-    type = 'button';
- 
-    @HostBinding('attr.disabled')
-    disabled = inject(Attribute('disabled')) ?? false;
+    type: string;
 
-    @HostBinding('class.my-button--is-loading')
-    loading = false;
+    isDisabled: boolean;
 
-    private _appearance: 'solid' | 'outline' = 'solid';
-    private _color?: 'red' | 'blue';
+    @HostBinding('class.c-button--is-loading')
+    isLoading = false;
+
+    private _appearance?: 'solid' | 'outline';
+    private _color?: 'red' | 'green';
     private readonly _renderer = inject(Renderer2);
     private readonly _elementRef = inject(ElementRef);
 
-    @HostBinding('attr.tabindex')
-    get tabIndex() {
-        return this.disabled ? '-1' : '0'
+    constructor(@Attribute('type') type: string, @Attribute('disabled') disabled: string) {
+        this.type = type ?? 'button';
+        this.isDisabled = disabled != null;
     }
 
-    get appearance(): 'solid' | 'outline' {
+    @HostBinding('attr.disabled')
+    get disabledAttr() {
+        return this.isDisabled ? '' : null;
+    }
+
+    @HostBinding('attr.tabindex')
+    get tabIndex() {
+        return this.isDisabled ? '-1' : '0';
+    }
+
+    get appearance(): 'solid' | 'outline' | undefined {
         return this._appearance;
     }
 
-    set appearance(value: 'solid' | 'outline') {
+    set appearance(value: 'solid' | 'outline' | undefined) {
         if (this._appearance === value) {
             return;
         }
 
-        this._renderer.removeClass(this._elementRef, `my-component--${this._appearance}`);
+        this._renderer.removeClass(
+            this._elementRef.nativeElement,
+            `c-button--${this._appearance}`
+        );
         this._appearance = value;
-        this._renderer.addClass(this._elementRef, `my-component--${this._appearance}`);
+        this._renderer.addClass(
+            this._elementRef.nativeElement,
+            `c-button--${this._appearance}`
+        );
     }
 
-    get color(): 'red' | 'blue' | undefined {
-        return this._appearance;
+    get color(): 'red' | 'green' | undefined {
+        return this._color;
     }
 
-    set color(value: 'red' | 'blue' | undefined) {
+    set color(value: 'red' | 'green' | undefined) {
         if (this._color === value) {
             return;
         }
 
         if (this._color) {
-            this._renderer.removeClass(this._elementRef, `my-component--color-${this._color}`);
+            this._renderer.removeClass(
+                this._elementRef.nativeElement,
+                `c-button--color-${this._color}`
+            );
         }
 
         this._color = value;
 
         if (this._color) {
-            this._renderer.addClass(this._elementRef, `my-component--color-${this._color}`);
+            this._renderer.addClass(
+                this._elementRef.nativeElement,
+                `c-button--color-${this._color}`
+            );
         }
     }
+
+    ngOnInit() {
+        this.appearance = 'solid';
+    }
 }
+
 ```
 
 ### With composables
+
+What if you could write the same functionality in just a few lines of code?
 
 ```ts
 @Component({
@@ -103,13 +131,13 @@ export class ButtonComponent {
 export class ButtonComponent {
 
     readonly type = useAttribute('type', { defaultValue: 'button' });
-    readonly disabled = useBooleanAttribute('disabled');
-    readonly loading = useModifier('is-loading', { initialValue: false });
+    readonly isDisabled = useBooleanAttribute('disabled');
+    readonly isLoading = useModifier('is-loading', { initialValue: false });
     readonly appearance = useModifierGroup('solid');
     readonly color = useModifierGroup(undefined, { prefix: 'color' });
 
     constructor() {
-        bindAttribute('tabindex', computed(() => this.disabled() ? '-1' : '0'));
+        bindAttribute('tabindex', computed(() => this.isDisabled() ? '-1' : '0'));
     }
 }
 ```
@@ -146,6 +174,12 @@ export class ButtonComponent {
 }
 ```
 </details>
+
+### Run the demo
+
+Try it out yourself by running `nx serve demo` and navigating to `http://localhost:4200/`.
+Or check the code for the demo in the [demo app](../../apps/demo).
+
 
 ## Packages
 

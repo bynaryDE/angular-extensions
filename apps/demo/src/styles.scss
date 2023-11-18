@@ -5,9 +5,12 @@
 
 html {
     --brand-light: var(--indigo-6);
+    --brand-dark: var(--indigo-4);
 
     --text-1-light: var(--gray-8);
-    --text-2-light: var(--gray-7);
+    --text-2-light: var(--gray-6);
+    --text-1-dark: var(--gray-1);
+    --text-2-dark: var(--gray-5);
 
     --surface-1-light: var(--gray-0);
     --surface-2-light: var(--gray-1);
@@ -15,13 +18,6 @@ html {
     --surface-4-light: var(--gray-3);
     --surface-5-light: var(--gray-4);
     --surface-6-light: var(--gray-5);
-}
-
-html {
-    --brand-dark: var(--indigo-4);
-
-    --text-1-dark: var(--gray-1);
-    --text-2-dark: var(--gray-3);
 
     --surface-1-dark: var(--gray-12);
     --surface-2-dark: var(--gray-11);

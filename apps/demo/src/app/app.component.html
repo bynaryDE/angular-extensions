@@ -9,11 +9,11 @@
             <fieldset class="control-group">
                 <legend>State</legend>
                 <label>
-                    <input #disabled type="checkbox" (change)="button.disabled.set(disabled.checked)" />
+                    <input #disabled type="checkbox" (change)="button.isDisabled.set(disabled.checked); oldButton.isDisabled = disabled.checked" />
                     Disabled
                 </label>
                 <label>
-                    <input #loading type="checkbox" (change)="button.loading.set(loading.checked)" />
+                    <input #loading type="checkbox" (change)="button.isLoading.set(loading.checked); oldButton.isLoading = loading.checked" />
                     Loading
                 </label>
             </fieldset>
@@ -21,11 +21,11 @@
             <fieldset>
                 <legend>Type</legend>
                 <label>
-                    <input type="radio" name="type" [checked]="button.type() === 'button'" (change)="button.type.set('button')" />
+                    <input type="radio" name="type" [checked]="button.type() === 'button'" (change)="button.type.set('button'); oldButton.type = 'button'" />
                     Button
                 </label>
                 <label>
-                    <input type="radio" name="type" [checked]="button.type() === 'submit'" (change)="button.type.set('submit')" />
+                    <input type="radio" name="type" [checked]="button.type() === 'submit'" (change)="button.type.set('submit'); oldButton.type = 'submit'" />
                     Submit
                 </label>
             </fieldset>
@@ -33,22 +33,50 @@
             <fieldset>
                 <legend>Appearance</legend>
                 <label>
-                    <input type="radio" name="appearance" [checked]="!button.appearance()" (change)="button.appearance.set(undefined)" />
+                    <input type="radio" name="appearance" [checked]="!button.appearance()" (change)="button.appearance.set(undefined); oldButton.appearance = undefined" />
                     Default
                 </label>
                 <label>
-                    <input type="radio" name="appearance" [checked]="button.appearance() === 'outline'" (change)="button.appearance.set('outline')" />
+                    <input type="radio" name="appearance" [checked]="button.appearance() === 'outline'" (change)="button.appearance.set('outline'); oldButton.appearance = 'outline'" />
                     Outline
                 </label>
                 <label>
-                    <input type="radio" name="appearance" [checked]="button.appearance() === 'solid'" (change)="button.appearance.set('solid')" />
+                    <input type="radio" name="appearance" [checked]="button.appearance() === 'solid'" (change)="button.appearance.set('solid'); oldButton.appearance = 'solid'" />
                     Solid
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Color</legend>
+                <label>
+                    <input type="radio" name="appearance" [checked]="!button.color()" (change)="button.color.set(undefined); oldButton.color = undefined" />
+                    Default
+                </label>
+                <label>
+                    <input type="radio" name="appearance" [checked]="button.color() === 'red'" (change)="button.color.set('red'); oldButton.color = 'red'" />
+                    Red
+                </label>
+                <label>
+                    <input type="radio" name="appearance" [checked]="button.color() === 'green'" (change)="button.color.set('green'); oldButton.color = 'green'" />
+                    Green
                 </label>
             </fieldset>
         </form>
     </aside>
 
     <div class="card output">
+        <header>
+            <h2>Old</h2>
+            <p>Using plain Angular APIs (<a href="https://github.com/bynaryDE/angular-extensions/blob/main/apps/demo/src/app/components/old-button/old-button.component.ts" target="_blank">code</a>)</p>
+        </header>
+        <demo-old-button #oldButton type="submit" (click)="onClick()">Button</demo-old-button>
+    </div>
+
+    <div class="card output">
+        <header>
+            <h2>New</h2>
+            <p>Using <strong>@bynary/composables</strong> (<a href="https://github.com/bynaryDE/angular-extensions/blob/main/apps/demo/src/app/components/button/button.component.ts" target="_blank">code</a>)</p>
+        </header>
         <demo-button #button type="submit" (click)="onClick()">Button</demo-button>
     </div>
 </main>
