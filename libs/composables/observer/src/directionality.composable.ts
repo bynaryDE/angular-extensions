@@ -11,6 +11,8 @@ export interface IUseDirectionalityOptions {
 
     /**
      * The target element to bind the directionality to. Defaults to the <html> element.
+     *
+     * @defaultValue document.firstElementChild
      */
     target?: Element;
 }
@@ -29,6 +31,18 @@ const normalizeOptions = (options?: IUseDirectionalityOptions): IUseDirectionali
 
 /**
  * Creates a signal that emits the current directionality
+ *
+ * @example
+ * ```ts
+ * const target = document.firstElementChild; // this is the default target and does not need to be specified in the options
+ * const direction = useDirectionality(); // direction() === 'ltr' | 'rtl'
+ *
+ * // If a target is specified, the 'dir' attribute of the target will be updated
+ * direction.set('ltr'); // target.getAttribute('dir') === 'ltr'
+ *
+ * // When the directionality changes, the signal will be updated
+ * target.setAttribute('dir', 'rtl'); // direction() === 'rtl'
+ * ```
  *
  * @param options - A set of {@link IUseDirectionalityOptions options}
  */
