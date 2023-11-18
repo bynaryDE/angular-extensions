@@ -5,12 +5,21 @@ interface ICustomEventDetail {
     storageArea: Storage;
 }
 
-export const CUSTOM_STORAGE_EVENT = 'θstorage';
+/**
+ * The name of the event that is emitted whenever the storage changes.
+ *
+ * @see StorageChangeEvent
+ */
+export const STORAGE_CHANGE_EVENT = 'θstorage';
 export const ALL_KEYS = Symbol('all');
 
-export class CustomStorageEvent extends CustomEvent<ICustomEventDetail> {
+/**
+ * A custom event that is emitted whenever the storage changes.
+ * This is a shim for the native StorageEvent, which is only emitted when the storage changes from a different window.
+ */
+export class StorageChangeEvent extends CustomEvent<ICustomEventDetail> {
     constructor(detail: ICustomEventDetail) {
-        super(CUSTOM_STORAGE_EVENT, { detail });
+        super(STORAGE_CHANGE_EVENT, { detail });
     }
 
     get key() {

@@ -1,4 +1,4 @@
-import { ALL_KEYS, CUSTOM_STORAGE_EVENT, CustomStorageEvent } from '../models/custom-storage-event';
+import { ALL_KEYS, STORAGE_CHANGE_EVENT, StorageChangeEvent } from '../models/storage-change.event';
 
 describe.each([
     ['localStorage', localStorage],
@@ -13,7 +13,7 @@ describe.each([
 
         it('should emit the correct storage event when adding an item', (done) => {
             // @ts-ignore - we're testing the CustomStorageEvent explicitly
-            window.addEventListener(CUSTOM_STORAGE_EVENT, (event: CustomStorageEvent) => {
+            window.addEventListener(STORAGE_CHANGE_EVENT, (event: StorageChangeEvent) => {
                 expect(event.key).toEqual('foo');
                 expect(event.newValue).toEqual('bar');
                 expect(event.oldValue).toBeNull();
@@ -29,7 +29,7 @@ describe.each([
             storage.setItem('foo', 'bar');
 
             // @ts-ignore - we're testing the CustomStorageEvent explicitly
-            window.addEventListener(CUSTOM_STORAGE_EVENT, (event: CustomStorageEvent) => {
+            window.addEventListener(STORAGE_CHANGE_EVENT, (event: StorageChangeEvent) => {
                 expect(event.key).toEqual('foo');
                 expect(event.newValue).toEqual('baz');
                 expect(event.oldValue).toEqual('bar');
@@ -46,7 +46,7 @@ describe.each([
 
         it('should emit an event even if the key was not present yet', (done) => {
             // @ts-ignore - we're testing the CustomStorageEvent explicitly
-            window.addEventListener(CUSTOM_STORAGE_EVENT, (event: CustomStorageEvent) => {
+            window.addEventListener(STORAGE_CHANGE_EVENT, (event: StorageChangeEvent) => {
                 expect(event.key).toEqual('foo');
                 expect(event.newValue).toBeUndefined();
                 expect(event.oldValue).toBeNull();
@@ -62,7 +62,7 @@ describe.each([
             storage.setItem('foo', 'bar');
 
             // @ts-ignore - we're testing the CustomStorageEvent explicitly
-            window.addEventListener(CUSTOM_STORAGE_EVENT, (event: CustomStorageEvent) => {
+            window.addEventListener(STORAGE_CHANGE_EVENT, (event: StorageChangeEvent) => {
                 expect(event.key).toEqual('foo');
                 expect(event.newValue).toBeUndefined();
                 expect(event.oldValue).toEqual('bar');
@@ -81,7 +81,7 @@ describe.each([
             storage.setItem('foo', 'bar');
 
             // @ts-ignore - we're testing the CustomStorageEvent explicitly
-            window.addEventListener(CUSTOM_STORAGE_EVENT, (event: CustomStorageEvent) => {
+            window.addEventListener(STORAGE_CHANGE_EVENT, (event: StorageChangeEvent) => {
                 expect(event.key).toEqual(ALL_KEYS);
                 expect(event.newValue).toBeUndefined();
                 expect(event.oldValue).toBeUndefined();

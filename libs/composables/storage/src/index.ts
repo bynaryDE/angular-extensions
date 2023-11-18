@@ -1,3 +1,3 @@
-import './utils/storage.polyfill';
+import './utils/storage-change.shim';
 
 export * from './public-api';

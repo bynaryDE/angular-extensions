@@ -1,18 +1,50 @@
 import { effect, Signal, untracked } from '@angular/core';
-import { normalizeBindStorageOptions } from './bind-storage.composable';
-import { IStorageOptions } from './models/storage-options.interface';
+import { IBaseStorageOptions, normalizeBaseStorageOptions } from './base-storage';
 
+/**
+ * Options for {@link writeToStorage}.
+ */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface IWriteToStorageOptions extends IStorageOptions {
+export interface IWriteToStorageOptions extends IBaseStorageOptions {
 
 }
 
+/**
+ * @internal
+ * Normalizes the options for {@link writeToStorage}.
+ *
+ * @param options
+ */
+const normalizeWriteToStorageOptions = (options?: IWriteToStorageOptions) => normalizeBaseStorageOptions(options);
+
+/**
+ * Writes the value of the given signal to the storage whenever it changes.
+ * This will **not** update the signal when the value in the storage changes.
+ *
+ * @example
+ * ```ts
+ * const name = signal('Jane');
+ *
+ * // will set the value in the storage to 'Jane', even if it was previously set to something else
+ * writeToStorage('name', name); // localStorage.getItem('name') === 'Jane';
+ *
+ * // changing the value in the storage will **not** update the signal
+ * localStorage.setItem('name', 'Alice'); // name() === 'Jane';
+ *
+ * // changing the signal directly will update the storage
+ * name.set('Mary'); // localStorage.getItem('name') === 'Mary';
+ * ```
+ *
+ * @param key - The key to use for the storage
+ * @param value - A signal defining the value to write to the storage
+ * @param options - A set of options for the storage
+ */
 export const writeToStorage = <T extends Signal<string | null | undefined>>(
     key: string,
     value: T,
     options?: IWriteToStorageOptions
 ): T => {
-    const { storage } = normalizeBindStorageOptions(options);
+    const { storage } = normalizeWriteToStorageOptions(options);
 
     effect(() => {
         const currentValue = value();

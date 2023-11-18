@@ -1,8 +1,16 @@
-import { ALL_KEYS, CustomStorageEvent } from '../models/custom-storage-event';
+import { ALL_KEYS, StorageChangeEvent } from '../models/storage-change.event';
+
+/**
+ * @packageDocumentation
+ * A shim that dispatches a custom event whenever the storage changes.
+ * We need this because the native StorageEvent is only emitted when the storage changes from a different window.
+ *
+ * @see CustomStorageEvent
+ */
 
 Storage.prototype.setItem = new Proxy(Storage.prototype.setItem, {
     apply(target, thisArg: Storage, argumentList: [ string, string ]) {
-        const event = new CustomStorageEvent({
+        const event = new StorageChangeEvent({
             key: argumentList[0] as string,
             oldValue: thisArg.getItem(argumentList[0]),
             newValue: argumentList[1],
@@ -18,7 +26,7 @@ Storage.prototype.setItem = new Proxy(Storage.prototype.setItem, {
 
 Storage.prototype.removeItem = new Proxy(Storage.prototype.removeItem, {
     apply(target, thisArg: Storage, argumentList: [ string ]) {
-        const event = new CustomStorageEvent({
+        const event = new StorageChangeEvent({
             key: argumentList[0],
             oldValue: thisArg.getItem(argumentList[0]),
             storageArea: thisArg
@@ -33,7 +41,7 @@ Storage.prototype.removeItem = new Proxy(Storage.prototype.removeItem, {
 
 Storage.prototype.clear = new Proxy(Storage.prototype.clear, {
     apply(target, thisArg: Storage, argumentList: []) {
-        const event = new CustomStorageEvent({
+        const event = new StorageChangeEvent({
             key: ALL_KEYS,
             storageArea: thisArg
         });

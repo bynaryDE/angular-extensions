@@ -1,8 +1,8 @@
 /**
  * @module @bynary/composables/storage
+ *
+ * Composables for reading and writing data to the storage of the browser.
  */
 
-export * from './bind-storage.composable';
-export * from './read-from-storage.composable';
-export * from './use-storage.composable';
-export * from './write-to-storage.composable';
+export { IBindStorageOptions, bindStorage } from './bind-storage.composable';
+export { IUseStorageOptions, useStorage } from './use-storage.composable';
