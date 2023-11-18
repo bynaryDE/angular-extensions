@@ -165,13 +165,17 @@ import { bindAttribute } from './attribute.composable';
 })
 export class ButtonComponent {
 
+    readonly disabled = input(false);
+    readonly loading = input(false);
+    readonly appearance = input('solid');
+    readonly color = input(undefined);
     readonly type = useAttribute('type', { defaultValue: 'button' });
-    readonly disabled = bindBooleanAttribute('disabled', input(false, { alias: 'disabled' }));
-    readonly loading = bindModifier('is-loading', input(false, { alias: 'loading' }), { initialValue: false });
-    readonly appearance = bindModifierGroup(input('solid', { alias: 'appearance'}));
-    readonly color = bindModifierGroup(undefined, input({ alias: 'color'}), { prefix: 'color' });
 
     constructor() {
+        bindBooleanAttribute('disabled', this.disabled);
+        bindModifier('is-loading', this.loading);
+        bindModifierGroup(this.appearance);
+        bindModifierGroup(this.color, { prefix: 'color' });
         bindAttribute('tabindex', computed(() => this.disabled() ? '-1' : '0'));
     }
 }
