@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.1.2...composables-v0.1.3) (2023-11-19)
+
+
+### Bug Fixes
+
+* **composables/class:** base modifier type fully on generic ([695591e](https://github.com/bynaryDE/angular-extensions/commit/695591ee3d4af8f0d48c049980ac923b70ab078f))
+
 ## [0.1.2](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.1.1...composables-v0.1.2) (2023-11-18)
 
 
