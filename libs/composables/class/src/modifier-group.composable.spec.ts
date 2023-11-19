@@ -10,7 +10,7 @@ import { provideBaseClass } from './provide-base-class';
     providers: [ provideBaseClass('c-test') ]
 })
 class TestComponent {
-    readonly color = useModifierGroup<'primary' | 'secondary'>('primary');
+    readonly color = useModifierGroup<'primary' | 'secondary' | null | undefined>('primary');
     readonly appearance = useModifierGroup(undefined);
 }
 

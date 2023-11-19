@@ -121,7 +121,7 @@ const normalizeOptions = (options?: IBindModifierGroupOptions) => ({
  * @param modifier - The signal to bind
  * @param options - A set of {@link IBindModifierGroupOptions options}
  */
-export const bindModifierGroup = <Modifier extends string, T extends Signal<Modifier | null | undefined>>(
+export const bindModifierGroup = <Modifier extends string | null | undefined, T extends Signal<Modifier>>(
     modifier: T,
     options?: IBindModifierGroupOptions
 ) => {
@@ -183,11 +183,11 @@ export const bindModifierGroup = <Modifier extends string, T extends Signal<Modi
  * @param initialValue - The initial modifier
  * @param options - A set of {@link IBindModifierGroupOptions options}
  */
-export const useModifierGroup = <Modifier extends string>(
-    initialValue?: Modifier,
+export const useModifierGroup = <Modifier extends string | null | undefined>(
+    initialValue: Modifier,
     options?: IBindModifierGroupOptions
 ) => {
-    const modifier = signal<Modifier | null | undefined>(initialValue);
+    const modifier = signal(initialValue);
 
     bindModifierGroup(modifier, options);
 
