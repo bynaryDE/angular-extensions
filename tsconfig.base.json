@@ -10,7 +10,10 @@
         "importHelpers": true,
         "target": "es2015",
         "module": "esnext",
-        "lib": ["es2020", "dom"],
+        "lib": [
+            "es2020",
+            "dom"
+        ],
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
@@ -21,14 +24,22 @@
             "@bynary/composables/class": [
                 "libs/composables/class/src/index.ts"
             ],
+            "@bynary/composables/ngxs": [
+                "libs/composables/ngxs/src/index.ts"
+            ],
             "@bynary/composables/observer": [
                 "libs/composables/observer/src/index.ts"
             ],
             "@bynary/composables/storage": [
                 "libs/composables/storage/src/index.ts"
             ],
-            "@bynary/composables/title": ["libs/composables/title/src/index.ts"]
+            "@bynary/composables/title": [
+                "libs/composables/title/src/index.ts"
+            ]
         }
     },
-    "exclude": ["node_modules", "tmp"]
+    "exclude": [
+        "node_modules",
+        "tmp"
+    ]
 }
