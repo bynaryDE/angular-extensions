@@ -55,7 +55,9 @@
                     "libs/composables/title/**/*.ts",
                     "libs/composables/title/**/*.html",
                     "libs/composables/theme/**/*.ts",
-                    "libs/composables/theme/**/*.html"
+                    "libs/composables/theme/**/*.html",
+                    "libs/composables/ngxs/**/*.ts",
+                    "libs/composables/ngxs/**/*.html"
                 ]
             }
         }
