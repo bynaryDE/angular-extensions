@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.1.3...composables-v0.1.4) (2023-11-20)
+
+
+### Features
+
+* **composables:** add ngxs composables ([#15](https://github.com/bynaryDE/angular-extensions/issues/15)) ([2c42140](https://github.com/bynaryDE/angular-extensions/commit/2c421400fd9b2d7df7abff36d6f3943e95b0de25))
+
 ## [0.1.3](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.1.2...composables-v0.1.3) (2023-11-19)
 
 
