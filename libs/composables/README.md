@@ -1,4 +1,5 @@
 # @bynary/composables
+[![npm](https://img.shields.io/npm/v/%40bynary%2Fcomposables)](https://www.npmjs.com/package/@bynary/composables)
 
 A collection of composable functions for Angular based on signals.
 
