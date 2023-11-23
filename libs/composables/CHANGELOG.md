@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.1.4...composables-v0.2.0) (2023-11-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **composables/class:** remove applyBaseClass option
+
+### Code Refactoring
+
+* **composables/class:** remove applyBaseClass option ([187a022](https://github.com/bynaryDE/angular-extensions/commit/187a022f2cde8967a1e5f9c9b4c25a1d3d02031b))
+
 ## [0.1.4](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.1.3...composables-v0.1.4) (2023-11-20)
 
 
