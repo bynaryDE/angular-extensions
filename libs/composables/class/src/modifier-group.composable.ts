@@ -27,29 +27,6 @@ export interface IBindModifierGroupOptions {
     baseClass?: string;
 
     /**
-     * Whether to apply the base class to the host element. Defaults to `true`
-     *
-     * @example
-     * If `true` or not defined, the base class will be applied to the host element, no matter the signal's value:
-     *
-     * ```ts
-     * const color = signal('red');
-     *
-     * bindModifierGroup(color, { baseClass: 'my-button' }); // <my-component class="my-button my-button--red"></my-component>
-     * ```
-     *
-     * @example
-     * If `false`, the base class will not be applied to the host element, no matter the signal's value:
-     *
-     * ```ts
-     * const color = signal('red');
-     *
-     * bindModifierGroup(color, { baseClass: 'my-button', applyBaseClass: false }); // <my-component class="my-button--red"></my-component>
-     * ```
-     */
-    applyBaseClass?: boolean;
-
-    /**
      * A prefix to prepend to the modifier when creating the modifier class: `<base-class>--<prefix>-<modifier>`
      *
      * @example
@@ -78,7 +55,6 @@ export interface IBindModifierGroupOptions {
  */
 const normalizeOptions = (options?: IBindModifierGroupOptions) => ({
     baseClass: options?.baseClass ?? inject(BASE_CLASS),
-    applyBaseClass: options?.applyBaseClass ?? true,
     prefix: options?.prefix
 });
 
@@ -128,15 +104,13 @@ export const bindModifierGroup = <Modifier extends string | null | undefined, T 
     modifier: T,
     options?: IBindModifierGroupOptions
 ) => {
-    const { baseClass, applyBaseClass, prefix } = normalizeOptions(options);
+    const { baseClass, prefix } = normalizeOptions(options);
 
     if (!baseClass) {
         throw new Error('No base class was provided');
     }
 
-    if (applyBaseClass) {
-        addClass(baseClass);
-    }
+    addClass(baseClass);
 
     const prefixedModifier = prefix
         ? computed(() => (modifier() ? `${prefix}-${modifier()}` : null))

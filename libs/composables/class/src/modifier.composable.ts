@@ -25,29 +25,6 @@ export interface IBindModifierOptions {
      * ```
      */
     baseClass?: string;
-
-    /**
-     * Whether to apply the base class to the host element. Defaults to `true`
-     *
-     * @example
-     * If `true` or not defined, the base class will be applied to the host element, no matter the signal's value:
-     *
-     * ```ts
-     * const isLoading = signal(true);
-     *
-     * bindModifier('is-loading', isLoading, { baseClass: 'my-component' }); // <my-component class="my-component my-component--is-loading"></my-component>
-     * ```
-     *
-     * @example
-     * If `false`, the base class will not be applied to the host element, no matter the signal's value:
-     *
-     * ```ts
-     * const isLoading = signal(true);
-     *
-     * bindModifier('is-loading', isLoading, { baseClass: 'my-component', applyBaseClass: false }); // <my-component class="my-component--is-loading"></my-component>
-     * ```
-     */
-    applyBaseClass?: boolean;
 }
 
 type NormalizedBindModifierOptions = Required<IBindModifierOptions>;
@@ -59,8 +36,7 @@ type NormalizedBindModifierOptions = Required<IBindModifierOptions>;
  * @returns The normalized options
  */
 const normalizeBindModifierOptions = (options?: IBindModifierOptions): NormalizedBindModifierOptions => ({
-    baseClass: options?.baseClass ?? inject(BASE_CLASS),
-    applyBaseClass: options?.applyBaseClass ?? true
+    baseClass: options?.baseClass ?? inject(BASE_CLASS)
 });
 
 /**
@@ -139,15 +115,13 @@ export const bindModifier = <T extends Signal<boolean>>(
     apply: T,
     options?: IBindModifierOptions
 ) => {
-    const { baseClass, applyBaseClass } = normalizeBindModifierOptions(options);
+    const { baseClass } = normalizeBindModifierOptions(options);
 
     if (!baseClass) {
         throw new Error('No base class was provided');
     }
 
-    if (applyBaseClass) {
-        addClass(baseClass);
-    }
+    addClass(baseClass);
 
     bindClass(`${baseClass}--${modifier}`, apply);
 
