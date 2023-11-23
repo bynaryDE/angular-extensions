@@ -1,14 +1,13 @@
 import { inject, Signal, signal, WritableSignal } from '@angular/core';
-
-import { addClass } from './utils/class.utils';
 import { bindClass } from './class.composable';
 import { BASE_CLASS } from './provide-base-class';
+
+import { addClass } from './utils/class.utils';
 
 /**
  * A set of options for {@link bindModifier}
  */
 export interface IBindModifierOptions {
-
     /**
      * The base class. There is usually one base class per component.
      *
@@ -110,11 +109,7 @@ const normalizeBindModifierOptions = (options?: IBindModifierOptions): Normalize
  * @param options - A set of {@link IBindModifierOptions options}
  * @returns The passed in signal (`apply` parameter)
  */
-export const bindModifier = <T extends Signal<boolean>>(
-    modifier: string,
-    apply: T,
-    options?: IBindModifierOptions
-) => {
+export const bindModifier = <T extends Signal<boolean>>(modifier: string, apply: T, options?: IBindModifierOptions) => {
     const { baseClass } = normalizeBindModifierOptions(options);
 
     if (!baseClass) {
@@ -173,10 +168,7 @@ const normalizeUseModifierOptions = (options?: IUseModifierOptions): NormalizedU
  * @param options - A set of {@link IUseModifierOptions options}
  * @returns A signal that allows to toggle the given modifier class on the host element
  */
-export const useModifier = (
-    modifier: string,
-    options?: IUseModifierOptions
-): WritableSignal<boolean> => {
+export const useModifier = (modifier: string, options?: IUseModifierOptions): WritableSignal<boolean> => {
     const normalizedOptions = normalizeUseModifierOptions(options);
     const apply = signal<boolean>(normalizedOptions.initialValue);
 

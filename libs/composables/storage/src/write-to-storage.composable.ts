@@ -5,9 +5,7 @@ import { IBaseStorageOptions, normalizeBaseStorageOptions } from './base-storage
  * Options for {@link writeToStorage}.
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface IWriteToStorageOptions extends IBaseStorageOptions {
-
-}
+export interface IWriteToStorageOptions extends IBaseStorageOptions {}
 
 /**
  * @internal
@@ -62,4 +60,3 @@ export const writeToStorage = <T extends Signal<string | null | undefined>>(
 
     return value;
 };
-

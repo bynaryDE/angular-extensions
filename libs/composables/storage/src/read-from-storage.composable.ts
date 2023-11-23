@@ -6,7 +6,6 @@ import { IBaseStorageOptions, normalizeBaseStorageOptions } from './base-storage
  * Options for {@link readFromStorage}.
  */
 export interface IReadFromStorageOptions extends IBaseStorageOptions {
-
     /**
      * Whether to skip reading the current value from the storage initially.
      * If set to `true`, the value will be read from the storage only when it changes.
@@ -25,12 +24,14 @@ type NormalizedReadFromStorageOptions = Required<IReadFromStorageOptions>;
  * @param options - The options to normalize.
  * @returns The normalized options.
  */
-export const normalizeReadFromStorageOptions = (options?: IReadFromStorageOptions): NormalizedReadFromStorageOptions => {
+export const normalizeReadFromStorageOptions = (
+    options?: IReadFromStorageOptions
+): NormalizedReadFromStorageOptions => {
     return {
         ...normalizeBaseStorageOptions(options),
         skipInitialRead: options?.skipInitialRead ?? false
     };
-}
+};
 
 /**
  * Reads the value from the storage into the signal, whenever the storage value changes.
@@ -70,9 +71,11 @@ export const readFromStorage = <T extends WritableSignal<string | null | undefin
     }
 
     const listener: EventListener = (event: Event) => {
-        if (!(event instanceof StorageChangeEvent)
-            || event.storageArea !== storage
-            || (event.key !== key && event.key !== ALL_KEYS)) {
+        if (
+            !(event instanceof StorageChangeEvent) ||
+            event.storageArea !== storage ||
+            (event.key !== key && event.key !== ALL_KEYS)
+        ) {
             return;
         }
 

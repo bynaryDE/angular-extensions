@@ -1,14 +1,17 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 import { WritableSignal } from '@angular/core';
-import { IReadFromStorageOptions, normalizeReadFromStorageOptions, readFromStorage } from './read-from-storage.composable';
+import {
+    IReadFromStorageOptions,
+    normalizeReadFromStorageOptions,
+    readFromStorage
+} from './read-from-storage.composable';
 import { writeToStorage } from './write-to-storage.composable';
 
 /**
  * Options for {@link bindStorage}.
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface IBindStorageOptions extends IReadFromStorageOptions {
-}
+export interface IBindStorageOptions extends IReadFromStorageOptions {}
 
 /**
  * @internal
@@ -49,4 +52,4 @@ export const bindStorage = <T extends WritableSignal<string | null | undefined>>
     options?: IBindStorageOptions
 ) => {
     return readFromStorage(key, writeToStorage(key, value, options), options);
-}
+};

@@ -60,9 +60,7 @@ export type ClassList = string | string[];
  * @param value - The signal whose value should be bound
  * @returns The passed in signal (`value` parameter)
  */
-export const bindClasses = <T extends Signal<ClassList | null>>(
-    value: T
-) => {
+export const bindClasses = <T extends Signal<ClassList | null>>(value: T) => {
     const element = inject(ElementRef).nativeElement;
     const renderer = inject(Renderer2);
 

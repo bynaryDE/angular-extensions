@@ -5,7 +5,6 @@ import { bindStorage, IBindStorageOptions, normalizeBindStorageOptions } from '.
  * Options for {@link useStorage}
  */
 export interface IUseStorageOptions<T extends string> extends IBindStorageOptions {
-
     /**
      * The initial value to use for the storage.
      *
@@ -27,9 +26,9 @@ const normalizeUseStorageOptions = <T extends string>(key: string, options?: IUs
 
     return {
         ...baseStorageOptions,
-        initialValue: options?.initialValue ?? baseStorageOptions.storage.getItem(key) as T | null
+        initialValue: options?.initialValue ?? (baseStorageOptions.storage.getItem(key) as T | null)
     };
-}
+};
 /**
  * Creates a signal that is synced with the given storage.
  * When the value of the signal changes, it will be written to the storage.
@@ -51,10 +50,7 @@ const normalizeUseStorageOptions = <T extends string>(key: string, options?: IUs
  * @param options - A set of options for the storage
  * @returns A signal that is synced with the given storage
  */
-export const useStorage = <T extends string>(
-    key: string,
-    options?: IUseStorageOptions<T>
-) => {
+export const useStorage = <T extends string>(key: string, options?: IUseStorageOptions<T>) => {
     const { storage, initialValue } = normalizeUseStorageOptions(key, options);
     return bindStorage(key, signal(initialValue), { storage });
 };

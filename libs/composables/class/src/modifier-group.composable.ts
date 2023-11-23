@@ -8,7 +8,6 @@ import { BASE_CLASS } from './provide-base-class';
  * A set of options for {@link bindModifierGroup} and {@link useModifierGroup}
  */
 export interface IBindModifierGroupOptions {
-
     /**
      * The base CSS class used to create a modifier-class. There is usually one base class per component: `<base-class>--<modifier>`
      *
@@ -57,7 +56,6 @@ const normalizeOptions = (options?: IBindModifierGroupOptions) => ({
     baseClass: options?.baseClass ?? inject(BASE_CLASS),
     prefix: options?.prefix
 });
-
 
 /**
  * Binds the value of the given signal to the host element as a modifier class.
@@ -112,18 +110,13 @@ export const bindModifierGroup = <Modifier extends string | null | undefined, T 
 
     addClass(baseClass);
 
-    const prefixedModifier = prefix
-        ? computed(() => (modifier() ? `${prefix}-${modifier()}` : null))
-        : modifier;
-    const className = computed(() =>
-        prefixedModifier() ? `${baseClass}--${prefixedModifier()}` : null
-    );
+    const prefixedModifier = prefix ? computed(() => (modifier() ? `${prefix}-${modifier()}` : null)) : modifier;
+    const className = computed(() => (prefixedModifier() ? `${baseClass}--${prefixedModifier()}` : null));
 
     bindClasses(className);
 
     return modifier;
 };
-
 
 /**
  * Creates a signal that binds its value as a modifier class on the host element.

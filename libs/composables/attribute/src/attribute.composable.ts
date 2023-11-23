@@ -119,7 +119,7 @@ type NormalizedUseAttributeOptions = IUseAttributeOptions & Required<Pick<IUseAt
  */
 const normalizeUseAttributeOptions = (options?: IUseAttributeOptions): NormalizedUseAttributeOptions => ({
     ...(options ?? {}),
-    target: options?.target ?? inject(ElementRef).nativeElement as HTMLElement
+    target: options?.target ?? (inject(ElementRef).nativeElement as HTMLElement)
 });
 
 type NormalizedBindAttributeOptions = IBindAttributeOptions & Required<Pick<IBindAttributeOptions, 'target'>>;
@@ -133,7 +133,7 @@ type NormalizedBindAttributeOptions = IBindAttributeOptions & Required<Pick<IBin
  */
 const normalizeBindAttributeOptions = (options?: IBindAttributeOptions): NormalizedBindAttributeOptions => ({
     ...(options ?? {}),
-    target: options?.target ?? inject(ElementRef).nativeElement as HTMLElement
+    target: options?.target ?? (inject(ElementRef).nativeElement as HTMLElement)
 });
 
 /**
@@ -197,24 +197,20 @@ const normalizeBindAttributeOptions = (options?: IBindAttributeOptions): Normali
  * @param options - A set of {@link IUseAttributeOptions options}
  * @returns A signal holding the value of the attribute
  */
-export function useAttribute (
+export function useAttribute(
     attributeName: string,
     options?: IUseAttributeOptions
 ): WritableSignal<string | null | undefined> {
-    const { namespace, initialValue, defaultValue, target } =
-        normalizeUseAttributeOptions(options);
+    const { namespace, initialValue, defaultValue, target } = normalizeUseAttributeOptions(options);
 
-    const initialAssignedValue = target.getAttributeNS(
-        namespace ?? null,
-        attributeName
-    );
+    const initialAssignedValue = target.getAttributeNS(namespace ?? null, attributeName);
 
     const value = signal<string | null | undefined>(
         (typeof initialValue !== 'undefined' ? initialValue : initialAssignedValue) ?? defaultValue
     );
 
     return bindAttribute(attributeName, value, { namespace, defaultValue, target });
-};
+}
 
 /**
  * Binds an attribute to the host element or a different target element. Similar to `useAttribute`, but accepts a signal as an input instead of creating a new one and won't read the value from the template.
@@ -259,8 +255,7 @@ export const bindAttribute = <T extends Signal<string | null | undefined>>(
 
     effect(() => {
         const currentValue = value();
-        const newValue =
-            typeof currentValue !== 'undefined' ? currentValue : defaultValue;
+        const newValue = typeof currentValue !== 'undefined' ? currentValue : defaultValue;
 
         if (newValue != null) {
             renderer.setAttribute(target, attributeName, newValue, namespace);

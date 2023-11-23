@@ -11,19 +11,17 @@ interface IBookStateModel {
 class AddBook {
     static readonly type = '[Books] Add';
 
-    constructor(public book: string) {
-    }
+    constructor(public book: string) {}
 }
 
 @State<IBookStateModel>({
     name: 'books',
     defaults: {
-        books: [ 'The Hobbit' ]
+        books: ['The Hobbit']
     }
 })
 @Injectable()
 class BooksState {
-
     @Selector()
     static books(state: IBookStateModel) {
         return state.books;
@@ -31,17 +29,15 @@ class BooksState {
 
     @Action(AddBook)
     addBook(ctx: StateContext<IBookStateModel>, action: AddBook) {
-        ctx.patchState({ books: [ ...ctx.getState().books, action.book ] });
+        ctx.patchState({ books: [...ctx.getState().books, action.book] });
     }
 }
 
 describe('select composable', () => {
-
     describe('useSelect', () => {
-
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [ NgxsModule.forRoot([ BooksState ]) ]
+                imports: [NgxsModule.forRoot([BooksState])]
             });
         });
 
@@ -57,7 +53,7 @@ describe('select composable', () => {
                 const result = useSelect(BooksState.books);
 
                 expect(isSignal(result)).toBe(true);
-                expect(result()).toEqual([ 'The Hobbit' ]);
+                expect(result()).toEqual(['The Hobbit']);
             });
         });
 
@@ -81,11 +77,11 @@ describe('select composable', () => {
 
                 const result = useSelect(BooksState.books);
 
-                expect(result()).toEqual([ 'The Hobbit' ]);
+                expect(result()).toEqual(['The Hobbit']);
 
                 store.dispatch(new AddBook('The Lord of the Rings'));
 
-                expect(result()).toEqual([ 'The Hobbit', 'The Lord of the Rings' ]);
+                expect(result()).toEqual(['The Hobbit', 'The Lord of the Rings']);
             });
         });
     });

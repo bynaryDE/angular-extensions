@@ -26,10 +26,7 @@ import { map } from 'rxjs';
 export const useBreakpoint = (breakpoint: string) => {
     const breakpointObserver = inject(BreakpointObserver);
 
-    return toSignal(
-        breakpointObserver.observe(breakpoint).pipe(map((v) => v.matches)),
-        {
-            initialValue: breakpointObserver.isMatched(breakpoint)
-        }
-    );
+    return toSignal(breakpointObserver.observe(breakpoint).pipe(map((v) => v.matches)), {
+        initialValue: breakpointObserver.isMatched(breakpoint)
+    });
 };

@@ -22,8 +22,6 @@ export const useMediaQuery = (query: string) => {
     return computed(() => {
         const currentEvent = event();
 
-        return currentEvent == null
-            ? mediaQueryList.matches
-            : currentEvent?.matches;
+        return currentEvent == null ? mediaQueryList.matches : currentEvent?.matches;
     });
 };

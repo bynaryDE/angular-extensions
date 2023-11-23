@@ -1,7 +1,6 @@
 import { DestroyRef, ElementRef, inject, Signal, signal } from '@angular/core';
 import { EventName, EventType } from './types/dom-events';
 
-
 /**
  * Creates a signal that listens for events on the given target and holds the last corresponding event.
  * By default, the target is the {@link ElementRef#nativeElement native element} of the current component.
@@ -37,9 +36,7 @@ export const useEvent = <Target extends EventTarget, Name extends string & Event
     target.addEventListener(eventName, listener, options);
 
     if (destroyRef) {
-        destroyRef.onDestroy(() =>
-            target.removeEventListener(eventName, listener)
-        );
+        destroyRef.onDestroy(() => target.removeEventListener(eventName, listener));
     }
 
     return events;

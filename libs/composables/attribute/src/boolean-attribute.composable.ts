@@ -118,7 +118,8 @@ export interface IUseBooleanAttributeOptions extends IBindBooleanAttributeOption
  * @param options - The options to normalize
  * @internal
  */
-const normalizeUseBooleanAttributeOptions = (options?: IUseBooleanAttributeOptions): IUseBooleanAttributeOptions => options ?? {};
+const normalizeUseBooleanAttributeOptions = (options?: IUseBooleanAttributeOptions): IUseBooleanAttributeOptions =>
+    options ?? {};
 
 /**
  * Normalizes the given options.
@@ -126,7 +127,8 @@ const normalizeUseBooleanAttributeOptions = (options?: IUseBooleanAttributeOptio
  * @param options - The options to normalize
  * @internal
  */
-const normalizeBindBooleanAttributeOptions = (options?: IBindBooleanAttributeOptions): IBindBooleanAttributeOptions => options ?? {};
+const normalizeBindBooleanAttributeOptions = (options?: IBindBooleanAttributeOptions): IBindBooleanAttributeOptions =>
+    options ?? {};
 
 /**
  * @internal
@@ -214,8 +216,7 @@ export const bindBooleanAttribute = <T extends Signal<boolean | undefined>>(
     value: T,
     options?: IBindBooleanAttributeOptions
 ) => {
-    const { namespace, defaultValue, target } =
-        normalizeBindBooleanAttributeOptions(options);
+    const { namespace, defaultValue, target } = normalizeBindBooleanAttributeOptions(options);
 
     const attribute = useAttribute(attributeName, { namespace, target: target });
     const defaultAttributeValue = toAttributeValue(defaultValue);

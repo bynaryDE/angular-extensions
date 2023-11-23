@@ -4,7 +4,6 @@ import { effect, ElementRef, inject, Renderer2, Signal, signal, WritableSignal }
  * A set of options for {@link useClass}
  */
 export interface IUseClassOptions {
-
     /**
      * Whether the class should be added initially. Defaults to `true`
      *
@@ -63,10 +62,7 @@ const normalizeUseClassOptions = (options?: IUseClassOptions): NormalizedUseClas
  * @param className - The name of the class to toggle
  * @param options - A set of options
  */
-export const useClass = (
-    className: string,
-    options?: IUseClassOptions
-): WritableSignal<boolean> => {
+export const useClass = (className: string, options?: IUseClassOptions): WritableSignal<boolean> => {
     const { initialValue } = normalizeUseClassOptions(options);
     const value = signal(initialValue);
 
@@ -106,10 +102,7 @@ export const useClass = (
  * @param className - The name of the class to toggle
  * @param value - The signal to determine whether the class should be added or removed. When the signal's value is true, the class will be applied. Else it will be removed.
  */
-export const bindClass = <T extends Signal<boolean>>(
-    className: string,
-    value: T
-) => {
+export const bindClass = <T extends Signal<boolean>>(className: string, value: T) => {
     const element = inject(ElementRef).nativeElement;
     const renderer = inject(Renderer2);
 

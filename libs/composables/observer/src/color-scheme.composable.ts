@@ -19,7 +19,9 @@ interface IUseColorSchemeOptions<CustomColorScheme extends ColorScheme = ColorSc
     store?: WritableSignal<CustomColorScheme | null>;
 }
 
-type NormalizedUseColorSchemeOptions<CustomColorScheme extends ColorScheme = ColorScheme> = Required<IUseColorSchemeOptions<CustomColorScheme>>;
+type NormalizedUseColorSchemeOptions<CustomColorScheme extends ColorScheme = ColorScheme> = Required<
+    IUseColorSchemeOptions<CustomColorScheme>
+>;
 
 /**
  * @internal
@@ -28,7 +30,9 @@ type NormalizedUseColorSchemeOptions<CustomColorScheme extends ColorScheme = Col
  * @param options - A set of {@link IUseColorSchemeOptions options}
  * @returns The normalized options
  */
-const normalizeUseColorSchemeOptions = <CustomColorScheme extends ColorScheme = ColorScheme>(options?: IUseColorSchemeOptions<CustomColorScheme>): NormalizedUseColorSchemeOptions<CustomColorScheme> => ({
+const normalizeUseColorSchemeOptions = <CustomColorScheme extends ColorScheme = ColorScheme>(
+    options?: IUseColorSchemeOptions<CustomColorScheme>
+): NormalizedUseColorSchemeOptions<CustomColorScheme> => ({
     store: options?.store ?? signal<CustomColorScheme | null>(null)
 });
 
@@ -100,7 +104,9 @@ export const usePreferredColorScheme = () => {
  * - store: A signal to override the preferred color scheme
  * - resolved: The resolved color scheme, based on the preferred color scheme and the override. The override will be used if defined, otherwise the preferred color scheme.
  */
-export const useColorScheme = <CustomColorScheme extends ColorScheme = ColorScheme>(options?: IUseColorSchemeOptions<CustomColorScheme>) => {
+export const useColorScheme = <CustomColorScheme extends ColorScheme = ColorScheme>(
+    options?: IUseColorSchemeOptions<CustomColorScheme>
+) => {
     const preferred = usePreferredColorScheme();
     const { store } = normalizeUseColorSchemeOptions(options);
 

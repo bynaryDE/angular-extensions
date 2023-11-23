@@ -8,7 +8,6 @@ import { bindAttribute } from '@bynary/composables/attribute';
  * A set of options for the {@link useDirectionality} composable
  */
 export interface IUseDirectionalityOptions {
-
     /**
      * The target element to bind the directionality to. Defaults to the <html> element.
      *
@@ -28,7 +27,7 @@ const normalizeOptions = (options?: IUseDirectionalityOptions): IUseDirectionali
     return {
         target: options?.target ?? inject(DOCUMENT).firstElementChild ?? undefined
     };
-}
+};
 
 /**
  * Creates a signal that emits the current directionality
@@ -54,9 +53,7 @@ export const useDirectionality = (options?: IUseDirectionalityOptions) => {
     const destroyRef = inject(DestroyRef);
     const value = signal(directionality.value);
 
-    directionality.change
-        .pipe(takeUntilDestroyed(destroyRef))
-        .subscribe((v) => value.set(v));
+    directionality.change.pipe(takeUntilDestroyed(destroyRef)).subscribe((v) => value.set(v));
 
     if (normalizedOptions.target) {
         bindAttribute('dir', value, { target: normalizedOptions.target });

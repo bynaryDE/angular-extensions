@@ -3,7 +3,6 @@
  * Base options for storage composables
  */
 export interface IBaseStorageOptions {
-
     /**
      * The storage to use.
      *
