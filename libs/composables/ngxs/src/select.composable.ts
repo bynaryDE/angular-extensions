@@ -8,7 +8,7 @@ export function useSelect<T>(selector: (state: any, ...states: any[]) => T): Sig
 export function useSelect<T = any>(selector: string | Type<any>): Signal<T>;
 export function useSelect<T>(selector: StateToken<T>): Signal<T>;
 /**
- * Selects a slice of data from the store.
+ * Selects a slice of data from an {@link Store NGXS store}.
  * Uses {@link Store#select} internally and converts its observable to a signal.
  *
  * @example
@@ -33,11 +33,11 @@ export function useSelect<T>(selector: StateToken<T>): Signal<T>;
  * ```
  *
  * @param selector The selector function or key
+ * @returns A signal holding the selected slice of state
  */
 export function useSelect<T>(selector: any) {
     const store = inject(Store);
 
     return toSignal(store.select<T>(selector));
 }
-
 /* eslint-enable @typescript-eslint/no-explicit-any */

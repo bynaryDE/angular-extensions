@@ -54,7 +54,7 @@ const normalizeUseClassOptions = (options?: IUseClassOptions): NormalizedUseClas
  * <my-component></my-component>
  * ```
  *
- * will result in
+ * This will output:
  *
  * ```html
  * <my-component class="loading"></my-component>
@@ -97,7 +97,7 @@ export const useClass = (
  * <my-component></my-component>
  * ```
  *
- * will result in
+ * This will output:
  *
  * ```html
  * <my-component class="loading"></my-component>

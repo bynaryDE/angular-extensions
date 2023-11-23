@@ -14,12 +14,14 @@ export interface IBindBooleanAttributeOptions {
      *
      * ```ts
      * const isDisabled = useBooleanAttribute('disabled', { namespace: 'xyz', initialValue: true });
-     * // or
+     * ```
+     * Or with `bindBooleanAttribute`:
+     * ```ts
      * const isDisabled = signal(true);
      * bindBooleanAttribute('disabled', isDisabled, { namespace: 'xyz' });
      * ```
      *
-     * will result in
+     * This will output:
      *
      * ```html
      * <my-component xyz:disabled></my-component>
@@ -33,7 +35,9 @@ export interface IBindBooleanAttributeOptions {
      * @example Applying a default value
      * ```ts
      * const isDisabled = useBooleanAttribute('disabled', { defaultValue: true });
-     * // or
+     * ```
+     * Or with `bindBooleanAttribute`:
+     * ```ts
      * const isDisabled = signal<boolean | undefined>(undefined);
      * bindBooleanAttribute('disabled', isDisabled, { defaultValue: true });
      * ```
@@ -41,7 +45,7 @@ export interface IBindBooleanAttributeOptions {
      * <my-component></my-component>
      * ```
      *
-     * will result in
+     * This will output:
      *
      * ```html
      * <my-component disabled></my-component>
@@ -49,16 +53,18 @@ export interface IBindBooleanAttributeOptions {
      *
      * @example Will not override if a value has been explicitly assigned in the DOM
      * ```ts
-     * const isDisabled = useAttribute('disabled', { defaultValue: false });
-     * // or
+     * const isDisabled = useBooleanAttribute('disabled', { defaultValue: false });
+     * ```
+     * Or with `bindBooleanAttribute`:
+     * ```ts
      * const isDisabled = signal<boolean | undefined>(undefined);
-     * bindAttribute('disabled', isDisabled, { defaultValue: false });
+     * bindBooleanAttribute('disabled', isDisabled, { defaultValue: false });
      * ```
      * ```html
      * <my-component disabled></my-component>
      * ```
      *
-     * will result in
+     * This will output:
      *
      * ```html
      * <my-component disabled></my-component>
@@ -72,7 +78,9 @@ export interface IBindBooleanAttributeOptions {
      * @example
      * ```ts
      * const isDisabled = useBooleanAttribute('disabled', { target: document.body });
-     * // or
+     * ```
+     * Or with `bindBooleanAttribute`:
+     * ```
      * const isDisabled = signal<boolean | undefined>(undefined);
      * bindBooleanAttribute('disabled', isDisabled, { target: document.body });
      * ```
@@ -95,7 +103,7 @@ export interface IUseBooleanAttributeOptions extends IBindBooleanAttributeOption
      * <my-component #myComponent disabled></my-component>
      * ```
      *
-     * will result in
+     * This will output:
      *
      * ```html
      * <my-component></my-component>
@@ -121,11 +129,15 @@ const normalizeUseBooleanAttributeOptions = (options?: IUseBooleanAttributeOptio
 const normalizeBindBooleanAttributeOptions = (options?: IBindBooleanAttributeOptions): IBindBooleanAttributeOptions => options ?? {};
 
 /**
+ * @internal
  * Converts the given value to an attribute value.
  * Boolean Attributes are set, when the value is an empty string and removed, when the value is `null` or `undefined`.
  *
  * @param value - an empty string, when the attribute should be set,`null` when the attribute should be explicitly removed, `undefined` when the attribute may be overridden
- * @internal
+ * @returns
+ *  an empty string, when the attribute should be set,
+ * `null` when the attribute should be explicitly removed,
+ * `undefined` when the attribute may be overridden
  */
 const toAttributeValue = (value: boolean | undefined) => {
     if (value === true) {
@@ -155,6 +167,7 @@ const toAttributeValue = (value: boolean | undefined) => {
  *
  * @param attributeName - The name of the attribute
  * @param options - A set of {@link IUseBooleanAttributeOptions options}
+ * @returns A signal holding the current value of the attribute as a boolean
  */
 export const useBooleanAttribute = (
     attributeName: string,
@@ -194,6 +207,7 @@ export const useBooleanAttribute = (
  * @param attributeName - The name of the attribute
  * @param value - The signal to bind
  * @param options - A set of {@link IBindBooleanAttributeOptions options}
+ * @returns The passed in signal (`value` parameter)
  */
 export const bindBooleanAttribute = <T extends Signal<boolean | undefined>>(
     attributeName: string,

@@ -26,6 +26,7 @@ export const BASE_CLASS = new InjectionToken<string>('@bynary/composables/class.
  * }
  *
  * @param baseClass - The base class to provide.
+ * @returns A provider for the {@link BASE_CLASS} token.
  */
 export const provideBaseClass = (baseClass: string) => ({
     provide: BASE_CLASS,

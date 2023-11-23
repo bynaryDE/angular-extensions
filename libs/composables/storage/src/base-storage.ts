@@ -17,6 +17,7 @@ export interface IBaseStorageOptions {
  * Normalizes the options for storage composables.
  *
  * @param options - The options to normalize
+ * @returns The normalized options
  */
 export const normalizeBaseStorageOptions = (options?: IBaseStorageOptions): Required<IBaseStorageOptions> => ({
     storage: options?.storage ?? localStorage

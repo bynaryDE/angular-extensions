@@ -22,6 +22,7 @@ export interface IUseDirectionalityOptions {
  * Normalizes the options for the {@link useDirectionality} composable
  *
  * @param options - A set of {@link IUseDirectionalityOptions options}
+ * @returns The normalized options
  */
 const normalizeOptions = (options?: IUseDirectionalityOptions): IUseDirectionalityOptions => {
     return {
@@ -45,6 +46,7 @@ const normalizeOptions = (options?: IUseDirectionalityOptions): IUseDirectionali
  * ```
  *
  * @param options - A set of {@link IUseDirectionalityOptions options}
+ * @returns A signal holding the current directionality
  */
 export const useDirectionality = (options?: IUseDirectionalityOptions) => {
     const normalizedOptions = normalizeOptions(options);

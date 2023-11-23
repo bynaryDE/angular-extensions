@@ -13,6 +13,7 @@ import { useEvent } from './event.composable';
  * ```
  *
  * @param query - The media query to match
+ * @returns A signal holding whether the given media query matches
  */
 export const useMediaQuery = (query: string) => {
     const mediaQueryList = window.matchMedia(query);

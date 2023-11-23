@@ -20,6 +20,7 @@ export interface IUseStorageOptions<T extends string> extends IBindStorageOption
  *
  * @param key - The key to use for the storage
  * @param options - The options to normalize
+ * @returns The normalized options
  */
 const normalizeUseStorageOptions = <T extends string>(key: string, options?: IUseStorageOptions<T>) => {
     const baseStorageOptions = normalizeBindStorageOptions(options);
@@ -48,6 +49,7 @@ const normalizeUseStorageOptions = <T extends string>(key: string, options?: IUs
  *
  * @param key - The key to use for the storage
  * @param options - A set of options for the storage
+ * @returns A signal that is synced with the given storage
  */
 export const useStorage = <T extends string>(
     key: string,

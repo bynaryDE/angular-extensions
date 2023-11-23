@@ -23,6 +23,7 @@ type NormalizedReadFromStorageOptions = Required<IReadFromStorageOptions>;
  * Normalizes the options for {@link readFromStorage}.
  *
  * @param options - The options to normalize.
+ * @returns The normalized options.
  */
 export const normalizeReadFromStorageOptions = (options?: IReadFromStorageOptions): NormalizedReadFromStorageOptions => {
     return {
@@ -54,6 +55,7 @@ export const normalizeReadFromStorageOptions = (options?: IReadFromStorageOption
  * @param key - The key to use for the storage
  * @param value - A signal defining the value to read from the storage
  * @param options - A set of options for the storage
+ * @returns The passed in signal (`value` parameter)
  */
 export const readFromStorage = <T extends WritableSignal<string | null | undefined>>(
     key: string,

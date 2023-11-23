@@ -21,6 +21,7 @@ import { map } from 'rxjs';
  * ``
  *
  * @param breakpoint - The breakpoint to match
+ * @returns A signal holding whether the given breakpoint matches
  */
 export const useBreakpoint = (breakpoint: string) => {
     const breakpointObserver = inject(BreakpointObserver);

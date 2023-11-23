@@ -8,18 +8,18 @@ export interface IBindAttributeOptions {
      * The namespace of the attribute
      *
      * @example
-     * a namespace `xyz` will result in an attribute `my:<attribute-name>`:
+     * A namespace `xyz` will result in an attribute `my:<attribute-name>`:
      *
      * ```ts
      * const label = useAttribute('label', { namespace: 'xyz', initialValue: 'baz' });
      * ```
-     * or
+     * Or with `bindAttribute`
      * ```ts
      * const label = signal('baz');
      * bindAttribute('label', mySignal, { namespace: 'xyz' });
      * ```
      *
-     * will result in
+     * Either of the above will output:
      *
      * ```html
      * <my-component xyz:label="baz"></my-component>
@@ -34,13 +34,13 @@ export interface IBindAttributeOptions {
      * ```ts
      * const label = useAttribute('label', { defaultValue: 'baz' });
      * ```
-     * or
+     * Or with `bindAttribute`
      * ```ts
      * const label = signal<string | undefined>(undefined);
      * bindAttribute('label', label, { defaultValue: 'baz' });
      * ```
      *
-     * will result in
+     * Either of the above will output:
      *
      * ```html
      * <my-component label="baz"></my-component>
@@ -50,13 +50,13 @@ export interface IBindAttributeOptions {
      * ```ts
      * const label = useAttribute('label', { defaultValue: 'baz' });
      * ```
-     * or
+     * Or with `bindAttribute`
      * ```ts
      * const label = signal<string | undefined>(undefined);
      * bindAttribute('label', mySignal, { defaultValue: 'baz' });
      * ```
      *
-     * will result in
+     * Either of the above will output:
      *
      * ```html
      * <my-component label="foo"></my-component>
@@ -94,12 +94,11 @@ export interface IUseAttributeOptions extends IBindAttributeOptions {
      * ```ts
      * const label = useAttribute('label', { initialValue: 'bar' });
      * ```
-     *
      * ```html
      * <my-component #myComponent label="foo"></my-component>
      * ```
      *
-     * will result in
+     * This will output:
      *
      * ```html
      * <my-component label="bar"></my-component>
@@ -110,11 +109,13 @@ export interface IUseAttributeOptions extends IBindAttributeOptions {
 }
 
 type NormalizedUseAttributeOptions = IUseAttributeOptions & Required<Pick<IUseAttributeOptions, 'target'>>;
+
 /**
+ * @internal
  * Normalizes the given options.
  *
  * @param options - The options to normalize
- * @internal
+ * @returns The normalized options
  */
 const normalizeUseAttributeOptions = (options?: IUseAttributeOptions): NormalizedUseAttributeOptions => ({
     ...(options ?? {}),
@@ -124,10 +125,11 @@ const normalizeUseAttributeOptions = (options?: IUseAttributeOptions): Normalize
 type NormalizedBindAttributeOptions = IBindAttributeOptions & Required<Pick<IBindAttributeOptions, 'target'>>;
 
 /**
+ * @internal
  * Normalizes the given options.
  *
  * @param options - The options to normalize
- * @internal
+ * @returns The normalized options
  */
 const normalizeBindAttributeOptions = (options?: IBindAttributeOptions): NormalizedBindAttributeOptions => ({
     ...(options ?? {}),
@@ -152,12 +154,11 @@ const normalizeBindAttributeOptions = (options?: IBindAttributeOptions): Normali
  *     label = useAttribute('label');
  * }
  * ```
- *
  * ```html
  * <my-component #myComponent label="foo"></my-component>
  * ```
  *
- * will result in
+ * This will output:
  *
  * ```html
  * <my-component label="foo"></my-component>
@@ -182,23 +183,19 @@ const normalizeBindAttributeOptions = (options?: IBindAttributeOptions): Normali
  *     }
  * }
  * ```
- *
  * ```html
  * <my-component #myComponent></my-component>
- *
- * {{ myComponent.label }}
  * ```
  *
- * will result in
+ * This will output:
  *
  * ```html
  * <my-component label="programmatically set value"></my-component>
- *
- * programmatically set value
  * ```
  *
  * @param attributeName - The name of the attribute
  * @param options - A set of {@link IUseAttributeOptions options}
+ * @returns A signal holding the value of the attribute
  */
 export function useAttribute (
     attributeName: string,
@@ -240,7 +237,7 @@ export function useAttribute (
  * }
  * ```
  *
- * will result in
+ * This will output:
  *
  * ```html
  * <my-component label="label"></my-component>
@@ -249,6 +246,7 @@ export function useAttribute (
  * @param attributeName - The name of the attribute
  * @param value - The signal whose value should be bound
  * @param options - A set of {@link IBindAttributeOptions options}
+ * @returns The passed in signal (`value` parameter)
  */
 export const bindAttribute = <T extends Signal<string | null | undefined>>(
     attributeName: string,

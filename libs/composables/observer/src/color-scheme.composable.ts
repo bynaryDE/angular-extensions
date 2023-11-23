@@ -2,6 +2,9 @@ import { computed, signal, WritableSignal } from '@angular/core';
 
 import { useMediaQuery } from './media-query.composable';
 
+/**
+ * The possible color schemes
+ */
 export type ColorScheme = 'light' | 'dark';
 
 /**
@@ -23,6 +26,7 @@ type NormalizedUseColorSchemeOptions<CustomColorScheme extends ColorScheme = Col
  * Normalizes the options for the {@link useColorScheme} composable
  *
  * @param options - A set of {@link IUseColorSchemeOptions options}
+ * @returns The normalized options
  */
 const normalizeUseColorSchemeOptions = <CustomColorScheme extends ColorScheme = ColorScheme>(options?: IUseColorSchemeOptions<CustomColorScheme>): NormalizedUseColorSchemeOptions<CustomColorScheme> => ({
     store: options?.store ?? signal<CustomColorScheme | null>(null)
@@ -43,6 +47,8 @@ const normalizeUseColorSchemeOptions = <CustomColorScheme extends ColorScheme = 
  * // If the preferred color scheme changes, the signal will be updated. E.g. if the user changes the preferred color scheme to 'light'
  * preferred(); // 'light'
  * ```
+ *
+ * @returns A signal holding the preferred color scheme of the browser
  */
 export const usePreferredColorScheme = () => {
     const prefersDark = useMediaQuery('(prefers-color-scheme: dark)');

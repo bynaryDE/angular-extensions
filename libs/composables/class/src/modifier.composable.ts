@@ -12,7 +12,7 @@ export interface IBindModifierOptions {
     /**
      * The base class. There is usually one base class per component.
      *
-     * While you're always able to explicitly set a base class vie the options, it's recommended to use the {@link provideBaseClass} function to provide the base class to the component.
+     * While you're always able to explicitly set a base class via the options, it's recommended to use the {@link provideBaseClass} function to provide the base class to the component.
      * Especially, when using {@link useModifier}/{@link bindModifier} or {@link useModifierGroup}/{@link bindModifierGroup} multiple times in one directive or component.
      *
      * WARNING: If you don't provide a base class either via `options.baseClass` or via `provideBaseClass`, an error will be thrown!
@@ -56,6 +56,7 @@ type NormalizedBindModifierOptions = Required<IBindModifierOptions>;
  * Normalizes the given options by applying defaults.
  *
  * @param options - The options to normalize
+ * @returns The normalized options
  */
 const normalizeBindModifierOptions = (options?: IBindModifierOptions): NormalizedBindModifierOptions => ({
     baseClass: options?.baseClass ?? inject(BASE_CLASS),
@@ -90,7 +91,7 @@ const normalizeBindModifierOptions = (options?: IBindModifierOptions): Normalize
  * }
  * ```
  *
- * will result in
+ * This will output:
  *
  * ```html
  * <my-component class="my-component my-component--is-loading"></my-component>
@@ -112,22 +113,26 @@ const normalizeBindModifierOptions = (options?: IBindModifierOptions): Normalize
  *     constructor() {
  *         bindModifier('is-loading', this.isLoading, { baseClass: 'my-component' });
  *     }
- *
- *     stopLoading() {
- *         this.isLoading.set(false); // Will remove the `my-component--is-loading` class
- *     }
  * }
  * ```
  *
- * will result in
+ * This will output:
  *
  * ```html
  * <my-component class="my-component my-component--is-loading"></my-component>
  * ```
  *
+ * Setting `isLoading` to `false` will remove the modifier class:
+ *
+ * ```
+ * this.isLoading.set(false); // <my-component class="my-component"></my-component>
+ * ```
+ *
+ *
  * @param modifier - The name of the modifier
  * @param apply - The signal whose value should be bound
  * @param options - A set of {@link IBindModifierOptions options}
+ * @returns The passed in signal (`apply` parameter)
  */
 export const bindModifier = <T extends Signal<boolean>>(
     modifier: string,
@@ -181,6 +186,7 @@ type NormalizedUseModifierOptions = Required<IUseModifierOptions>;
  * Normalizes the given options by applying defaults.
  *
  * @param options - The options to normalize
+ * @returns The normalized options
  */
 const normalizeUseModifierOptions = (options?: IUseModifierOptions): NormalizedUseModifierOptions => ({
     ...normalizeBindModifierOptions(options),
@@ -191,6 +197,7 @@ const normalizeUseModifierOptions = (options?: IUseModifierOptions): NormalizedU
  *
  * @param modifier - The name of the modifier
  * @param options - A set of {@link IUseModifierOptions options}
+ * @returns A signal that allows to toggle the given modifier class on the host element
  */
 export const useModifier = (
     modifier: string,

@@ -13,7 +13,8 @@ export interface IWriteToStorageOptions extends IBaseStorageOptions {
  * @internal
  * Normalizes the options for {@link writeToStorage}.
  *
- * @param options
+ * @param options - The options to normalize
+ * @returns The normalized options
  */
 const normalizeWriteToStorageOptions = (options?: IWriteToStorageOptions) => normalizeBaseStorageOptions(options);
 
@@ -38,6 +39,7 @@ const normalizeWriteToStorageOptions = (options?: IWriteToStorageOptions) => nor
  * @param key - The key to use for the storage
  * @param value - A signal defining the value to write to the storage
  * @param options - A set of options for the storage
+ * @returns The passed in signal (`value` parameter)
  */
 export const writeToStorage = <T extends Signal<string | null | undefined>>(
     key: string,

@@ -15,6 +15,7 @@ export interface IBindStorageOptions extends IReadFromStorageOptions {
  * Normalizes the options for {@link bindStorage}.
  *
  * @param options - The options to normalize
+ * @returns The normalized options
  */
 export const normalizeBindStorageOptions = (options?: IBindStorageOptions) => normalizeReadFromStorageOptions(options);
 
@@ -40,6 +41,7 @@ export const normalizeBindStorageOptions = (options?: IBindStorageOptions) => no
  * @param key - The key to use for the storage
  * @param value - The signal to bind to the storage
  * @param options - A set of options for the storage
+ * @returns The passed in signal (`value` parameter)
  */
 export const bindStorage = <T extends WritableSignal<string | null | undefined>>(
     key: string,

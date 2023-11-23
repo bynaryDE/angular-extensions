@@ -4,6 +4,9 @@ import { Title } from '@angular/platform-browser';
 /**
  * Binds the value of the signal to the title of the page.
  *
+ * This composable currently does not listen for changes to the title of the page made by other means.
+ * It will only set the title of the page, not read it.
+ *
  * @example
  * ```ts
  * @Component({
@@ -20,6 +23,7 @@ import { Title } from '@angular/platform-browser';
  * ```
  *
  * @param value - The signal to bind to the title.
+ * @returns The passed in signal (`value` parameter)
  */
 export const bindTitle = <T extends Signal<string>>(value: T): T => {
     const title = inject(Title);
@@ -33,6 +37,9 @@ export const bindTitle = <T extends Signal<string>>(value: T): T => {
 
 /**
  * A signal to change the title of the page.
+ *
+ * This composable currently does not listen for changes to the title of the page made by other means.
+ * It will only set the title of the page, not read it.
  *
  * @example
  * ```ts
@@ -63,6 +70,7 @@ export const bindTitle = <T extends Signal<string>>(value: T): T => {
  * ```
  *
  * @param initialValue - The initial title of the page. Defaults to the current title of the page.
+ * @returns A signal to change the title of the page.
  */
 export const useTitle = (initialValue?: string) => {
     const title = inject(Title);
