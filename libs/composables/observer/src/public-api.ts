@@ -5,7 +5,6 @@
  * @module @bynary/composables/observer
  */
 
-export * from './activate.composable';
 export * from './breakpoint.composable';
 export * from './color-scheme.composable';
 export * from './directionality.composable';
