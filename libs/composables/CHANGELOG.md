@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.2.0...composables-v0.2.1) (2023-12-12)
+
+
+### Bug Fixes
+
+* **composables:** set initial value in useSelect ([#19](https://github.com/bynaryDE/angular-extensions/issues/19)) ([a200323](https://github.com/bynaryDE/angular-extensions/commit/a200323598812a4efcf8bc206848ae4b6eed9aa4))
+
 ## [0.2.0](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.1.4...composables-v0.2.0) (2023-11-23)
 
 
