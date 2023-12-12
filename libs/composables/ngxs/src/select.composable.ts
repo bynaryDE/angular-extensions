@@ -38,6 +38,6 @@ export function useSelect<T>(selector: StateToken<T>): Signal<T>;
 export function useSelect<T>(selector: any) {
     const store = inject(Store);
 
-    return toSignal(store.select<T>(selector));
+    return toSignal(store.select<T>(selector), { initialValue: store.selectSnapshot(selector) });
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
