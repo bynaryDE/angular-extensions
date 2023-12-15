@@ -83,7 +83,7 @@ jobs:
                   path: node_modules
                   key: cache-node-modules-${{ hashFiles('package-lock.json') }}
 
-            - run: npx nx affected:build --parallel=3 --base=origin/develop
+            - run: npx nx affected:build --parallel=3 --base=origin/develop --verbose
 
             - name: Archive production artifacts
               uses: actions/upload-artifact@v3
