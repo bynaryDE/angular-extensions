@@ -27,7 +27,7 @@ jobs:
                   node-version-file: '.nvmrc'
             - name: NPM install
               if: steps.cache.outputs.cache-hit != 'true'
-              run: npm ci
+              run: npm ci --include optional
 
     lint:
         runs-on: ubuntu-latest
