@@ -8,17 +8,18 @@ import { OldButtonComponent } from './components/old-button/old-button.component
 
 @Component({
     standalone: true,
-    imports: [ RouterModule, ButtonComponent, ColorSchemeSwitchComponent, OldButtonComponent ],
+    imports: [RouterModule, ButtonComponent, ColorSchemeSwitchComponent, OldButtonComponent],
     selector: 'demo-root',
     templateUrl: './app.component.html',
-    styleUrls: [ './app.component.scss' ]
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+    readonly counter = signal(0);
+    readonly title = bindTitle(
+        computed(() => (this.counter() ? `@bynary/composables - Clicks: ${this.counter()}` : '@bynary/composables'))
+    );
 
-    counter = signal(0);
-    title = bindTitle(computed(() => this.counter() ? `@bynary/composables - Clicks: ${this.counter()}` : '@bynary/composables'));
-
-    onClick() {
+    incrementCounter() {
         this.counter.update((value) => value + 1);
     }
 }
