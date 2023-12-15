@@ -28,7 +28,7 @@ describe('color-scheme.composable.ts', () => {
 
         beforeEach(async () => {
             await TestBed.configureTestingModule({
-                declarations: [ TestComponent ]
+                declarations: [TestComponent]
             }).compileComponents();
 
             fixture = TestBed.createComponent(TestComponent);
@@ -53,4 +53,6 @@ describe('color-scheme.composable.ts', () => {
             expect(component.preferredColorScheme()).toEqual('dark');
         });
     });
+
+    it.todo('test useColorScheme');
 });

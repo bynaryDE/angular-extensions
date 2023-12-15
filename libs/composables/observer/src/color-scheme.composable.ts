@@ -17,11 +17,15 @@ interface IUseColorSchemeOptions<CustomColorScheme extends ColorScheme = ColorSc
      * @defaultValue signal<CustomColorScheme | null>(null)
      */
     store?: WritableSignal<CustomColorScheme | null>;
+
+    /**
+     * The default color-scheme as a fallback, when no value has been stored and the preferred color scheme is `null`.
+     */
+    defaultValue?: CustomColorScheme;
 }
 
-type NormalizedUseColorSchemeOptions<CustomColorScheme extends ColorScheme = ColorScheme> = Required<
-    IUseColorSchemeOptions<CustomColorScheme>
->;
+type NormalizedUseColorSchemeOptions<CustomColorScheme extends ColorScheme = ColorScheme> =
+    IUseColorSchemeOptions<CustomColorScheme> & Required<Pick<IUseColorSchemeOptions<CustomColorScheme>, 'store'>>;
 
 /**
  * @internal
@@ -33,7 +37,8 @@ type NormalizedUseColorSchemeOptions<CustomColorScheme extends ColorScheme = Col
 const normalizeUseColorSchemeOptions = <CustomColorScheme extends ColorScheme = ColorScheme>(
     options?: IUseColorSchemeOptions<CustomColorScheme>
 ): NormalizedUseColorSchemeOptions<CustomColorScheme> => ({
-    store: options?.store ?? signal<CustomColorScheme | null>(null)
+    store: options?.store ?? signal<CustomColorScheme | null>(null),
+    defaultValue: options?.defaultValue
 });
 
 /**
@@ -108,13 +113,13 @@ export const useColorScheme = <CustomColorScheme extends ColorScheme = ColorSche
     options?: IUseColorSchemeOptions<CustomColorScheme>
 ) => {
     const preferred = usePreferredColorScheme();
-    const { store } = normalizeUseColorSchemeOptions(options);
+    const { store, defaultValue } = normalizeUseColorSchemeOptions(options);
 
     if (!store()) {
         store.set(preferred() as CustomColorScheme | null);
     }
 
-    const resolved = computed<ColorScheme | null>(() => store() ?? preferred());
+    const resolved = computed<ColorScheme | null>(() => store() ?? preferred() ?? defaultValue ?? null);
 
     return {
         preferred,
