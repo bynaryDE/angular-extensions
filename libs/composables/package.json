@@ -28,19 +28,14 @@
         "nx"
     ],
     "peerDependencies": {
-        "@angular/core": ">=16.0.0 <18.0.0",
         "@angular/cdk": ">=16.0.0 <18.0.0",
+        "@angular/common": ">=16.0.0 <18.0.0",
+        "@angular/core": ">=16.0.0 <18.0.0",
         "@angular/platform-browser": ">=16.0.0 <18.0.0",
         "@ngxs/store": "^3.8.1",
         "rxjs": ">=7.0.0",
-        "@angular/common": "16.2.9",
-        "jest-preset-angular": "~13.1.0",
-        "jest-matchmedia-mock": "^1.1.0"
-    },
-    "dependencies": {},
-    "devDependencies": {
-        "jest-preset-angular": "~13.1.0",
-        "jest-matchmedia-mock": "^1.1.0"
+        "jest-matchmedia-mock": "^1.1.0",
+        "jest-preset-angular": "~13.1.0"
     },
     "sideEffects": false
 }
