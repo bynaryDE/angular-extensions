@@ -2,7 +2,7 @@ name: Publish Docs to the Wiki
 
 on:
     push:
-        branches: [ "main" ]
+        branches: ['main']
 
     workflow_dispatch:
 
@@ -17,36 +17,36 @@ jobs:
     install-deps:
         runs-on: ubuntu-latest
         steps:
-            -   uses: actions/checkout@v4
-            -   name: Cache node modules
-                id: cache
-                uses: actions/cache@v3
-                with:
-                    path: node_modules
-                    key: cache-node-modules-${{ hashFiles('package-lock.json') }}
-            -   uses: actions/setup-node@v4
-                if: steps.cache.outputs.cache-hit != 'true'
-                with:
-                    node-version: 20.x
-            -   name: NPM install
-                if: steps.cache.outputs.cache-hit != 'true'
-                run: npm ci
+            - uses: actions/checkout@v4
+            - name: Cache node modules
+              id: cache
+              uses: actions/cache@v3
+              with:
+                  path: node_modules
+                  key: cache-node-modules-${{ hashFiles('package-lock.json') }}
+            - uses: actions/setup-node@v4
+              if: steps.cache.outputs.cache-hit != 'true'
+              with:
+                  node-version-file: '.nvmrc'
+            - name: NPM install
+              if: steps.cache.outputs.cache-hit != 'true'
+              run: npm ci
 
     publish:
         runs-on: ubuntu-latest
         needs: install-deps
         steps:
-            -   name: Checkout
-                uses: actions/checkout@v4
-            -   name: Cache node modules
-                uses: actions/cache@v3
-                with:
-                    path: node_modules
-                    key: cache-node-modules-${{ hashFiles('package-lock.json') }}
-            -   name: Build Docs
-                run: scripts/build-docs.sh
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Cache node modules
+              uses: actions/cache@v3
+              with:
+                  path: node_modules
+                  key: cache-node-modules-${{ hashFiles('package-lock.json') }}
+            - name: Build Docs
+              run: scripts/build-docs.sh
 
-            -   name: Upload Docs to Wiki
-                uses: Andrew-Chen-Wang/github-wiki-action@v4
-                with:
-                    path: 'docs'
+            - name: Upload Docs to Wiki
+              uses: Andrew-Chen-Wang/github-wiki-action@v4
+              with:
+                  path: 'docs'
