@@ -42,7 +42,7 @@ jobs:
               uses: actions/cache@v3
               with:
                   path: node_modules
-                  key: cache-node-modules-${{ hashFiles('package-lock.json') }}
+                  key: cache-node-modules-${{ hashFiles('package-lock.json', '.nvmrc') }}
 
             - run: npx nx affected --target=lint --parallel=3 --base=origin/develop
 
@@ -59,7 +59,7 @@ jobs:
               uses: actions/cache@v3
               with:
                   path: node_modules
-                  key: cache-node-modules-${{ hashFiles('package-lock.json') }}
+                  key: cache-node-modules-${{ hashFiles('package-lock.json', '.nvmrc') }}
 
             - run: npx nx affected --target=test --parallel=3 --configuration=ci --base=origin/develop --codeCoverage
 
@@ -81,7 +81,7 @@ jobs:
               uses: actions/cache@v3
               with:
                   path: node_modules
-                  key: cache-node-modules-${{ hashFiles('package-lock.json') }}
+                  key: cache-node-modules-${{ hashFiles('package-lock.json', '.nvmrc') }}
 
             - run: npx nx affected:build --parallel=3 --base=origin/develop --verbose
 
