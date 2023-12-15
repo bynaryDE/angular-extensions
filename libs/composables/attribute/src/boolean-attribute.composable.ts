@@ -1,4 +1,4 @@
-import { effect, Signal, signal, WritableSignal } from '@angular/core';
+import { effect, ElementRef, inject, Signal, signal, WritableSignal } from '@angular/core';
 
 import { useAttribute } from './attribute.composable';
 
@@ -112,14 +112,20 @@ export interface IUseBooleanAttributeOptions extends IBindBooleanAttributeOption
     initialValue?: boolean;
 }
 
+type NormalizedUseBooleanAttributeOptions = IUseBooleanAttributeOptions &
+    Required<Pick<IUseBooleanAttributeOptions, 'target'>>;
 /**
  * Normalizes the given options.
  *
  * @param options - The options to normalize
  * @internal
  */
-const normalizeUseBooleanAttributeOptions = (options?: IUseBooleanAttributeOptions): IUseBooleanAttributeOptions =>
-    options ?? {};
+const normalizeUseBooleanAttributeOptions = (
+    options?: IUseBooleanAttributeOptions
+): NormalizedUseBooleanAttributeOptions => ({
+    ...(options ?? {}),
+    target: options?.target ?? (inject(ElementRef).nativeElement as HTMLElement)
+});
 
 /**
  * Normalizes the given options.
@@ -135,7 +141,7 @@ const normalizeBindBooleanAttributeOptions = (options?: IBindBooleanAttributeOpt
  * Converts the given value to an attribute value.
  * Boolean Attributes are set, when the value is an empty string and removed, when the value is `null` or `undefined`.
  *
- * @param value - an empty string, when the attribute should be set,`null` when the attribute should be explicitly removed, `undefined` when the attribute may be overridden
+ * @param value - A boolean value
  * @returns
  *  an empty string, when the attribute should be set,
  * `null` when the attribute should be explicitly removed,
@@ -149,6 +155,20 @@ const toAttributeValue = (value: boolean | undefined) => {
     }
 
     return undefined;
+};
+
+/**
+ * @internal
+ * Converts the given attribute value to boolean.
+ * A boolean attribute is considered `true`, when the value is defined.
+ *
+ * @param value - The attributes value
+ * @returns
+ *  `true` when the attribute value is defined
+ *  `false` when the attribute value is `null` or `undefined`
+ */
+const fromAttributeValue = (value: string | null | undefined) => {
+    return value != null;
 };
 
 /**
@@ -177,12 +197,13 @@ export const useBooleanAttribute = (
 ): WritableSignal<boolean | undefined> => {
     const { namespace, initialValue, defaultValue, target } = normalizeUseBooleanAttributeOptions(options);
 
-    const value = signal<boolean | undefined>(initialValue);
+    const attributeValue = fromAttributeValue(target.getAttributeNS(namespace ?? null, attributeName));
+    const value = signal<boolean>(initialValue ?? attributeValue ?? defaultValue);
 
     return bindBooleanAttribute(attributeName, value, {
         namespace,
         defaultValue,
-        target: target
+        target
     });
 };
 
@@ -218,7 +239,7 @@ export const bindBooleanAttribute = <T extends Signal<boolean | undefined>>(
 ) => {
     const { namespace, defaultValue, target } = normalizeBindBooleanAttributeOptions(options);
 
-    const attribute = useAttribute(attributeName, { namespace, target: target });
+    const attribute = useAttribute(attributeName, { namespace, target });
     const defaultAttributeValue = toAttributeValue(defaultValue);
 
     effect(
