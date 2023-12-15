@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.2](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.2.1...composables-v0.2.2) (2023-12-15)
+
+
+### Features
+
+* **composables:** add defaultValue option to color scheme composable ([417398c](https://github.com/bynaryDE/angular-extensions/commit/417398c9fa0cce3d9f9479baf2bec9324207ed20))
+
+
+### Bug Fixes
+
+* **composables:** read boolean attribute value from DOM on initialization ([df316c7](https://github.com/bynaryDE/angular-extensions/commit/df316c70380fb1dafdc0efe800758418ba2f5aee))
+
 ## [0.2.1](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.2.0...composables-v0.2.1) (2023-12-12)
 
 
