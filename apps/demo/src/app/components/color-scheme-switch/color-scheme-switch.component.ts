@@ -7,14 +7,16 @@ import { useStorage } from '@bynary/composables/storage';
 @Component({
     selector: 'demo-color-scheme-switch',
     standalone: true,
-    imports: [ CommonModule ],
+    imports: [CommonModule],
     templateUrl: './color-scheme-switch.component.html',
-    styleUrls: [ './color-scheme-switch.component.scss' ],
+    styleUrls: ['./color-scheme-switch.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ColorSchemeSwitchComponent {
-
-    colorScheme = useColorScheme({ store: useStorage<ColorScheme>('color-scheme') });
+    public readonly colorScheme = useColorScheme({
+        store: useStorage<ColorScheme>('color-scheme'),
+        defaultValue: 'light'
+    });
 
     constructor() {
         const root = document.firstElementChild;
