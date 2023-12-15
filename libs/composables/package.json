@@ -37,5 +37,10 @@
         "jest-matchmedia-mock": "^1.1.0",
         "jest-preset-angular": "~13.1.0"
     },
+    "dependencies": {},
+    "devDependencies": {
+        "jest-matchmedia-mock": "^1.1.0",
+        "jest-preset-angular": "~13.1.0"
+    },
     "sideEffects": false
 }
