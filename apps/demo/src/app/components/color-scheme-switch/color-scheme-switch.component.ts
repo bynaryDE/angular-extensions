@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
 import { bindAttribute } from '@bynary/composables/attribute';
 import { ColorScheme, useColorScheme } from '@bynary/composables/observer';
@@ -7,7 +6,6 @@ import { useStorage } from '@bynary/composables/storage';
 @Component({
     selector: 'demo-color-scheme-switch',
     standalone: true,
-    imports: [CommonModule],
     templateUrl: './color-scheme-switch.component.html',
     styleUrls: ['./color-scheme-switch.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
