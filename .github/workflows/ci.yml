@@ -20,7 +20,7 @@ jobs:
               uses: actions/cache@v3
               with:
                   path: node_modules
-                  key: cache-node-modules-${{ hashFiles('package-lock.json') }}
+                  key: cache-node-modules-${{ hashFiles('package-lock.json', '.nvmrc') }}
             - uses: actions/setup-node@v3
               if: steps.cache.outputs.cache-hit != 'true'
               with:
