@@ -1,6 +1,6 @@
 import { Component, DestroyRef, ElementRef, Signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { useEvent } from './event.composable';
+import { θuseEvent } from './event.composable';
 
 class MockEventTarget implements EventTarget {
     readonly listeners = new Set<EventListener>();
@@ -10,7 +10,7 @@ class MockEventTarget implements EventTarget {
     }
 
     dispatchEvent(event: Event): boolean {
-        this.listeners.forEach(listener => listener(event));
+        this.listeners.forEach((listener) => listener(event));
         return true;
     }
 
@@ -20,9 +20,7 @@ class MockEventTarget implements EventTarget {
 }
 
 describe('useEvent', () => {
-
     describe('unit', () => {
-
         let target: MockEventTarget;
 
         beforeEach(async () => {
@@ -47,7 +45,7 @@ describe('useEvent', () => {
         });
 
         it('should be a function', () => {
-            expect(typeof useEvent).toEqual('function');
+            expect(typeof θuseEvent).toEqual('function');
         });
 
         describe('with no options', () => {
@@ -55,14 +53,14 @@ describe('useEvent', () => {
 
             beforeEach(() => {
                 TestBed.runInInjectionContext(() => {
-                    click = useEvent('click');
+                    click = θuseEvent('click');
                 });
             });
 
             it('should use ElementRef.nativeElement as the target', () => {
                 const addEventListenerSpy = jest.spyOn(target, 'addEventListener');
 
-                TestBed.runInInjectionContext(() => useEvent('click'));
+                TestBed.runInInjectionContext(() => θuseEvent('click'));
 
                 expect(addEventListenerSpy).toHaveBeenCalledWith('click', expect.any(Function), undefined);
             });
@@ -71,7 +69,7 @@ describe('useEvent', () => {
                 const destroyRef = jest.mocked(TestBed.inject(DestroyRef));
                 const destroyRefSpy = jest.spyOn(destroyRef, 'onDestroy');
 
-                TestBed.runInInjectionContext(() => useEvent('click'));
+                TestBed.runInInjectionContext(() => θuseEvent('click'));
 
                 expect(destroyRefSpy).toHaveBeenCalledTimes(1);
                 expect(destroyRefSpy).toHaveBeenCalledWith(expect.any(Function));
@@ -82,7 +80,7 @@ describe('useEvent', () => {
                 const destroyRefSpy = jest.spyOn(destroyRef, 'onDestroy');
                 const removeEventListenerSpy = jest.spyOn(target, 'removeEventListener');
 
-                TestBed.runInInjectionContext(() => useEvent('click'));
+                TestBed.runInInjectionContext(() => θuseEvent('click'));
 
                 const destroyCallback = destroyRefSpy.mock.calls[0][0] as () => void;
 
@@ -119,7 +117,7 @@ describe('useEvent', () => {
                 const customTargetSpy = jest.spyOn(customTarget, 'addEventListener');
                 const targetSpy = jest.spyOn(target, 'addEventListener');
 
-                TestBed.runInInjectionContext(() => useEvent('click', customTarget));
+                TestBed.runInInjectionContext(() => θuseEvent('click', customTarget));
 
                 expect(customTargetSpy).toHaveBeenCalledWith('click', expect.any(Function), undefined);
                 expect(targetSpy).not.toHaveBeenCalled();
@@ -127,7 +125,7 @@ describe('useEvent', () => {
 
             it('should hold the last event dispatched from the custom target', () => {
                 TestBed.runInInjectionContext(() => {
-                    const click = useEvent('click', customTarget);
+                    const click = θuseEvent('click', customTarget);
                     const eventA = new Event('click');
                     const eventB = new Event('click');
                     const eventC = new Event('click');
@@ -142,15 +140,14 @@ describe('useEvent', () => {
         });
 
         describe('with options', () => {
-
             it('should pass the options to addEventListener', () => {
                 const addEventListenerSpy = jest.spyOn(target, 'addEventListener');
                 const options: AddEventListenerOptions = {
                     capture: true,
                     once: true
-                }
+                };
 
-                TestBed.runInInjectionContext(() => useEvent('click', undefined, options));
+                TestBed.runInInjectionContext(() => θuseEvent('click', undefined, options));
 
                 expect(addEventListenerSpy).toHaveBeenCalledWith('click', expect.any(Function), options);
             });
@@ -158,12 +155,11 @@ describe('useEvent', () => {
     });
 
     describe('integration', () => {
-
         @Component({
             template: ''
         })
         class TestComponent {
-            readonly click = useEvent('click');
+            readonly click = θuseEvent('click');
         }
 
         let fixture: ComponentFixture<TestComponent>;
@@ -171,7 +167,7 @@ describe('useEvent', () => {
 
         beforeEach(async () => {
             await TestBed.configureTestingModule({
-                declarations: [ TestComponent ]
+                declarations: [TestComponent]
             }).compileComponents();
 
             fixture = TestBed.createComponent(TestComponent);
