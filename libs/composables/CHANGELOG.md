@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.2.2...composables-v0.2.3) (2024-07-11)
+
+
+### Features
+
+* **deps:** update to Angular 18 ([#36](https://github.com/bynaryDE/angular-extensions/issues/36)) ([#37](https://github.com/bynaryDE/angular-extensions/issues/37)) ([f62a652](https://github.com/bynaryDE/angular-extensions/commit/f62a652e5902a291f31ea1030594c08ab44a0fe1))
+
 ## [0.2.2](https://github.com/bynaryDE/angular-extensions/compare/composables-v0.2.1...composables-v0.2.2) (2023-12-15)
 
 
