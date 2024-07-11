@@ -100,7 +100,7 @@ describe('ButtonComponent', () => {
             disabled = false;
             loading = false;
             appearance: ButtonAppearance = 'solid';
-            color: ButtonColor = 'red';
+            color?: ButtonColor;
         }
 
         let fixture: ComponentFixture<TestHostComponent>;
@@ -132,6 +132,8 @@ describe('ButtonComponent', () => {
 
             it('should be changeable', () => {
                 host.disabled = true;
+
+                fixture.detectChanges();
 
                 expect(button.disabled()).toBe(true);
             });
@@ -165,6 +167,8 @@ describe('ButtonComponent', () => {
             it('should be changeable', () => {
                 host.loading = true;
 
+                fixture.detectChanges();
+
                 expect(button.loading()).toBe(true);
             });
 
@@ -187,6 +191,8 @@ describe('ButtonComponent', () => {
             it('should be changeable', () => {
                 host.appearance = 'outline';
 
+                fixture.detectChanges();
+
                 expect(button.appearance()).toBe('outline');
             });
 
@@ -208,6 +214,8 @@ describe('ButtonComponent', () => {
 
             it('should be changeable', () => {
                 host.color = 'red';
+
+                fixture.detectChanges();
 
                 expect(button.color()).toBe('red');
             });
