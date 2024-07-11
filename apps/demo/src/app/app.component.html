@@ -10,17 +10,17 @@
                 <legend>State</legend>
                 <label>
                     <input
-                        #disabled
+                        #disabledControl
                         type="checkbox"
-                        (change)="button.isDisabled.set(disabled.checked); oldButton.isDisabled = disabled.checked"
+                        (change)="disabled.set(disabledControl.checked); oldButton.disabled = disabledControl.checked"
                     />
                     Disabled
                 </label>
                 <label>
                     <input
-                        #loading
+                        #loadingControl
                         type="checkbox"
-                        (change)="button.isLoading.set(loading.checked); oldButton.isLoading = loading.checked"
+                        (change)="loading.set(loadingControl.checked); oldButton.loading = loadingControl.checked"
                     />
                     Loading
                 </label>
@@ -54,8 +54,8 @@
                     <input
                         type="radio"
                         name="appearance"
-                        [checked]="!button.appearance()"
-                        (change)="button.appearance.set(undefined); oldButton.appearance = undefined"
+                        [checked]="!appearance()"
+                        (change)="appearance.set(undefined); oldButton.appearance = undefined"
                     />
                     Default
                 </label>
@@ -63,8 +63,8 @@
                     <input
                         type="radio"
                         name="appearance"
-                        [checked]="button.appearance() === 'outline'"
-                        (change)="button.appearance.set('outline'); oldButton.appearance = 'outline'"
+                        [checked]="appearance() === 'outline'"
+                        (change)="appearance.set('outline'); oldButton.appearance = 'outline'"
                     />
                     Outline
                 </label>
@@ -72,8 +72,8 @@
                     <input
                         type="radio"
                         name="appearance"
-                        [checked]="button.appearance() === 'solid'"
-                        (change)="button.appearance.set('solid'); oldButton.appearance = 'solid'"
+                        [checked]="appearance() === 'solid'"
+                        (change)="appearance.set('solid'); oldButton.appearance = 'solid'"
                     />
                     Solid
                 </label>
@@ -85,8 +85,8 @@
                     <input
                         type="radio"
                         name="appearance"
-                        [checked]="!button.color()"
-                        (change)="button.color.set(undefined); oldButton.color = undefined"
+                        [checked]="!color()"
+                        (change)="color.set(undefined); oldButton.color = undefined"
                     />
                     Default
                 </label>
@@ -94,8 +94,8 @@
                     <input
                         type="radio"
                         name="appearance"
-                        [checked]="button.color() === 'red'"
-                        (change)="button.color.set('red'); oldButton.color = 'red'"
+                        [checked]="color() === 'red'"
+                        (change)="color.set('red'); oldButton.color = 'red'"
                     />
                     Red
                 </label>
@@ -103,8 +103,8 @@
                     <input
                         type="radio"
                         name="appearance"
-                        [checked]="button.color() === 'green'"
-                        (change)="button.color.set('green'); oldButton.color = 'green'"
+                        [checked]="color() === 'green'"
+                        (change)="color.set('green'); oldButton.color = 'green'"
                     />
                     Green
                 </label>
@@ -123,7 +123,17 @@
                 >)
             </p>
         </header>
-        <demo-old-button #oldButton type="submit" (click)="incrementCounter()">Button</demo-old-button>
+        <demo-old-button
+            #oldButton
+            type="submit"
+            [disabled]="disabled()"
+            [loading]="loading()"
+            [appearance]="appearance()"
+            [color]="color()"
+            (click)="incrementCounter()"
+        >
+            Button
+        </demo-old-button>
     </div>
 
     <div class="card output">
@@ -137,6 +147,16 @@
                 >)
             </p>
         </header>
-        <demo-button #button type="submit" (click)="incrementCounter()">Button</demo-button>
+        <demo-button
+            #button
+            type="submit"
+            [disabled]="disabled()"
+            [loading]="loading()"
+            [appearance]="appearance()"
+            [color]="color()"
+            (click)="incrementCounter()"
+        >
+            Button
+        </demo-button>
     </div>
 </main>
