@@ -1,6 +1,6 @@
 import { computed } from '@angular/core';
 
-import { useEvent } from './event.composable';
+import { θuseEvent } from './event.composable';
 
 /**
  * Returns a signal that tracks whether the given media query matches.
@@ -17,7 +17,7 @@ import { useEvent } from './event.composable';
  */
 export const useMediaQuery = (query: string) => {
     const mediaQueryList = window.matchMedia(query);
-    const event = useEvent('change', mediaQueryList);
+    const event = θuseEvent('change', mediaQueryList);
 
     return computed(() => {
         const currentEvent = event();

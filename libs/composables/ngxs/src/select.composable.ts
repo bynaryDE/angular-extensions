@@ -1,7 +1,7 @@
 import { inject, Signal, Type } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngxs/store';
-import { StateToken } from '@ngxs/store/src/state-token/state-token';
+import { StateToken } from '@ngxs/store';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export function useSelect<T>(selector: (state: any, ...states: any[]) => T): Signal<T>;
