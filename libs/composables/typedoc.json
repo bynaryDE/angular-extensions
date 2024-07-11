@@ -1,9 +1,6 @@
 {
     "$schema": "https://typedoc.org/schema.json",
-    "entryPoints": [
-        "*/src/public-api.ts"
-    ],
-    "includes": ".",
+    "entryPoints": ["*/src/public-api.ts"],
     "entryPointStrategy": "resolve",
     "excludeInternal": true
 }
