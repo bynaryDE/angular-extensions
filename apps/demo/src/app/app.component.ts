@@ -7,7 +7,6 @@ import { ColorSchemeSwitchComponent } from './components/color-scheme-switch/col
 import { OldButtonComponent } from './components/old-button/old-button.component';
 
 @Component({
-    standalone: true,
     imports: [RouterModule, ButtonComponent, ColorSchemeSwitchComponent, OldButtonComponent],
     selector: 'demo-root',
     templateUrl: './app.component.html',

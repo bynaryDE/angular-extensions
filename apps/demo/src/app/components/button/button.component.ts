@@ -11,7 +11,6 @@ export type ButtonColor = 'red' | 'green' | undefined;
  */
 @Component({
     selector: 'demo-button',
-    standalone: true,
     imports: [CommonModule],
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],

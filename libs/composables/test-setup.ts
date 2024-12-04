@@ -3,7 +3,7 @@ import MatchMediaMock from 'jest-matchmedia-mock';
 
 import './storage/src/utils/storage-change.shim';
 
-// @ts-ignore https://thymikee.github.io/jest-preset-angular/docs/getting-started/test-environment
+// @ts-expect-error https://thymikee.github.io/jest-preset-angular/docs/getting-started/test-environment
 globalThis.ngJest = {
     testEnvironmentOptions: {
         errorOnUnknownElements: true,
@@ -16,4 +16,3 @@ const matchMedia = new MatchMediaMock();
 afterEach(() => {
     matchMedia.clear();
 });
-

@@ -21,7 +21,7 @@ describe('useDirectionality', () => {
         directionSubject = new BehaviorSubject<Direction>('ltr');
 
         await TestBed.configureTestingModule({
-            declarations: [ TestComponent ],
+            imports: [TestComponent],
             providers: [
                 {
                     provide: Directionality,

@@ -17,7 +17,7 @@ describe('useClass', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ TestComponent ]
+            imports: [TestComponent]
         }).compileComponents();
 
         fixture = TestBed.createComponent(TestComponent);
@@ -34,7 +34,7 @@ describe('useClass', () => {
         expect(fixture.debugElement.classes['highlighted']).toBeTruthy();
     });
 
-    it('should add the class, when setting the signal\'s value to `true`', () => {
+    it("should add the class, when setting the signal's value to `true`", () => {
         component.test.set(false);
 
         fixture.detectChanges();
@@ -42,7 +42,7 @@ describe('useClass', () => {
         expect(fixture.debugElement.classes['test']).toBeFalsy();
     });
 
-    it('should remove the class, when setting the signal\'s value to `false`', () => {
+    it("should remove the class, when setting the signal's value to `false`", () => {
         component.highlighted.set(false);
 
         fixture.detectChanges();

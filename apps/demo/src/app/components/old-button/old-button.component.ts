@@ -8,7 +8,6 @@ import { Attribute, Component, ElementRef, HostBinding, inject, Input, OnInit, R
  */
 @Component({
     selector: 'demo-old-button',
-    standalone: true,
     imports: [CommonModule],
     templateUrl: './old-button.component.html',
     styleUrls: ['../button/button.component.scss'],

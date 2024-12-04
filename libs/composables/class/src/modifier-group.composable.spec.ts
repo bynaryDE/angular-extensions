@@ -7,7 +7,7 @@ import { provideBaseClass } from './provide-base-class';
 
 @Component({
     template: '',
-    providers: [ provideBaseClass('c-test') ]
+    providers: [provideBaseClass('c-test')]
 })
 class TestComponent {
     readonly color = useModifierGroup<'primary' | 'secondary' | null | undefined>('primary');
@@ -20,7 +20,7 @@ describe('useModifierGroup', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ TestComponent ]
+            imports: [TestComponent]
         }).compileComponents();
 
         fixture = TestBed.createComponent(TestComponent);
@@ -47,7 +47,7 @@ describe('useModifierGroup', () => {
         });
     });
 
-    it('should remove the previous modifier class and add a new modifier class, when changing the signal\'s value', () => {
+    it("should remove the previous modifier class and add a new modifier class, when changing the signal's value", () => {
         component.color.set('secondary');
 
         fixture.detectChanges();
@@ -58,16 +58,13 @@ describe('useModifierGroup', () => {
         });
     });
 
-    it.each([ null, undefined ])(
-        'should remove the previous modifier class the signal\'s value is set to %s',
-        (value) => {
-            component.color.set(value);
+    it.each([null, undefined])("should remove the previous modifier class the signal's value is set to %s", (value) => {
+        component.color.set(value);
 
-            fixture.detectChanges();
+        fixture.detectChanges();
 
-            expect(fixture.debugElement.classes).toEqual({
-                'c-test': true
-            });
-        }
-    );
+        expect(fixture.debugElement.classes).toEqual({
+            'c-test': true
+        });
+    });
 });

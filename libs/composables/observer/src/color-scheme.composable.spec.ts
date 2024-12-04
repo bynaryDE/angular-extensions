@@ -28,7 +28,7 @@ describe('color-scheme.composable.ts', () => {
 
         beforeEach(async () => {
             await TestBed.configureTestingModule({
-                declarations: [TestComponent]
+                imports: [TestComponent]
             }).compileComponents();
 
             fixture = TestBed.createComponent(TestComponent);

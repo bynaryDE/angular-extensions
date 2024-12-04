@@ -7,7 +7,7 @@ import { provideBaseClass } from './provide-base-class';
 
 @Component({
     template: '',
-    providers: [ provideBaseClass('c-test') ]
+    providers: [provideBaseClass('c-test')]
 })
 class TestComponent {
     readonly disabled = useModifier('disabled', { initialValue: false });
@@ -20,7 +20,7 @@ describe('useModifier', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ TestComponent ]
+            imports: [TestComponent]
         }).compileComponents();
 
         fixture = TestBed.createComponent(TestComponent);
@@ -40,7 +40,7 @@ describe('useModifier', () => {
         });
     });
 
-    it('should remove the attribute, when setting the signal\'s value to `false`', () => {
+    it("should remove the attribute, when setting the signal's value to `false`", () => {
         component.loading.set(false);
 
         fixture.detectChanges();
@@ -50,7 +50,7 @@ describe('useModifier', () => {
         });
     });
 
-    it('should set the attribute, when setting the signal\'s value to `true`', () => {
+    it("should set the attribute, when setting the signal's value to `true`", () => {
         component.disabled.set(true);
 
         fixture.detectChanges();

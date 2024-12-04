@@ -22,7 +22,7 @@ describe('useBooleanAttribute', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ TestComponent ]
+            imports: [TestComponent]
         }).compileComponents();
 
         fixture = TestBed.createComponent(TestComponent);
@@ -51,7 +51,7 @@ describe('useBooleanAttribute', () => {
         expect(fixture.debugElement.attributes['my:editable']).toEqual('');
     });
 
-    it('should remove the attribute, when setting the signal\'s value to `false`', () => {
+    it("should remove the attribute, when setting the signal's value to `false`", () => {
         component.loading.set(false);
 
         fixture.detectChanges();
@@ -59,7 +59,7 @@ describe('useBooleanAttribute', () => {
         expect(fixture.debugElement.attributes['loading']).toBeUndefined();
     });
 
-    it('should set the attribute, when setting the signal\'s value to `true`', () => {
+    it("should set the attribute, when setting the signal's value to `true`", () => {
         component.disabled.set(true);
 
         fixture.detectChanges();

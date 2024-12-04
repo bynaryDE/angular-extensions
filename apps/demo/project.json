@@ -7,17 +7,19 @@
     "tags": [],
     "targets": {
         "build": {
-            "executor": "@angular-devkit/build-angular:browser",
+            "executor": "@angular/build:application",
             "outputs": ["{options.outputPath}"],
             "options": {
-                "outputPath": "dist/apps/demo",
+                "outputPath": {
+                    "base": "dist/apps/demo"
+                },
                 "index": "apps/demo/src/index.html",
-                "main": "apps/demo/src/main.ts",
                 "polyfills": ["zone.js"],
                 "tsConfig": "apps/demo/tsconfig.app.json",
                 "assets": ["apps/demo/src/favicon.ico", "apps/demo/src/assets"],
                 "styles": ["apps/demo/src/styles.scss"],
-                "scripts": []
+                "scripts": [],
+                "browser": "apps/demo/src/main.ts"
             },
             "configurations": {
                 "production": {
@@ -52,9 +54,7 @@
                     "baseHref": "/angular-extensions/"
                 },
                 "development": {
-                    "buildOptimizer": false,
                     "optimization": false,
-                    "vendorChunk": true,
                     "extractLicenses": false,
                     "sourceMap": true,
                     "namedChunks": true
@@ -63,7 +63,7 @@
             "defaultConfiguration": "production"
         },
         "serve": {
-            "executor": "@angular-devkit/build-angular:dev-server",
+            "executor": "@angular/build:dev-server",
             "configurations": {
                 "production": {
                     "buildTarget": "demo:build:production"
@@ -75,7 +75,7 @@
             "defaultConfiguration": "development"
         },
         "extract-i18n": {
-            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "executor": "@angular/build:extract-i18n",
             "options": {
                 "buildTarget": "demo:build"
             }
